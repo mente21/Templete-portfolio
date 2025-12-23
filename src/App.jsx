@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Mail, Linkedin, Sparkles, X, ExternalLink } from 'lucide-react';
+import { Github, Mail, Linkedin, Sparkles, X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Modules
 import ProjectCard from './components/ProjectCard';
@@ -27,7 +27,32 @@ const PortfolioHome = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedEducation, setSelectedEducation] = useState(null);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const navigate = useNavigate();
+
+  const projectImages = selectedProject ? [selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean) : [];
+  const educationImages = selectedEducation ? [selectedEducation.imageUrl, ...(selectedEducation.gallery || [])].filter(Boolean) : [];
+  const certificateImages = selectedCertificate ? [selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean) : [];
+
+  const handlePrev = (type) => {
+    if (type === 'project') {
+      setGalleryIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : projectImages.length - 1));
+    } else if (type === 'education') {
+      setGalleryIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : educationImages.length - 1));
+    } else if (type === 'certificate') {
+      setGalleryIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : certificateImages.length - 1));
+    }
+  };
+
+  const handleNext = (type) => {
+    if (type === 'project') {
+      setGalleryIndex((prevIndex) => (prevIndex < projectImages.length - 1 ? prevIndex + 1 : 0));
+    } else if (type === 'education') {
+      setGalleryIndex((prevIndex) => (prevIndex < educationImages.length - 1 ? prevIndex + 1 : 0));
+    } else if (type === 'certificate') {
+      setGalleryIndex((prevIndex) => (prevIndex < certificateImages.length - 1 ? prevIndex + 1 : 0));
+    }
+  };
 
   return (
     <div className="app-container" style={{ position: 'relative' }}>
@@ -103,9 +128,9 @@ const PortfolioHome = () => {
         <TechExpertise />
       </section>
       
-      <EducationTimeline onOpenDetail={setSelectedEducation} />
+      <EducationTimeline onOpenDetail={(item) => { setSelectedEducation(item); setGalleryIndex(0); }} />
 
-      <CertificatesSection onOpenDetail={setSelectedCertificate} />
+      <CertificatesSection onOpenDetail={(item) => { setSelectedCertificate(item); setGalleryIndex(0); }} />
 
       <TestimonialsSection />
 
@@ -206,31 +231,59 @@ const PortfolioHome = () => {
                          position: 'relative'
                       }}
                     >
-                      {/* Horizontal Slider Implementation */}
-                      <div className="custom-slider" style={{
-                        display: 'flex',
-                        overflowX: 'auto',
-                        scrollSnapType: 'x mandatory',
-                        width: '100%',
-                        height: '100%',
-                        scrollbarWidth: 'none',
-                        msOverflowStyle: 'none'
-                      }}>
-                        {[selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean).map((img, i) => (
-                          <div key={i} style={{ 
-                            minWidth: '100%', 
-                            height: '100%', 
-                            scrollSnapAlign: 'start',
-                            position: 'relative'
-                          }}>
-                            <img 
-                              src={img} 
-                              alt={`${selectedProject.title} screenshot ${i + 1}`} 
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                            {i > 0 && <div style={{ position: 'absolute', top: '20px', left: '20px', padding: '6px 12px', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)', borderRadius: '100px', fontSize: '0.6rem', color: 'white', letterSpacing: '2px', fontWeight: 800 }}>IMAGE {i + 1}</div>}
-                          </div>
-                        ))}
+                      {/* Horizontal Slider Implementation with Controls */}
+                      <div style={{ position: 'relative', width: '100%', height: '100%', background: 'rgba(0,0,0,0.2)' }}>
+                        <div className="custom-slider" style={{
+                          display: 'flex',
+                          width: '100%',
+                          height: '100%',
+                          transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                          transform: `translateX(-${galleryIndex * 100}%)`
+                        }}>
+                          {[selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean).map((img, i) => (
+                            <div key={i} style={{ 
+                              minWidth: '100%', 
+                              height: '100%', 
+                              position: 'relative'
+                            }}>
+                              <img 
+                                src={img} 
+                                alt={`${selectedProject.title} screenshot ${i + 1}`} 
+                                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        {[selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean).length > 1 && (
+                          <>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.max(0, prev - 1))}
+                              style={{
+                                position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(10px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === 0 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronLeft size={24} />
+                            </button>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.min([selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean).length - 1, prev + 1))}
+                              style={{
+                                position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(10px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === [selectedProject.imageUrl, ...(selectedProject.gallery || [])].filter(Boolean).length - 1 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronRight size={24} />
+                            </button>
+                          </>
+                        )}
                       </div>
                       
                       {/* Slider Instruction Overlay */}
@@ -414,15 +467,50 @@ const PortfolioHome = () => {
                          borderRadius: '24px', overflow: 'hidden',
                          boxShadow: '0 30px 60px rgba(0,0,0,0.4)', position: 'relative'
                     }}>
-                      <div className="custom-slider" style={{
-                        display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory',
-                        width: '100%', height: '100%', scrollbarWidth: 'none'
-                      }}>
-                        {[selectedEducation.image, ...(selectedEducation.gallery || [])].filter(Boolean).map((img, i) => (
-                          <div key={i} style={{ minWidth: '100%', height: '100%', scrollSnapAlign: 'start', position: 'relative' }}>
-                            <img src={img} alt="Academic detail" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          </div>
-                        ))}
+                      <div style={{ position: 'relative', width: '100%', height: '100%', background: 'rgba(0,0,0,0.2)' }}>
+                        <div className="custom-slider" style={{
+                          display: 'flex',
+                          width: '100%',
+                          height: '100%',
+                          transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                          transform: `translateX(-${galleryIndex * 100}%)`
+                        }}>
+                          {[selectedEducation.image, ...(selectedEducation.gallery || [])].filter(Boolean).map((img, i) => (
+                            <div key={i} style={{ minWidth: '100%', height: '100%', position: 'relative' }}>
+                              <img src={img} alt="Academic detail" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        {[selectedEducation.image, ...(selectedEducation.gallery || [])].filter(Boolean).length > 1 && (
+                          <>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.max(0, prev - 1))}
+                              style={{
+                                position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(10px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === 0 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronLeft size={24} />
+                            </button>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.min([selectedEducation.image, ...(selectedEducation.gallery || [])].filter(Boolean).length - 1, prev + 1))}
+                              style={{
+                                position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(10px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === [selectedEducation.image, ...(selectedEducation.gallery || [])].filter(Boolean).length - 1 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronRight size={24} />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
@@ -522,15 +610,50 @@ const PortfolioHome = () => {
                          borderRadius: '24px', overflow: 'hidden',
                          boxShadow: '0 30px 60px rgba(0,0,0,0.4)', position: 'relative'
                     }}>
-                      <div className="custom-slider" style={{
-                        display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory',
-                        width: '100%', height: '100%', scrollbarWidth: 'none'
-                      }}>
-                        {[selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean).map((img, i) => (
-                          <div key={i} style={{ minWidth: '100%', height: '100%', scrollSnapAlign: 'start', position: 'relative' }}>
-                            <img src={img} alt="Certificate detail" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          </div>
-                        ))}
+                      <div style={{ position: 'relative', width: '100%', height: '100%', background: 'rgba(0,0,0,0.2)' }}>
+                        <div className="custom-slider" style={{
+                          display: 'flex',
+                          width: '100%',
+                          height: '100%',
+                          transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                          transform: `translateX(-${galleryIndex * 100}%)`
+                        }}>
+                          {[selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean).map((img, i) => (
+                            <div key={i} style={{ minWidth: '100%', height: '100%', position: 'relative' }}>
+                              <img src={img} alt="Certificate detail" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        {[selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean).length > 1 && (
+                          <>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.max(0, prev - 1))}
+                              style={{
+                                position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(100px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === 0 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronLeft size={24} />
+                            </button>
+                            <button 
+                              onClick={() => setGalleryIndex(prev => Math.min([selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean).length - 1, prev + 1))}
+                              style={{
+                                position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)',
+                                width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,0,0,0.5)',
+                                backdropFilter: 'blur(100px)', color: 'white', border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                                zIndex: 5, opacity: galleryIndex === [selectedCertificate.imageUrl, ...(selectedCertificate.gallery || [])].filter(Boolean).length - 1 ? 0.3 : 1, transition: 'all 0.3s ease'
+                              }}
+                            >
+                              <ChevronRight size={24} />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>

@@ -704,7 +704,7 @@ const StudioMode = () => {
           justifyContent: 'center'
         }}>
           {formData[field] ? (
-            <img src={formData[field]} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={formData[field]} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           ) : (
             <ImageIcon size={30} style={{ opacity: 0.2 }} />
           )}
@@ -758,8 +758,8 @@ const StudioMode = () => {
       }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '15px' }}>
            {Array.isArray(formData.gallery) && formData.gallery.map((img, i) => (
-             <div key={i} style={{ position: 'relative', height: '90px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
-               <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+             <div key={i} style={{ position: 'relative', height: '90px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
+               <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                <button 
                  onClick={() => {
                    const newGallery = formData.gallery.filter((_, idx) => idx !== i);

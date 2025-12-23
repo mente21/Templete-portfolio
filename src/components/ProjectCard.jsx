@@ -75,11 +75,10 @@ const ProjectCard = ({ project, index, onExpand }) => {
       }}>
         <motion.img 
           layoutId={`image-${project.id || index}`}
-          whileHover={{ scale: 1.15 }}
           transition={{ duration: 0.6 }}
           src={project.imageUrl || "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600"} 
           alt={project.title} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
         />
         
         {/* Overlay buttons that show on hover */}

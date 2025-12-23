@@ -208,8 +208,8 @@ const EducationTimeline = ({ onOpenDetail }) => {
                   onClick={() => onOpenDetail(item)}
                 >
                   {item.position === 'bottom' && (
-                    <div style={{ width: '100%', height: '140px', overflow: 'hidden' }}>
-                      <img src={item.image} alt={item.degree} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+                    <div style={{ width: '100%', height: '140px', overflow: 'hidden', background: 'rgba(0,0,0,0.1)' }}>
+                      <img src={item.image} alt={item.degree} style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: 0.9 }} />
                     </div>
                   )}
 
@@ -226,8 +226,8 @@ const EducationTimeline = ({ onOpenDetail }) => {
                   </div>
 
                   {item.position === 'top' && (
-                    <div style={{ width: '100%', height: '140px', overflow: 'hidden', borderTop: `1px solid ${item.color}22` }}>
-                      <img src={item.image} alt={item.degree} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+                    <div style={{ width: '100%', height: '140px', overflow: 'hidden', borderTop: `1px solid ${item.color}22`, background: 'rgba(0,0,0,0.1)' }}>
+                      <img src={item.image} alt={item.degree} style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: 0.9 }} />
                     </div>
                   )}
                 </motion.div>

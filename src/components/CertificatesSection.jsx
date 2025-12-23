@@ -197,11 +197,10 @@ const CertificatesSection = ({ onOpenDetail }) => {
                     position: 'relative'
                 }}>
                     <motion.img 
-                        whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.6 }}
                         src={cert.imageUrl} 
                         alt={cert.title} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
                     <div style={{
                         position: 'absolute',
