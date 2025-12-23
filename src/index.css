@@ -1,21 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600;800&display=swap');
 
 :root {
-  --bg-color: #050505;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --border-color: rgba(255, 255, 255, 0.1);
-  --accent-primary: #6366f1;
-  --accent-secondary: #a855f7;
+  --bg-color: #030303;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-primary: #ff6b00;
+  --accent-secondary: #ff9e00;
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --glass-blur: blur(12px);
+  --text-secondary: rgba(255, 255, 255, 0.45);
+  --text-stroke: rgba(255, 255, 255, 0.4);
+  --text-accent-gradient: linear-gradient(135deg, #ff6b00 0%, #ff9e00 100%);
+  --glass-blur: blur(20px);
+  --sidebar-bg: rgba(10, 10, 10, 0.6);
+  --input-bg: rgba(0, 0, 0, 0.3);
+  --node-bg: rgba(15, 15, 15, 0.98);
+  --timeline-rail: rgba(255, 255, 255, 0.15);
+  --glow-line-color: var(--accent-primary);
+  --glow-line-opacity: 0.5;
+  --glow-blur: 15px;
+}
+
+.light-theme {
+  --bg-color: #f8f9fc;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --accent-primary: #ff6b00;
+  --accent-secondary: #e65c00;
+  --text-primary: #0a0a0c;
+  --text-secondary: rgba(0, 0, 0, 0.55);
+  --text-stroke: rgba(0, 0, 0, 0.12);
+  --text-accent-gradient: linear-gradient(135deg, #ff6b00 20%, #e65c00 100%);
+  --glass-blur: blur(30px);
+  --sidebar-bg: rgba(255, 255, 255, 0.92);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --node-bg: #ffffff;
+  --timeline-rail: rgba(0, 0, 0, 0.06);
+  --glow-line-color: var(--accent-primary);
+  --glow-line-color: var(--accent-primary);
+  --glow-line-opacity: 0.4;
+  --glow-blur: 8px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Anton', sans-serif;
 }
 
 body {
@@ -23,6 +53,7 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Custom Scrollbar */
@@ -56,12 +87,20 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background:
-    linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)),
-    url('/bg.png');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.6);
+  background: var(--bg-color);
+  background-image:
+    radial-gradient(at 0% 0%, var(--accent-primary) 0, transparent 50%),
+    radial-gradient(at 50% 0%, var(--accent-secondary) 0, transparent 50%),
+    radial-gradient(at 100% 0%, var(--accent-primary) 0, transparent 50%);
+  opacity: 0.15;
+  filter: blur(80px);
+}
+
+.light-theme .bg-mesh {
+  opacity: 0.03;
+  background-image:
+    radial-gradient(at 0% 0%, var(--accent-primary) 0, transparent 40%),
+    radial-gradient(at 100% 0%, var(--accent-secondary) 0, transparent 40%);
 }
 
 section {
@@ -73,10 +112,21 @@ section {
 }
 
 /* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 h1 {
   font-size: 5rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-weight: 400;
+  line-height: 1;
   margin-bottom: 1.5rem;
 }
 
@@ -91,6 +141,7 @@ p {
   font-size: 1.2rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  letter-spacing: 0.5px;
 }
 
 /* Glass Buttons */
@@ -99,7 +150,7 @@ p {
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: var(--card-bg);
-  color: white;
+  color: var(--text-primary);
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -147,7 +198,7 @@ p {
 .card:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: var(--accent-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-color);
 }
 
 /* AI Assistant Bubble */
@@ -323,4 +374,246 @@ p {
 .studio-input:focus {
   border-color: var(--accent-primary) !important;
   background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Premium Project Cards */
+.premium-project-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.premium-project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 0, 0.05);
+}
+
+.card-glow-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 34px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.premium-project-card:hover .card-glow-border {
+  opacity: 1;
+}
+
+.visit-site-btn {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+/* Constellation Background */
+.constellation-wrapper {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+}
+
+.constellation-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.grid-premium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header Premium */
+.section-header-premium {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-subtitle-premium {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.section-title-premium {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: var(--text-primary);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.section-title-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-stroke);
+  transition: -webkit-text-stroke 0.5s ease;
+}
+
+.section-title-accent {
+  background: var(--text-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 5px;
+}
+
+.light-theme .section-title-stroke {
+  color: var(--text-primary);
+  -webkit-text-stroke: 0;
+}
+
+/* Neural Network / Constellation Animation */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
+.network-dot {
+  animation: pulse-dot 4s infinite ease-in-out;
+}
+
+
+
+/* Hero Section & Glowing Lines */
+.glowing-lines-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 70% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+}
+
+.glowing-lines-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.line-path {
+  stroke-dasharray: 2000;
+  animation: flow 10s linear infinite;
+}
+
+.line-1 {
+  animation-duration: 12s;
+}
+
+.line-2 {
+  animation-duration: 10s;
+  animation-delay: -2s;
+}
+
+.line-3 {
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+.line-slow {
+  animation-duration: 25s;
+  opacity: 0.3;
+}
+
+.line-slow-reverse {
+  animation-duration: 30s;
+  animation-direction: reverse;
+  opacity: 0.2;
+}
+
+@keyframes flow {
+  0% {
+    stroke-dashoffset: 2000;
+  }
+
+  100% {
+    stroke-dashoffset: -2000;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column !important;
+    text-align: center;
+    padding-top: 120px !important;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem !important;
+  }
+
+  .portrait-frame {
+    width: 300px !important;
+    height: 380px !important;
+    margin-top: 50px;
+  }
+}
+
+/* Chatbase AI Assistant Theme Overrides */
+#chatbase-bubble-button {
+  background-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3) !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  transition: transform 0.3s ease !important;
+}
+
+#chatbase-bubble-button:hover {
+  transform: scale(1.1) rotate(5deg) !important;
+}
+
+#chatbase-bubble-window {
+  bottom: 100px !important;
+  right: 30px !important;
+  border: 1px solid var(--accent-primary) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(10px) !important;
+  z-index: 999999999 !important;
+  /* Ensure it's above everything */
+}
+
+/* Ensure AI doesn't overlap the mobile bottom area if needed */
+@media (max-width: 768px) {
+  #chatbase-bubble-button {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
 }

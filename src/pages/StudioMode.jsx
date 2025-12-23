@@ -24,7 +24,7 @@ const StudioMode = () => {
   const [password, setPassword] = useState('');
   
   // Dynamic collections
-  const [collections] = useState(['projects', 'skills', 'certificates', 'experience']);
+  const [collections] = useState(['projects', 'skills', 'certificates', 'education', 'testimonials', 'home', 'about', 'contact']);
   const [selectedCollection, setSelectedCollection] = useState('projects');
   const [collectionData, setCollectionData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,8 @@ const StudioMode = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === 'admin123') {
+    const adminPass = import.meta.env.VITE_STUDIO_ADMIN_PASSWORD || 'admin123';
+    if (password === adminPass) {
       setIsAuthenticated(true);
       sessionStorage.setItem('studioAuth', 'authenticated');
     } else {
@@ -121,36 +122,63 @@ const StudioMode = () => {
     setUploading(true);
     setUploadProgress(0);
     
-    console.log("Starting Cloudinary upload for:", file.name);
+    // Check if Cloudinary is configured
+    if (CLOUDINARY_CLOUD_NAME && CLOUDINARY_UPLOAD_PRESET) {
+        console.log("Starting Cloudinary upload for:", file.name);
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        try {
+            const response = await fetch(
+                `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+                { method: 'POST', body: formData }
+            );
 
-    try {
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-        {
-          method: 'POST',
-          body: formData,
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error.message || 'Upload failed');
+            }
+
+            const data = await response.json();
+            console.log("Cloudinary Upload Success:", data.secure_url);
+            handleInputChange('imageUrl', data.secure_url);
+            setUploadProgress(100);
+            setUploading(false);
+            return;
+        } catch (err) {
+            console.error("Cloudinary Error, falling back to Firebase:", err);
+            // Fall through to Firebase if Cloudinary fails
         }
-      );
+    }
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error.message || 'Upload failed');
-      }
+    // FALLBACK: Use Firebase Storage (Native & already configured)
+    console.log("Starting Firebase Storage upload for:", file.name);
+    try {
+        const storageRef = ref(storage, `studio/${Date.now()}_${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-      const data = await response.json();
-      console.log("Cloudinary Upload Success:", data.secure_url);
-      
-      handleInputChange('imageUrl', data.secure_url);
-      setUploadProgress(100);
-      setUploading(false);
+        uploadTask.on('state_changed', 
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setUploadProgress(progress);
+            }, 
+            (error) => {
+                console.error("Firebase Storage Error:", error);
+                alert("Upload Failed: " + error.message);
+                setUploading(false);
+            }, 
+            async () => {
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                console.log("Firebase Upload Success:", downloadURL);
+                handleInputChange('imageUrl', downloadURL);
+                setUploading(false);
+            }
+        );
     } catch (err) {
-      console.error("Cloudinary Error:", err);
-      alert("Cloudinary Upload Failed: " + err.message + "\n\nTip: Ensure your Cloudinary Preset is set to 'Unsigned' in settings.");
-      setUploading(false);
+        console.error("Critical Upload Error:", err);
+        alert("Critical Upload Error: " + err.message);
+        setUploading(false);
     }
   };
 
@@ -322,6 +350,16 @@ const StudioMode = () => {
             />
           </div>
           <div className="form-group">
+            <label>Detailed Description (Industrial System)</label>
+            <textarea 
+              className="studio-input" 
+              value={formData.detailedDesc || ''} 
+              onChange={e => handleInputChange('detailedDesc', e.target.value)}
+              placeholder="The visual map above represents..."
+              style={{ minHeight: '120px' }}
+            />
+          </div>
+          <div className="form-group">
             <label>Level (0-100)</label>
             <input 
               className="studio-input" 
@@ -344,6 +382,104 @@ const StudioMode = () => {
               <option value="tools">Tools</option>
               <option value="ai">AI</option>
             </select>
+          </div>
+        </>
+      );
+    }
+
+    if (selectedCollection === 'home') {
+      return (
+        <>
+          <div className="form-group">
+            <label>Main Title</label>
+            <input className="studio-input" value={formData.title || ''} onChange={e => handleInputChange('title', e.target.value)} placeholder="CREATIVE ENGINEER" />
+          </div>
+          <div className="form-group">
+            <label>Name / Roles (Comma separated)</label>
+            <input className="studio-input" value={formData.roles || ''} onChange={e => handleInputChange('roles', e.target.value)} placeholder="FRONTEND ARCHITECT, UI/UX DESIGNER" />
+          </div>
+          {renderImageUpload()}
+        </>
+      );
+    }
+
+    if (selectedCollection === 'about') {
+      return (
+        <>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea className="studio-input" value={formData.desc || ''} onChange={e => handleInputChange('desc', e.target.value)} style={{ minHeight: '150px' }} />
+          </div>
+          <div className="form-group">
+            <label>Stats (e.g. 5+ YEARS, 99% UPTIME - Comma separated)</label>
+            <input className="studio-input" value={formData.stats || ''} onChange={e => handleInputChange('stats', e.target.value)} placeholder="5+ YEARS, 40+ BUILDS" />
+          </div>
+          {renderImageUpload()}
+        </>
+      );
+    }
+
+    if (selectedCollection === 'education') {
+       return (
+         <>
+           <div className="form-group">
+             <label>School Name</label>
+             <input className="studio-input" value={formData.school || ''} onChange={e => handleInputChange('school', e.target.value)} />
+           </div>
+           <div className="form-group">
+             <label>Degree / Title</label>
+             <input className="studio-input" value={formData.title || ''} onChange={e => handleInputChange('title', e.target.value)} />
+           </div>
+           <div className="form-group">
+             <label>Description</label>
+             <textarea className="studio-input" value={formData.desc || ''} onChange={e => handleInputChange('desc', e.target.value)} />
+           </div>
+           {renderImageUpload()}
+         </>
+       );
+    }
+
+    if (selectedCollection === 'testimonials') {
+      return (
+        <>
+          <div className="form-group">
+            <label>Name</label>
+            <input className="studio-input" value={formData.name || ''} onChange={e => handleInputChange('name', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Work / Company</label>
+            <input className="studio-input" value={formData.work || ''} onChange={e => handleInputChange('work', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Quote</label>
+            <textarea className="studio-input" value={formData.quote || ''} onChange={e => handleInputChange('quote', e.target.value)} />
+          </div>
+        </>
+      );
+    }
+
+    if (selectedCollection === 'contact') {
+      return (
+        <>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input className="studio-input" value={formData.email || ''} onChange={e => handleInputChange('email', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Github URL</label>
+            <input className="studio-input" value={formData.github || ''} onChange={e => handleInputChange('github', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Linkedin URL</label>
+            <input className="studio-input" value={formData.linkedin || ''} onChange={e => handleInputChange('linkedin', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Instagram URL</label>
+            <input className="studio-input" value={formData.instagram || ''} onChange={e => handleInputChange('instagram', e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>Twitter URL</label>
+            <input className="studio-input" value={formData.twitter || ''} onChange={e => handleInputChange('twitter', e.target.value)} />
           </div>
         </>
       );
@@ -461,22 +597,13 @@ const StudioMode = () => {
         </div>
       </nav>
 
-      {/* Main Content Area - Always Loaded for Chatbase (but controls hidden if !auth) */}
+      {/* Main Content Area - Contents hidden until authenticated to protect studio data */}
       <main style={{ paddingTop: '120px', paddingBottom: '100px', minHeight: '100vh' }}>
         
-        {/* Header Section */}
-        <section style={{ marginBottom: '60px', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Experience & <span className="gradient-text">Ecosystem</span></h1>
-          <p style={{ maxWidth: '700px', margin: '0 auto', opacity: 0.7 }}>
-            Complete archive of technical ventures, professional milestones, and digital architecture. 
-            This data powers the Mente AI assistant.
-          </p>
-        </section>
-
-        {/* Auth Barrier Overlay for Controls */}
-        {!isAuthenticated && (
+        {!isAuthenticated ? (
+          /* Auth Barrier Overlay for Controls - Now the only visible part when not logged in */
           <div style={{
-            maxWidth: '500px', margin: '40px auto', padding: '40px',
+            maxWidth: '500px', margin: '100px auto', padding: '40px',
             background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '24px',
             textAlign: 'center'
@@ -496,143 +623,154 @@ const StudioMode = () => {
               <button type="submit" className="btn btn-primary" style={{ height: '50px' }}>Access Dashboard</button>
             </form>
           </div>
-        )}
+        ) : (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ padding: '0 10%' }}
+          >
+            {/* Header Section */}
+            <section style={{ marginBottom: '60px', textAlign: 'center' }}>
+              <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Experience & <span className="gradient-text">Ecosystem</span></h1>
+              <p style={{ maxWidth: '700px', margin: '0 auto', opacity: 0.7 }}>
+                Complete archive of technical ventures, professional milestones, and digital architecture. 
+                This data powers the Mente AI assistant.
+              </p>
+            </section>
 
-        {/* Collection Selector & Add Button */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          flexWrap: 'wrap', gap: '20px', marginBottom: '40px'
-        }}>
-          <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '5px' }}>
-            {collections.map(col => (
-              <button
-                key={col}
-                onClick={() => setSelectedCollection(col)}
-                style={{
-                  padding: '10px 20px',
-                  background: selectedCollection === col ? 'linear-gradient(135deg, #6366f1, #a855f7)' : 'rgba(255, 255, 255, 0.05)',
-                  border: selectedCollection === col ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '12px',
-                  color: 'white',
-                  cursor: 'pointer',
-                  fontWeight: 600,
-                  textTransform: 'capitalize',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: '0.3s'
-                }}
+            {/* Collection Selector & Add Button */}
+            <div style={{
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              flexWrap: 'wrap', gap: '20px', marginBottom: '40px'
+            }}>
+              <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '5px' }}>
+                {collections.map(col => (
+                  <button
+                    key={col}
+                    onClick={() => setSelectedCollection(col)}
+                    style={{
+                      padding: '10px 20px',
+                      background: selectedCollection === col ? 'linear-gradient(135deg, #6366f1, #a855f7)' : 'rgba(255, 255, 255, 0.05)',
+                      border: selectedCollection === col ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '12px',
+                      color: 'white',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      textTransform: 'capitalize',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      transition: '0.3s'
+                    }}
+                  >
+                    <Table size={16} /> {col}
+                  </button>
+                ))}
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => openForm()}
+                className="btn btn-primary"
+                style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px' }}
               >
-                <Table size={16} /> {col}
-              </button>
-            ))}
-          </div>
-
-          {isAuthenticated && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => openForm()}
-              className="btn btn-primary"
-              style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px' }}
-            >
-              <Plus size={20} /> Add New {selectedCollection.slice(0, -1)}
-            </motion.button>
-          )}
-        </div>
-
-        {/* Data Grid / List */}
-        <div style={{ position: 'relative' }}>
-          {(loading || projectsLoading) && (
-            <div style={{ padding: '60px', textAlign: 'center' }}>
-              <Loader2 className="animate-spin" size={40} color="#6366f1" />
+                <Plus size={20} /> Add New {selectedCollection.slice(0, -1)}
+              </motion.button>
             </div>
-          )}
 
-          {!(loading || projectsLoading) && (selectedCollection === 'projects' ? projects : collectionData).length === 0 && (
-            <div style={{ textAlign: 'center', padding: '100px', opacity: 0.4 }}>
-              <Database size={60} style={{ marginBottom: '20px' }} />
-              <p>No data found in {selectedCollection}</p>
-            </div>
-          )}
-
-          <div className="grid">
-            {(selectedCollection === 'projects' ? projects : collectionData).map((item, idx) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="card"
-                style={{ 
-                  position: 'relative', overflow: 'hidden', padding: '30px',
-                  display: 'flex', flexDirection: 'column', gap: '15px'
-                }}
-              >
-                {/* Management Controls Overlay */}
-                {isAuthenticated && (
-                  <div style={{
-                    position: 'absolute', top: '20px', right: '20px', zIndex: 10,
-                    display: 'flex', gap: '10px'
-                  }}>
-                    <button 
-                      onClick={() => openForm(item)}
-                      style={{ 
-                        background: 'rgba(99, 102, 241, 0.2)', border: 'none', 
-                        borderRadius: '8px', padding: '8px', cursor: 'pointer', color: '#6366f1'
-                      }}
-                    >
-                      <Edit3 size={18} />
-                    </button>
-                    <button 
-                      onClick={() => handleDelete(item.id)}
-                      style={{ 
-                        background: 'rgba(239, 68, 68, 0.2)', border: 'none', 
-                        borderRadius: '8px', padding: '8px', cursor: 'pointer', color: '#ef4444'
-                      }}
-                    >
-                      <Trash2 size={18} />
-                    </button>
-                  </div>
-                )}
-
-                {/* Content Rendering for AI Crawling */}
-                <div>
-                  <h3 style={{ fontSize: '1.4rem', color: 'var(--accent-primary)', marginBottom: '10px' }}>
-                    {item.title || item.name || "Untitled Entry"}
-                  </h3>
-                  
-                  {item.company && <p style={{ fontWeight: 600, opacity: 0.9 }}>{item.company}</p>}
-                  {item.issuer && <p style={{ fontWeight: 600, opacity: 0.9 }}>{item.issuer}</p>}
-                  {item.period && <p style={{ fontSize: '0.9rem', opacity: 0.6 }}>{item.period}</p>}
-                  {item.date && <p style={{ fontSize: '0.9rem', opacity: 0.6 }}>{item.date}</p>}
-
-                  <p style={{ marginTop: '15px', lineHeight: '1.6', opacity: 0.8 }}>{item.desc}</p>
-                  
-                  {item.tech && item.tech.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '15px' }}>
-                      {item.tech.map((t, i) => (
-                        <span key={i} style={{ 
-                          fontSize: '0.75rem', padding: '4px 12px', background: 'rgba(255,255,255,0.05)', 
-                          borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)'
-                        }}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {item.imageUrl && (
-                    <div style={{ marginTop: '20px', borderRadius: '12px', overflow: 'hidden', height: '150px' }}>
-                      <img src={item.imageUrl} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={item.title} />
-                    </div>
-                  )}
+            {/* Data Grid / List */}
+            <div style={{ position: 'relative' }}>
+              {(loading || projectsLoading) && (
+                <div style={{ padding: '60px', textAlign: 'center' }}>
+                  <Loader2 className="animate-spin" size={40} color="#6366f1" />
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+              )}
+
+              {!(loading || projectsLoading) && (selectedCollection === 'projects' ? projects : collectionData).length === 0 && (
+                <div style={{ textAlign: 'center', padding: '100px', opacity: 0.4 }}>
+                  <Database size={60} style={{ marginBottom: '20px' }} />
+                  <p>No data found in {selectedCollection}</p>
+                </div>
+              )}
+
+              <div className="grid">
+                {(selectedCollection === 'projects' ? projects : collectionData).map((item, idx) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="card"
+                    style={{ 
+                      position: 'relative', overflow: 'hidden', padding: '30px',
+                      display: 'flex', flexDirection: 'column', gap: '15px'
+                    }}
+                  >
+                    {/* Management Controls Overlay */}
+                    <div style={{
+                      position: 'absolute', top: '20px', right: '20px', zIndex: 10,
+                      display: 'flex', gap: '10px'
+                    }}>
+                      <button 
+                        onClick={() => openForm(item)}
+                        style={{ 
+                          background: 'rgba(99, 102, 241, 0.2)', border: 'none', 
+                          borderRadius: '8px', padding: '8px', cursor: 'pointer', color: '#6366f1'
+                        }}
+                      >
+                        <Edit3 size={18} />
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(item.id)}
+                        style={{ 
+                          background: 'rgba(239, 68, 68, 0.2)', border: 'none', 
+                          borderRadius: '8px', padding: '8px', cursor: 'pointer', color: '#ef4444'
+                        }}
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+
+                    {/* Content Rendering */}
+                    <div>
+                      <h3 style={{ fontSize: '1.4rem', color: 'var(--accent-primary)', marginBottom: '10px' }}>
+                        {item.title || item.name || "Untitled Entry"}
+                      </h3>
+                      
+                      {item.company && <p style={{ fontWeight: 600, opacity: 0.9 }}>{item.company}</p>}
+                      {item.issuer && <p style={{ fontWeight: 600, opacity: 0.9 }}>{item.issuer}</p>}
+                      {item.period && <p style={{ fontSize: '0.9rem', opacity: 0.6 }}>{item.period}</p>}
+                      {item.date && <p style={{ fontSize: '0.9rem', opacity: 0.6 }}>{item.date}</p>}
+
+                      <p style={{ marginTop: '15px', lineHeight: '1.6', opacity: 0.8 }}>{item.desc}</p>
+                      
+                      {item.tech && item.tech.length > 0 && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '15px' }}>
+                          {item.tech.map((t, i) => (
+                            <span key={i} style={{ 
+                              fontSize: '0.75rem', padding: '4px 12px', background: 'rgba(255,255,255,0.05)', 
+                              borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)'
+                            }}>
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {item.imageUrl && (
+                        <div style={{ marginTop: '20px', borderRadius: '12px', overflow: 'hidden', height: '150px' }}>
+                          <img src={item.imageUrl} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={item.title} />
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
       </main>
 
       {/* Centered Modal Form */}
