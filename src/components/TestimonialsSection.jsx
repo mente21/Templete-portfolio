@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
       padding: '120px 0',
       background: 'var(--bg-color)',
       overflow: 'hidden',
-      minHeight: '800px',
+      minHeight: '900px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -105,7 +105,7 @@ const TestimonialsSection = () => {
           position: 'relative',
           width: '100%',
           maxWidth: '1200px',
-          height: '450px',
+          height: '550px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -125,8 +125,9 @@ const TestimonialsSection = () => {
           return (
             <motion.div
               key={test.id}
+              className={`testimonial-wrapper ${isActive ? 'active' : ''}`}
               animate={{
-                x: isActive ? 0 : isLeft ? -480 : isRight ? 480 : 0,
+                x: isActive ? 0 : isLeft ? -700 : isRight ? 700 : 0,
                 y: isActive ? 0 : 40,
                 z: isActive ? 0 : -300,
                 rotateY: isLeft ? 35 : isRight ? -35 : 0,
@@ -141,29 +142,33 @@ const TestimonialsSection = () => {
               }}
               style={{
                 position: 'absolute',
-                width: '550px',
-                height: '350px',
+                width: '850px',
+                height: '450px',
                 pointerEvents: isActive ? 'auto' : 'none'
               }}
             >
-              <div style={{
+              <div 
+                className="testimonial-card"
+                style={{
                   width: '100%',
                   height: '100%',
                   background: 'var(--card-bg)',
                   backdropFilter: 'var(--glass-blur)',
                   borderRadius: '40px',
                   border: `1.5px solid ${isActive ? 'var(--accent-primary)33' : 'var(--border-color)'}`,
-                  padding: '50px',
+                  padding: '60px 40px',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   boxShadow: isActive ? '0 30px 60px rgba(0,0,0,0.1)' : 'none',
                   transition: 'background 0.5s ease, border 0.5s ease'
               }}>
-                <div style={{
+                <div 
+                  className="quote-icon"
+                  style={{
                     position: 'absolute',
                     top: '-30px',
-                    left: '50px',
+                    left: '20px',
                     width: '70px',
                     height: '70px',
                     background: `linear-gradient(135deg, ${test.avatarColor}, var(--accent-secondary))`,
@@ -177,24 +182,37 @@ const TestimonialsSection = () => {
                     <Quote size={35} color="var(--bg-color)" fill="var(--bg-color)" />
                 </div>
 
-                <div style={{ display: 'flex', gap: '4px', marginBottom: '25px', color: test.avatarColor }}>
-                    {[...Array(5)].map((_, it) => <Star key={it} size={14} fill={test.avatarColor} />)}
-                </div>
-
-                <p style={{
-                    fontSize: '1.25rem',
+                <p 
+                  className="testimonial-text"
+                  style={{
+                    fontSize: '1.35rem',
                     color: 'var(--text-primary)',
-                    lineHeight: 1.6,
+                    lineHeight: 1.8,
                     fontStyle: 'normal',
                     fontWeight: 400,
                     fontFamily: "'Manrope', sans-serif",
                     opacity: 0.9,
-                    marginBottom: '40px'
+                    marginBottom: '30px',
+                    textAlign: 'center',
+                    width: '100%',
+                    padding: '0 10%',
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 }}>
                     "{test.text}"
                 </p>
 
-                <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div 
+                  className="star-rating"
+                  style={{ display: 'flex', gap: '4px', marginBottom: '20px', color: test.avatarColor, justifyContent: 'center' }}>
+                    {[...Array(5)].map((_, it) => <Star key={it} size={14} fill={test.avatarColor} />)}
+                </div>
+
+                <div 
+                  className="testimonial-author"
+                  style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '20px', justifyContent: 'center' }}>
                     <div style={{
                         width: '50px',
                         height: '50px',
@@ -208,24 +226,18 @@ const TestimonialsSection = () => {
                     </div>
                     <div>
                         <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, fontSize: '1.1rem', margin: 0, fontFamily: 'Anton', textTransform: 'uppercase', letterSpacing: '1px' }}>{test.name}</h4>
-                        {test.handle && (
-                          <a 
-                            href={test.socialLink || '#'} 
-                            target={test.socialLink ? "_blank" : "_self"}
-                            rel="noopener noreferrer"
-                            style={{ 
-                              color: test.avatarColor, 
-                              fontSize: '0.85rem', 
-                              textDecoration: 'none',
+                        {test.role && (
+                          <span style={{ 
+                              color: 'var(--text-secondary)', 
+                              fontSize: '0.8rem', 
                               display: 'block',
                               marginTop: '2px',
                               fontWeight: 600,
-                              fontFamily: "'Oswald', sans-serif",
-                              opacity: test.socialLink ? 1 : 0.8
+                              fontFamily: "'Oswald', sans-serif"
                             }}
                           >
-                            {test.handle}
-                          </a>
+                            {test.role} {test.company ? `@ ${test.company}` : ''}
+                          </span>
                         )}
                     </div>
                 </div>
@@ -235,7 +247,7 @@ const TestimonialsSection = () => {
         })}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '40px', marginTop: '80px', zIndex: 3 }}>
+      <div className="testimonial-nav" style={{ display: 'flex', alignItems: 'center', gap: '40px', marginTop: '80px', zIndex: 3 }}>
         <motion.button
             whileHover={{ scale: 1.1, x: -5 }}
             whileTap={{ scale: 0.9 }}
@@ -251,7 +263,7 @@ const TestimonialsSection = () => {
             <ChevronLeft size={40} />
         </motion.button>
 
-        <div style={{ display: 'flex', gap: '15px' }}>
+        <div className="testimonial-dots" style={{ display: 'flex', gap: '15px' }}>
             {testimonialsData.map((_, i) => (
                 <div 
                     key={i}
@@ -287,65 +299,89 @@ const TestimonialsSection = () => {
       <style>{`
         @media (max-width: 768px) {
             #testimonials { 
-                padding: 60px 18px !important; 
+                padding: 100px 0 !important; 
                 min-height: auto !important; 
             }
             .section-title-premium {
-                font-size: 2.2rem !important;
-                text-align: left !important;
-                margin-bottom: 50px !important;
+                font-size: 2rem !important;
+                margin-bottom: 60px !important;
+                padding: 0 20px !important;
             }
-            div[style*="width: 550px"], div[style*="width: 90%"] {
+            .testimonial-wrapper {
                 width: 100% !important;
-                max-width: 380px !important;
+                max-width: 100% !important;
                 height: auto !important;
-                min-height: 420px !important;
                 position: relative !important;
-                left: 0 !important;
-                top: 0 !important;
-                transform: none !important;
+                display: none !important;
+            }
+            .testimonial-wrapper.active {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
             }
             div[style*="perspective"] {
                 height: auto !important;
                 perspective: none !important;
+                display: block !important;
+                width: 100% !important;
+                padding: 0 20px !important;
+            }
+            .testimonial-card { 
+                padding: 60px 20px 40px !important; 
+                text-align: center !important;
+                align-items: center !important; 
+                border-radius: 30px !important;
+                background: var(--card-bg) !important;
+                border: 1px solid var(--border-color) !important;
+                height: auto !important;
+                width: 100% !important;
                 display: flex !important;
-                justify-content: center !important;
+                box-sizing: border-box !important;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
             }
-            div[style*="padding: 50px"] { 
-                padding: 50px 24px 30px !important; 
-                text-align: left !important;
-                align-items: flex-start !important;
-                border-radius: 28px !important;
-                flex-direction: column !important;
+            .quote-icon { 
+                width: 65px !important; 
+                height: 65px !important; 
+                left: 0 !important;
+                top: -32.5px !important; 
+                transform: none !important;
+                border-radius: 18px !important;
             }
-            p[style*="fontSize: 1.25rem"], p { 
-                font-size: 1.05rem !important; 
-                line-height: 1.6 !important;
-                text-align: left !important;
+            .testimonial-text { 
+                font-size: 1.15rem !important; 
+                line-height: 1.7 !important;
+                text-align: center !important;
                 margin-bottom: 30px !important;
+                width: 100% !important;
+                padding: 0 5% !important;
+                color: var(--text-primary) !important;
             }
-            /* User Metadata Layout */
-            div[style*="marginTop: 'auto'"] {
-                flex-direction: row !important;
+            .star-rating {
+                margin-bottom: 20px !important;
+                justify-content: center !important;
+                display: flex !important;
+                width: auto !important;
+            }
+            .testimonial-author {
+                flex-direction: column !important;
                 gap: 15px !important;
                 align-items: center !important;
-                justify-content: flex-start !important;
+                justify-content: center !important;
                 width: 100% !important;
-                margin-top: auto !important;
+                margin-top: 10px !important;
+                padding-top: 0 !important;
+                border-top: none !important;
             }
-            /* Position Quote Icon at the very top clearly */
-            div[style*="width: 70px"] { 
-                width: 60px !important; 
-                height: 60px !important; 
-                left: 24px !important; 
-                top: -30px !important; 
-                transform: none !important;
+            .testimonial-nav {
+                margin-top: 50px !important;
+                gap: 30px !important;
             }
         }
         @media (max-width: 480px) {
             .section-title-premium { font-size: 1.8rem !important; }
-            div[style*="padding: 50px"] { padding: 45px 20px 25px !important; }
-            div[style*="width: 550px"] { max-width: 340px !important; }
+            .testimonial-card { padding: 50px 15px 30px !important; }
+            .testimonial-text { font-size: 1.05rem !important; }
+            .quote-icon { width: 55px !important; height: 55px !important; top: -27.5px !important; }
         }
       `}</style>
     </section>

@@ -233,7 +233,7 @@ const SidebarNav = () => {
     <style>{`
       /* Mobile Responsive Styles for Sidebar */
       @media (max-width: 768px) {
-        /* Move sidebar to bottom on mobile */
+        /* Move sidebar to bottom on mobile with better visibility */
         div[style*="position: fixed"][style*="left: 24px"] {
           left: 0 !important;
           right: 0 !important;
@@ -241,73 +241,93 @@ const SidebarNav = () => {
           bottom: 0 !important;
           width: 100% !important;
           max-width: 100% !important;
-          height: 70px !important;
-          max-height: 70px !important;
+          height: 75px !important;
+          max-height: 75px !important;
           border-radius: 0 !important;
           flex-direction: row !important;
           justify-content: space-around !important;
-          padding: 10px 15px !important;
+          padding: 12px 8px !important;
           gap: 0 !important;
           overflow-x: auto !important;
           overflow-y: hidden !important;
+          background: var(--sidebar-bg) !important;
+          backdrop-filter: blur(30px) !important;
+          border-top: 1.5px solid var(--border-color) !important;
+          border-left: none !important;
+          border-right: none !important;
+          border-bottom: none !important;
+          box-shadow: 0 -10px 40px rgba(0,0,0,0.3) !important;
         }
         
         /* Hide avatar on mobile */
-        img[style*="border-radius: 50%"] {
+        div[style*="border: 2px solid var(--accent-primary)"] {
           display: none !important;
         }
         
-        /* Adjust nav items for horizontal layout */
-        div[style*="width: 100%"][style*="flex-direction: column"] {
+        /* Adjust nav items container for horizontal layout */
+        div[style*="display: flex"][style*="flex-direction: column"][style*="gap: 4px"] {
           flex-direction: row !important;
           width: auto !important;
-          gap: 5px !important;
+          gap: 4px !important;
+          flex: 1 !important;
+          justify-content: space-around !important;
         }
         
-        /* Make nav buttons smaller */
+        /* Make nav buttons more visible */
         a[style*="width: 48px"] {
-          width: 40px !important;
-          height: 40px !important;
-          min-width: 40px !important;
+          width: 44px !important;
+          height: 44px !important;
+          min-width: 44px !important;
+          border-radius: 14px !important;
         }
         
-        /* Adjust theme toggle */
+        /* Bottom controls container */
+        div[style*="margin-top: auto"] {
+          margin-top: 0 !important;
+          flex-direction: row !important;
+          gap: 4px !important;
+          padding-bottom: 0 !important;
+        }
+        
+        /* Adjust theme toggle and settings buttons */
         button[style*="width: 48px"][style*="height: 48px"] {
-          width: 40px !important;
-          height: 40px !important;
+          width: 44px !important;
+          height: 44px !important;
+          min-width: 44px !important;
+          border-radius: 14px !important;
         }
         
-        /* Settings button */
-        button[style*="Settings"] {
-          width: 40px !important;
-          height: 40px !important;
-        }
-        
-        /* Reduce icon sizes */
+        /* Make icons more visible */
         svg {
-          width: 18px !important;
-          height: 18px !important;
+          width: 20px !important;
+          height: 20px !important;
+        }
+        
+        /* Hide tooltips on mobile */
+        div[style*="position: absolute"][style*="whiteSpace: nowrap"] {
+          display: none !important;
         }
       }
       
       @media (max-width: 480px) {
-        /* Even more compact on small mobile */
+        /* Slightly more compact on very small screens */
         div[style*="position: fixed"][style*="left: 24px"] {
-          height: 60px !important;
-          max-height: 60px !important;
-          padding: 8px 10px !important;
+          height: 68px !important;
+          max-height: 68px !important;
+          padding: 10px 6px !important;
         }
         
         a[style*="width: 48px"],
         button[style*="width: 48px"] {
-          width: 35px !important;
-          height: 35px !important;
-          min-width: 35px !important;
+          width: 40px !important;
+          height: 40px !important;
+          min-width: 40px !important;
+          border-radius: 12px !important;
         }
         
         svg {
-          width: 16px !important;
-          height: 16px !important;
+          width: 18px !important;
+          height: 18px !important;
         }
       }
     `}</style>

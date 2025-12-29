@@ -329,17 +329,19 @@ p {
   }
 
   /* Ensure AI doesn't overlap the mobile bottom area if needed */
-  #chatbase-bubble-button {
-    bottom: 20px !important;
+  #chatbase-bubble-button,
+  .ai-bubble {
+    bottom: 90px !important;
     right: 20px !important;
-    width: 50px !important;
-    height: 50px !important;
+    width: 55px !important;
+    height: 55px !important;
   }
 
-  #chatbase-bubble-window {
+  #chatbase-bubble-window,
+  .chat-window {
     width: calc(100vw - 40px) !important;
-    height: 70vh !important;
-    bottom: 80px !important;
+    height: 65vh !important;
+    bottom: 155px !important;
     right: 20px !important;
   }
 }
@@ -506,8 +508,12 @@ p {
   .ai-bubble {
     width: 50px;
     height: 50px;
-    bottom: 20px;
-    right: 20px;
+    bottom: 85px !important;
+    right: 15px !important;
+  }
+
+  .chat-window {
+    bottom: 145px !important;
   }
 }
 
