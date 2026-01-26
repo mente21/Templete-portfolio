@@ -70,6 +70,28 @@ const AchievementsSection = ({ achievements = [], onOpenDetail }) => {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
+
+        @media (max-width: 1024px) {
+          #achievements {
+            padding: 100px 120px 100px 5% !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          #achievements {
+            padding: 80px 5% !important;
+          }
+          #achievements > div:nth-child(3) {
+            grid-template-columns: 1fr !important;
+            gap: 25px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          #achievements {
+            padding: 60px 20px !important;
+          }
+        }
       `}</style>
     </section>
   );

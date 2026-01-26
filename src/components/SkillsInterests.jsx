@@ -469,9 +469,25 @@ const SkillsInterests = ({ skills = [] }) => {
       </AnimatePresence>
 
       <style>{`
+        @media (max-width: 1024px) {
+          #skills {
+            padding: 100px 120px 100px 5% !important;
+          }
+        }
+
         @media (max-width: 768px) {
           #skills {
             padding: 80px 5% !important;
+          }
+          #skills > div:nth-child(3) {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          #skills {
+            padding: 60px 20px !important;
           }
         }
       `}</style>

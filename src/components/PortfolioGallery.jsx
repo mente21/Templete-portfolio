@@ -117,6 +117,30 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
           </p>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 1024px) {
+          #portfolio {
+            padding: 100px 120px 100px 5% !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          #portfolio {
+            padding: 80px 5% !important;
+          }
+          .grid-premium {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          #portfolio {
+            padding: 60px 20px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

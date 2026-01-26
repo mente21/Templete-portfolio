@@ -215,15 +215,16 @@ const SidebarNav = () => {
           right: 0 !important;
           top: auto !important;
           bottom: 0 !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          height: 75px !important;
-          max-height: 75px !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+          height: 70px !important;
+          max-height: 70px !important;
           border-radius: 0 !important;
           flex-direction: row !important;
-          justify-content: space-around !important;
-          padding: 12px 8px !important;
-          gap: 0 !important;
+          justify-content: center !important;
+          align-items: center !important;
+          padding: 8px 12px !important;
+          gap: 8px !important;
           overflow-x: auto !important;
           overflow-y: hidden !important;
           background: var(--sidebar-bg) !important;
@@ -235,75 +236,99 @@ const SidebarNav = () => {
           box-shadow: 0 -10px 40px rgba(0,0,0,0.3) !important;
         }
         
-        /* Hide avatar on mobile */
-        div[style*="border: 2px solid var(--accent-primary)"] {
+        /* Hide logo/avatar on mobile */
+        div[style*="position: fixed"] > div:first-child {
           display: none !important;
         }
         
-        /* Adjust nav items container for horizontal layout */
+        /* Nav items container - horizontal layout */
         div[style*="display: flex"][style*="flex-direction: column"][style*="gap: 4px"] {
           flex-direction: row !important;
           width: auto !important;
-          gap: 4px !important;
+          gap: 6px !important;
           flex: 1 !important;
-          justify-content: space-around !important;
+          justify-content: center !important;
+          align-items: center !important;
+          overflow-x: auto !important;
+          padding: 0 !important;
         }
         
-        /* Make nav buttons more visible */
-        a[style*="width: 48px"] {
-          width: 44px !important;
-          height: 44px !important;
-          min-width: 44px !important;
-          border-radius: 14px !important;
+        /* Nav buttons */
+        a[style*="width: 48px"][style*="height: 48px"] {
+          width: 42px !important;
+          height: 42px !important;
+          min-width: 42px !important;
+          flex-shrink: 0 !important;
+          border-radius: 12px !important;
         }
         
-        /* Bottom controls container */
+        /* Bottom controls container - position at bottom right */
         div[style*="margin-top: auto"] {
-          margin-top: 0 !important;
-          flex-direction: row !important;
-          gap: 4px !important;
-          padding-bottom: 0 !important;
+          position: absolute !important;
+          bottom: 8px !important;
+          right: 8px !important;
+          margin: 0 !important;
+          flex-direction: column !important;
+          gap: 6px !important;
+          padding: 0 !important;
+          border: none !important;
         }
         
-        /* Adjust theme toggle and settings buttons */
+        /* Theme toggle and settings buttons */
         button[style*="width: 48px"][style*="height: 48px"] {
-          width: 44px !important;
-          height: 44px !important;
-          min-width: 44px !important;
-          border-radius: 14px !important;
+          width: 42px !important;
+          height: 42px !important;
+          min-width: 42px !important;
+          flex-shrink: 0 !important;
+          border-radius: 12px !important;
         }
         
-        /* Make icons more visible */
+        /* Icons size */
         svg {
-          width: 20px !important;
-          height: 20px !important;
+          width: 19px !important;
+          height: 19px !important;
         }
         
         /* Hide tooltips on mobile */
         div[style*="position: absolute"][style*="whiteSpace: nowrap"] {
           display: none !important;
         }
+
+        /* Prevent scrollbar from showing */
+        div[style*="display: flex"][style*="flex-direction: column"][style*="gap: 4px"]::-webkit-scrollbar {
+          display: none;
+        }
       }
       
       @media (max-width: 480px) {
-        /* Slightly more compact on very small screens */
+        /* More compact on very small screens */
         div[style*="position: fixed"][style*="left: 24px"] {
-          height: 68px !important;
-          max-height: 68px !important;
-          padding: 10px 6px !important;
+          height: 65px !important;
+          max-height: 65px !important;
+          padding: 6px 8px !important;
+        }
+        
+        div[style*="display: flex"][style*="flex-direction: column"][style*="gap: 4px"] {
+          gap: 4px !important;
         }
         
         a[style*="width: 48px"],
         button[style*="width: 48px"] {
-          width: 40px !important;
-          height: 40px !important;
-          min-width: 40px !important;
-          border-radius: 12px !important;
+          width: 38px !important;
+          height: 38px !important;
+          min-width: 38px !important;
+          border-radius: 10px !important;
         }
         
         svg {
-          width: 18px !important;
-          height: 18px !important;
+          width: 17px !important;
+          height: 17px !important;
+        }
+
+        div[style*="margin-top: auto"] {
+          bottom: 6px !important;
+          right: 6px !important;
+          gap: 4px !important;
         }
       }
     `}</style>
