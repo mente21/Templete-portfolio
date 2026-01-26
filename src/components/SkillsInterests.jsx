@@ -135,6 +135,8 @@ const SkillsInterests = ({ skills = [] }) => {
         }}>
           {filteredSkills.map((skill, idx) => {
             const Icon = getIcon(skill.icon);
+            const iconColor = skill.color || '#8B5CF6';
+            
             return (
               <motion.div
                 key={skill.id || idx}
@@ -164,12 +166,12 @@ const SkillsInterests = ({ skills = [] }) => {
                   width: '70px',
                   height: '70px',
                   borderRadius: '18px',
-                  background: `linear-gradient(135deg, ${skill.color || '#8B5CF6'}, ${skill.color || '#8B5CF6'}dd)`,
+                  background: `linear-gradient(135deg, ${iconColor}, ${iconColor}dd)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '25px',
-                  boxShadow: `0 10px 30px ${skill.color || '#8B5CF6'}33`
+                  boxShadow: `0 10px 30px ${iconColor}33`
                 }}>
                   <Icon size={32} color="white" strokeWidth={2} />
                 </div>
@@ -197,7 +199,7 @@ const SkillsInterests = ({ skills = [] }) => {
                 }}>
                   <span style={{
                     fontSize: '0.75rem',
-                    color: skill.color || '#8B5CF6',
+                    color: iconColor,
                     fontFamily: "'Oswald', sans-serif",
                     fontWeight: 700,
                     letterSpacing: '1.5px',
@@ -218,7 +220,7 @@ const SkillsInterests = ({ skills = [] }) => {
                 {/* Click for details */}
                 <div style={{
                   fontSize: '0.8rem',
-                  color: skill.color || '#8B5CF6',
+                  color: iconColor,
                   fontFamily: "'Oswald', sans-serif",
                   fontWeight: 600,
                   letterSpacing: '1px',
