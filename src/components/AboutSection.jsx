@@ -27,10 +27,10 @@ const AboutSection = () => {
 
   // Dynamic Data Extraction
   const dynamicAbout = (!loading && aboutData?.[0]) ? aboutData[0] : {
-    desc: "I am a digital architect specializing in high-performance web systems and AI-driven logic. My approach blends cinematic aesthetics with rigorous engineering to create interfaces that don't just work—they inspire.",
+    desc: "I am a creative visionary dedicated to crafting impactful experiences and strategic solutions. My approach blends artistic intuition with structured thinking to create results that don't just work—they inspire.",
     imageUrl: DEFAULT_PLACEHOLDER,
     gallery: [],
-    stats: "5+ YEARS, 40+ BUILDS, 99% UPTIME"
+    stats: "10+ YEARS, 150+ PROJECTS, 20+ AWARDS"
   };
 
   const images = [dynamicAbout.imageUrl, ...(dynamicAbout.gallery || [])].filter(Boolean);
@@ -208,7 +208,7 @@ const AboutSection = () => {
           ) : dynamicAbout.desc.split('\n\n').map((p, i) => (
             <p key={i} style={{ 
               marginBottom: i === 0 ? '24px' : '0px',
-              fontFamily: "'Manrope', sans-serif",
+              fontFamily: "'Inter', sans-serif, sans-serif",
               fontWeight: 400,
               fontSize: '1.05rem',
               letterSpacing: '0.2px'
@@ -226,7 +226,7 @@ const AboutSection = () => {
                   fontSize: '1.4rem', 
                   fontWeight: 700, 
                   color: 'white', 
-                  fontFamily: "'Oswald', sans-serif",
+                  fontFamily: "'Inter', sans-serif, sans-serif",
                   lineHeight: 1,
                   letterSpacing: '1px',
                   textTransform: 'uppercase'
@@ -238,34 +238,6 @@ const AboutSection = () => {
             ))}
         </div>
 
-        <motion.button
-          onClick={() => {
-            const link = document.createElement('a');
-            link.href = '/Mentesnot_Debele_Resume.pdf';
-            link.download = 'Mentesnot_Debele_Resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-          whileHover={{ x: 10 }}
-          style={{
-            marginTop: '40px',
-            background: 'transparent',
-            border: 'none',
-            color: 'var(--accent-primary)',
-            fontFamily: "'Manrope', sans-serif",
-            fontSize: '0.9rem',
-            fontWeight: 700,
-            letterSpacing: '2px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            cursor: 'pointer',
-            padding: 0
-          }}
-        >
-          DOWNLOAD FULL RESUME <Download size={20} />
-        </motion.button>
       </motion.div>
 
 

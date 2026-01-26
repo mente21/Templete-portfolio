@@ -70,9 +70,9 @@ const HeroSection = () => {
 
   // Dynamic Data Extraction
   const dynamicHome = (!loading && homeData?.[0]) ? homeData[0] : {
-    title: "CREATIVE ENGINEER",
-    roles: "FRONTEND ARCHITECT, BACKEND NINJA, UI/UX DESIGNER, AI LOGIC ENGINEER",
-    imageUrl: DEFAULT_PLACEHOLDER
+    title: "DIGITAL ARTISAN",
+    roles: "UI/UX DESIGNER, CREATIVE DIRECTOR, BRAND STRATEGIST",
+    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
   };
 
   const roles = dynamicHome.roles.split(',').map(r => r.trim());
@@ -150,7 +150,7 @@ const HeroSection = () => {
         >
           <div className="hero-badge" style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
             <div className="badge-line" style={{ width: '35px', height: '1.5px', background: 'var(--accent-primary)' }}></div>
-            <span style={{ color: 'var(--accent-primary)', letterSpacing: '8px', fontSize: '0.75rem', fontWeight: 900 }}>INDUSTRIAL DESIGN</span>
+            <span style={{ color: 'var(--accent-primary)', letterSpacing: '8px', fontSize: '0.75rem', fontWeight: 900 }}>PERSONAL BRAND & VISION</span>
           </div>
 
         {loading ? (
@@ -160,7 +160,7 @@ const HeroSection = () => {
             fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
             margin: 0, 
             color: 'var(--text-primary)',
-            fontFamily: 'Anton',
+            fontFamily: "'Abril Fatface', serif",
             textTransform: 'uppercase',
             letterSpacing: '2px',
             lineHeight: 1.1,
@@ -168,8 +168,8 @@ const HeroSection = () => {
             textShadow: '0 10px 30px rgba(0,0,0,0.3)',
             display: 'inline-block'
           }}>
-            Mentesnot<br/>
-            Debele
+            Sarah<br/>
+            Jenkins
           </h1>
         )}
 
@@ -212,52 +212,21 @@ const HeroSection = () => {
         ) : (
           <p style={{ 
             color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, maxWidth: '420px',
-            fontFamily: "'Manrope', sans-serif", fontWeight: 300, marginTop: '10px'
+            fontFamily: "'Inter', sans-serif, sans-serif", fontWeight: 300, marginTop: '10px'
           }}>
-            {dynamicHome.desc || "Specializing in premium high-performance digital architectures and high-impact industrial aesthetics for global brands."}
+            {dynamicHome.desc || "A lifestyle dedicated to excellence, crafting sophisticated personal brands and impactful strategic visions for the next generation of leaders."}
           </p>
         )}
 
-        <motion.div style={{ marginTop: '40px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-             <a href="#work" className="btn" style={{
+        <motion.div style={{ marginTop: '40px' }}>
+             <a href="#portfolio" className="btn" style={{
                  padding: '14px 40px', border: '1.5px solid var(--text-primary)', color: 'var(--text-primary)',
-                 textTransform: 'uppercase', fontFamily: "'Manrope', sans-serif", fontSize: '0.85rem', fontWeight: 700, borderRadius: '4px',
+                 textTransform: 'uppercase', fontFamily: "'Inter', sans-serif, sans-serif", fontSize: '0.85rem', fontWeight: 700, borderRadius: '4px',
                  letterSpacing: '2px', display: 'inline-flex', alignItems: 'center', gap: '12px',
                  transition: 'all 0.3s ease', background: 'transparent', textDecoration: 'none'
              }}>
-                 VIEW ARCHIVE <ArrowRight size={16} />
+                 EXPLORE JOURNEY <ArrowRight size={16} />
              </a>
-             <motion.button 
-               onClick={() => {
-                 const link = document.createElement('a');
-                 link.href = '/Mentesnot_Debele_Resume.pdf';
-                 link.download = 'Mentesnot_Debele_Resume.pdf';
-                 document.body.appendChild(link);
-                 link.click();
-                 document.body.removeChild(link);
-               }}
-               whileHover={{ scale: 1.05, backgroundColor: 'var(--accent-primary)', color: 'black' }}
-               whileTap={{ scale: 0.95 }}
-               style={{
-                 padding: '14px 40px', 
-                 background: 'var(--accent-primary)', 
-                 color: 'black',
-                 border: 'none',
-                 textTransform: 'uppercase', 
-                 fontFamily: "'Manrope', sans-serif", 
-                 fontSize: '0.85rem', 
-                 fontWeight: 800,
-                 borderRadius: '4px',
-                 letterSpacing: '2px', 
-                 display: 'inline-flex', 
-                 alignItems: 'center', 
-                 gap: '12px',
-                 cursor: 'pointer',
-                 boxShadow: '0 10px 30px rgba(255, 107, 0, 0.2)'
-               }}
-             >
-               GET RESUME <Download size={16} />
-             </motion.button>
         </motion.div>
 
       </motion.div>
@@ -267,7 +236,7 @@ const HeroSection = () => {
         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="hero-image-wrapper"
-        style={{ zIndex: 2, flex: '0 1 450px', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1500px' }}
+        style={{ zIndex: 2, flex: '0 1 500px', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1500px', marginRight: '40px' }}
       >
         <motion.div
            className="hero-portrait-card"
@@ -282,7 +251,7 @@ const HeroSection = () => {
            transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
         >
           <div style={{
-            position: 'relative', width: 'min(420px, 100%)', height: 'min(550px, 70vh)',
+            position: 'relative', width: 'min(480px, 100%)', height: 'min(620px, 75vh)',
             padding: '12px', background: 'var(--card-bg)', border: '1px solid var(--border-color)',
             borderRadius: '24px', backdropFilter: 'blur(40px)',
             boxShadow: '0 30px 60px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 107, 0, 0.05)', // Reduced shadow complexity

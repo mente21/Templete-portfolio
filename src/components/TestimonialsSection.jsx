@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
             boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
         }}>
             <MessageSquare size={18} className="gradient-text" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 600, fontFamily: "'Oswald', sans-serif", letterSpacing: '4px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>Voice of Clients</span>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, fontFamily: "'Inter', sans-serif", letterSpacing: '4px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>Voice of Clients</span>
         </div>
         <h2 className="section-title-premium">
           <span className="section-title-accent">ECHOES</span> OF <span className="section-title-stroke">TRUST</span>
@@ -142,8 +142,8 @@ const TestimonialsSection = () => {
               }}
               style={{
                 position: 'absolute',
-                width: '850px',
-                height: '450px',
+                width: '680px',
+                height: '380px',
                 pointerEvents: isActive ? 'auto' : 'none'
               }}
             >
@@ -190,7 +190,7 @@ const TestimonialsSection = () => {
                     lineHeight: 1.8,
                     fontStyle: 'normal',
                     fontWeight: 400,
-                    fontFamily: "'Manrope', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     opacity: 0.9,
                     marginBottom: '30px',
                     textAlign: 'center',
@@ -225,7 +225,7 @@ const TestimonialsSection = () => {
                         </div>
                     </div>
                     <div>
-                        <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, fontSize: '1.1rem', margin: 0, fontFamily: 'Anton', textTransform: 'uppercase', letterSpacing: '1px' }}>{test.name}</h4>
+                        <h4 style={{ color: 'var(--text-primary)', fontWeight: 800, fontSize: '1.1rem', margin: 0, fontFamily: "'Abril Fatface', serif", textTransform: 'uppercase', letterSpacing: '1px' }}>{test.name}</h4>
                         {test.role && (
                           <span style={{ 
                               color: 'var(--text-secondary)', 
@@ -233,7 +233,7 @@ const TestimonialsSection = () => {
                               display: 'block',
                               marginTop: '2px',
                               fontWeight: 600,
-                              fontFamily: "'Oswald', sans-serif"
+                              fontFamily: "'Inter', sans-serif"
                             }}
                           >
                             {test.role} {test.company ? `@ ${test.company}` : ''}
@@ -309,7 +309,7 @@ const TestimonialsSection = () => {
             }
             .testimonial-wrapper {
                 width: 100% !important;
-                max-width: 100% !important;
+                max-width: 680px !important;
                 height: auto !important;
                 position: relative !important;
                 display: none !important;

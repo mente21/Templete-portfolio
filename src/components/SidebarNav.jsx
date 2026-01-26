@@ -4,28 +4,26 @@ import {
   Home, 
   User, 
   Layout, 
-  Cpu, 
-  GraduationCap, 
-  Award, 
+  Star, 
+  Plane, 
+  Trophy, 
   MessageSquare, 
   Mail,
-  Settings,
   Sun,
   Moon,
   Layers
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useCollection } from '../hooks/useCollection';
 
 const navItems = [
   { id: 'hero', label: 'Home', icon: <Home size={22} />, href: '#' },
   { id: 'about', label: 'About', icon: <User size={22} />, href: '#about' },
-  { id: 'work', label: 'Portfolio', icon: <Layout size={22} />, href: '#work' },
-  { id: 'skills', label: 'Skills', icon: <Cpu size={22} />, href: '#skills' },
+  { id: 'portfolio', label: 'Portfolio', icon: <Layout size={22} />, href: '#portfolio' },
+  { id: 'skills', label: 'Expertise', icon: <Star size={22} />, href: '#skills' },
+  { id: 'journey', label: 'Journey', icon: <Plane size={22} />, href: '#journey' },
+  { id: 'achievements', label: 'Achievements', icon: <Trophy size={22} />, href: '#achievements' },
   { id: 'services', label: 'Services', icon: <Layers size={22} />, href: '#services' },
-  { id: 'education', label: 'Education', icon: <GraduationCap size={22} />, href: '#education' },
-  { id: 'certificates', label: 'Certificates', icon: <Award size={22} />, href: '#certificates' },
-  { id: 'testimonials', label: 'Testimonials', icon: <MessageSquare size={22} />, href: '#testimonials' },
+  { id: 'testimonials', label: 'Words', icon: <MessageSquare size={22} />, href: '#testimonials' },
   { id: 'contact', label: 'Contact', icon: <Mail size={22} />, href: '#contact' },
 ];
 
@@ -34,7 +32,6 @@ const SidebarNav = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [avatarLoaded, setAvatarLoaded] = useState(false);
-  const navigate = useNavigate();
 
   // High-performance abstract placeholder
   const DEFAULT_PLACEHOLDER = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000";
@@ -67,7 +64,7 @@ const SidebarNav = () => {
       animate={{ x: 0, opacity: 1 }}
       style={{
         position: 'fixed',
-        left: '24px',
+        right: '24px',
         top: '15px',
         width: '80px',
         height: 'auto',
@@ -99,24 +96,19 @@ const SidebarNav = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'transparent'
+          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
         }}
       >
-        {(!avatarLoaded || loading) && (
-          <div className="skeleton" style={{ width: '100%', height: '100%', borderRadius: '16px' }}></div>
-        )}
-        <img 
-          src={sidebarImage} 
-          alt="Logo" 
-          onLoad={() => setAvatarLoaded(true)}
-          style={{ 
-            width: '100%', 
-            height: '100%', 
-            objectFit: 'contain',
-            opacity: avatarLoaded && !loading ? 1 : 0,
-            transition: 'opacity 0.3s ease'
-          }}
-        />
+        <span style={{ 
+          fontFamily: "'Abril Fatface', serif", 
+          fontSize: '1.8rem', 
+          fontWeight: 700, 
+          color: 'white',
+          letterSpacing: '-1px'
+        }}>
+          SJ
+        </span>
       </motion.div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'center' }}>
@@ -210,24 +202,7 @@ const SidebarNav = () => {
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
          </motion.button>
 
-         <motion.button
-            onClick={() => navigate('/studio')}
-            whileHover={{ scale: 1.1, background: 'rgba(255,255,255,0.08)' }}
-            style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '16px',
-                border: 'none',
-                background: 'transparent',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--text-secondary)',
-                cursor: 'pointer'
-            }}
-         >
-            <Settings size={20} />
-         </motion.button>
+         {/* Settings button removed */}
       </div>
     </motion.div>
     

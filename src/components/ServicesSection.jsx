@@ -6,7 +6,7 @@ import {
   FaReact, FaMobileAlt, FaGlobe, FaCode, FaDatabase, FaCloud, 
   FaPaintBrush, FaBrain, FaShieldAlt, FaServer, FaDesktop, 
   FaRocket, FaTools, FaShoppingCart, FaChartLine, FaUsers, 
-  FaPython, FaNodeJs, FaGamepad, FaRobot 
+  FaPython, FaNodeJs, FaGamepad, FaRobot, FaCamera, FaMicrophone, FaHeart, FaPlane, FaStar, FaLightbulb
 } from 'react-icons/fa';
 
 // Icon Map for dynamic rendering
@@ -30,7 +30,20 @@ const iconMap = {
   FaPython: <FaPython size={32} />,
   FaNodeJs: <FaNodeJs size={32} />,
   FaGamepad: <FaGamepad size={32} />,
-  FaRobot: <FaRobot size={32} />
+  FaRobot: <FaRobot size={32} />,
+  FaCamera: <FaCamera size={32} />,
+  FaMicrophone: <FaMicrophone size={32} />,
+  FaHeart: <FaHeart size={32} />,
+  FaPlane: <FaPlane size={32} />,
+  FaStar: <FaStar size={32} />,
+  FaLightbulb: <FaLightbulb size={32} />,
+  // Studio Mode mappings
+  mic: <FaMicrophone size={32} />,
+  camera: <FaCamera size={32} />,
+  palette: <FaPaintBrush size={32} />,
+  users: <FaUsers size={32} />,
+  lightbulb: <FaLightbulb size={32} />,
+  star: <FaStar size={32} />
 };
 
 const ServicesSection = () => {
@@ -42,7 +55,7 @@ const ServicesSection = () => {
     return (
         <section id="services" style={{ padding: '80px 10%', background: 'var(--bg-color)' }}>
             <div className="section-header-premium" style={{ marginBottom: '60px' }}>
-                <span className="section-subtitle-premium">Offerings & Capabilities</span>
+
                 <h2 className="section-title-premium">
                     <span className="section-title-accent">CLIENT</span> 
                     <span className="section-title-stroke">SERVICES</span>
@@ -101,7 +114,7 @@ const ServicesSection = () => {
                         </div>
 
                         <h3 style={{ 
-                            fontFamily: 'Anton', 
+                            fontFamily: "'Abril Fatface', serif", 
                             fontSize: '1.5rem', 
                             color: 'var(--text-primary)', 
                             margin: '0 0 16px 0',
@@ -114,7 +127,7 @@ const ServicesSection = () => {
                             color: 'var(--text-secondary)', 
                             lineHeight: 1.6, 
                             marginBottom: '30px',
-                            fontFamily: "'Manrope', sans-serif"
+                            fontFamily: "'Inter', sans-serif, sans-serif"
                         }}>{service.desc}</p>
 
                         {service.features && (
@@ -138,8 +151,8 @@ const ServicesSection = () => {
                         }}>
                             {service.price && (
                                 <div>
-                                    <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontFamily: "'Oswald', sans-serif", letterSpacing: '1px' }}>STARTING AT</span>
-                                    <div style={{ fontSize: '1.25rem', fontFamily: 'Anton', color: 'white' }}>{service.price}</div>
+                                    <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif, sans-serif", letterSpacing: '1px' }}>STARTING AT</span>
+                                    <div style={{ fontSize: '1.25rem', fontFamily: "'Abril Fatface', serif", color: 'white' }}>{service.price}</div>
                                 </div>
                             )}
                             <a href="#contact" style={{ 

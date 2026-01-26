@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { dummyData } from '../data/dummyData';
 
 export const useCollection = (collectionName, sortField = 'createdAt') => {
   const [data, setData] = useState([]);
@@ -8,30 +7,20 @@ export const useCollection = (collectionName, sortField = 'createdAt') => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Try to order if the field exists, otherwise just get collection
-    try {
-      const q = query(collection(db, collectionName));
-      const unsubscribe = onSnapshot(q, 
-        (snapshot) => {
-          const items = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }));
-          setData(items);
-          setLoading(false);
-        },
-        (err) => {
-          console.error(`Error fetching ${collectionName}:`, err);
-          setError(err);
-          setLoading(false);
-        }
-      );
+    // Simulate network delay for realism (optional, can be 0)
+    const timer = setTimeout(() => {
+      try {
+        const result = dummyData[collectionName] || [];
+        setData(result);
+        setLoading(false);
+      } catch (err) {
+        console.error(`Error loading dummy data for ${collectionName}:`, err);
+        setError(err);
+        setLoading(false);
+      }
+    }, 500);
 
-      return () => unsubscribe();
-    } catch (err) {
-      console.error(`Critical error in hook for ${collectionName}:`, err);
-      setLoading(false);
-    }
+    return () => clearTimeout(timer);
   }, [collectionName]);
 
   return { data, loading, error };
