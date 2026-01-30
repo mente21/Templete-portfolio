@@ -444,6 +444,7 @@ import StrategyNewEntry from './components/StrategyNewEntry';
 import Library from './components/Library';
 import LibraryNewEntry from './components/LibraryNewEntry';
 import Bin from './components/Bin';
+import PlanPage from './components/PlanPage';
 
 function App() {
   return (
@@ -472,6 +473,7 @@ function App() {
         <Route path="/library" element={<Library />} />
         <Route path="/library/new" element={<LibraryNewEntry />} />
         <Route path="/bin" element={<Bin />} />
+        <Route path="/plan" element={<PlanPage />} />
       </Routes>
     </Router>
   );

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {
     LayoutGrid, ChevronDown, Book, FileText, Globe,
     Briefcase, Map, Trash2, Sidebar, Star, CheckSquare,
-    MoreHorizontal
+    MoreHorizontal, ArrowLeft
 } from 'lucide-react';
 
 const DashboardLayout = ({ children }) => {
@@ -149,24 +149,59 @@ const DashboardLayout = ({ children }) => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <Sidebar size={20} style={{ cursor: 'pointer' }} />
                         {/* Dynamically show breadcrumb based on path could go here, or just static for now */}
-                        <span>Sarah's Space</span>
-                        <span style={{ color: '#666' }}>/</span>
-                        <span style={{ color: '#e0e0e0' }}>{sidebarItems.find(i => i.path === location.pathname)?.label || 'Page'}</span>
+                        {/* Desktop Breadcrumbs */}
+                        <div className="desktop-breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                            <span>Sarah's Space</span>
+                            <span style={{ color: '#666' }}>/</span>
+                            <span style={{ color: '#e0e0e0' }}>{sidebarItems.find(i => i.path === location.pathname)?.label || 'Page'}</span>
+                        </div>
 
-                        <span
+                        {/* Mobile Page Dropdown */}
+                        <div className="mobile-page-select" style={{ display: 'none', alignItems: 'center', marginLeft: '5px', position: 'relative' }}>
+                            <span style={{ marginRight: '5px', color: '#666' }}>/</span>
+                            <select
+                                value={location.pathname}
+                                onChange={(e) => navigate(e.target.value)}
+                                style={{
+                                    background: 'transparent',
+                                    color: '#e0e0e0',
+                                    border: 'none',
+                                    fontSize: '14px',
+                                    fontWeight: 500,
+                                    // appearance: 'none', // Keep native arrow or override? Native is fine for "drop down icon"
+                                    cursor: 'pointer',
+                                    maxWidth: '150px'
+                                }}
+                            >
+                                {sidebarItems.map(item => (
+                                    <option key={item.path} value={item.path} style={{ color: '#000' }}>{item.label}</option>
+                                ))}
+                            </select>
+                            {/* Force Chevron if appearance is none, but native is safer for visibility complaints. Stick to native unless requested. */}
+                        </div>
+
+                        <button
                             onClick={() => navigate('/')}
                             style={{
-                                marginLeft: '30px',
+                                marginLeft: '20px',
                                 cursor: 'pointer',
-                                color: 'var(--accent-primary, #d946ef)',
-                                background: 'rgba(255,255,255,0.08)',
-                                padding: '4px 12px',
-                                borderRadius: '6px',
-                                fontSize: '12px',
-                                fontWeight: 500
-                            }}>
-                            ← Portfolio
-                        </span>
+                                color: '#e0e0e0',
+                                background: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                width: '32px',
+                                height: '32px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                borderRadius: '8px',
+                                transition: 'all 0.2s'
+                            }}
+                            title="Back to Portfolio Home"
+                            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                        >
+                            <ArrowLeft size={18} />
+                        </button>
                     </div>
                     <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                         <div style={{ width: '8px', height: '8px', background: '#22c55e', borderRadius: '50%' }}></div>
@@ -176,7 +211,7 @@ const DashboardLayout = ({ children }) => {
                 </div>
 
                 {/* Content Children */}
-                <div style={{
+                <div className="dashboard-content-wrapper" style={{
                     maxWidth: '1400px',
                     width: '100%',
                     margin: '0 auto',
@@ -193,6 +228,16 @@ const DashboardLayout = ({ children }) => {
           @media (max-width: 768px) {
               .sidebar-desktop {
                   display: none !important;
+              }
+              .dashboard-content-wrapper {
+                  padding: 20px 15px 80px !important;
+              }
+              /* Toggle Header Elements */
+              .desktop-breadcrumbs {
+                  display: none !important;
+              }
+              .mobile-page-select {
+                  display: flex !important;
               }
           }
       `}</style>

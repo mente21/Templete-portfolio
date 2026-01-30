@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
-    Search, Filter, ArrowUpDown,
+    Search, Filter, ArrowUpDown, ChevronDown,
     Smile, PenTool, Trash2, Edit2
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
@@ -142,7 +142,7 @@ const DiaryPage = () => {
     return (
         <DashboardLayout>
             {/* Banner Image */}
-            <div style={{
+            <div className="diary-banner" style={{
                 width: '100%',
                 height: '280px',
                 backgroundColor: '#f59e0b',
@@ -192,7 +192,7 @@ const DiaryPage = () => {
             </div>
 
             {/* Title Area */}
-            <div style={{ marginBottom: '30px' }}>
+            <div className="diary-header" style={{ marginBottom: '30px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '15px' }}>
                     <PenTool size={42} color="#fff" />
                     <h1 style={{ fontSize: '48px', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#fff', margin: 0, letterSpacing: '-0.5px' }}>Daily journal</h1>
@@ -207,7 +207,7 @@ const DiaryPage = () => {
             </div>
 
             {/* Filter Tabs */}
-            <div style={{
+            <div className="diary-filters" style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -215,7 +215,7 @@ const DiaryPage = () => {
                 borderBottom: '1px solid #333',
                 paddingBottom: '15px'
             }}>
-                <div style={{ display: 'flex', gap: '32px', fontSize: '16px', color: '#888', fontWeight: 500 }}>
+                <div className="diary-tabs" style={{ display: 'flex', gap: '32px', fontSize: '16px', color: '#888', fontWeight: 500 }}>
                     {['June', 'May', 'April', 'March', 'February'].map(month => (
                         <span
                             key={month}
@@ -232,6 +232,31 @@ const DiaryPage = () => {
                             {month}
                         </span>
                     ))}
+                </div>
+
+                {/* Mobile Dropdown for Months */}
+                <div className="diary-mobile-dropdown">
+                    <select
+                        value={activeTab}
+                        onChange={(e) => setActiveTab(e.target.value)}
+                        style={{
+                            width: '100%',
+                            padding: '12px',
+                            borderRadius: '8px',
+                            background: '#202020',
+                            color: '#fff',
+                            border: '1px solid #333',
+                            fontSize: '16px',
+                            outline: 'none',
+                            appearance: 'none', // Remove default arrow if desired, or keep
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {['June', 'May', 'April', 'March', 'February'].map(month => (
+                            <option key={month} value={month}>{month}</option>
+                        ))}
+                    </select>
+                    <ChevronDown size={20} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#fff', zIndex: 10 }} />
                 </div>
 
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -260,7 +285,7 @@ const DiaryPage = () => {
             </div>
 
             {/* Card Grid */}
-            <div style={{
+            <div className="diary-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
                 gap: '24px'
@@ -345,7 +370,55 @@ const DiaryPage = () => {
                     </motion.div>
                 ))}
             </div>
-        </DashboardLayout>
+            <style>{`
+                /* Default Desktop Styles */
+                .diary-mobile-dropdown {
+                    display: none;
+                }
+
+                @media (max-width: 768px) {
+                    .diary-banner {
+                        height: 200px !important;
+                        margin-bottom: 20px !important;
+                    }
+                    .diary-header h1 {
+                        font-size: 32px !important;
+                    }
+                    /* Filters Stack */
+                    .diary-filters {
+                        flex-direction: column !important;
+                        align-items: stretch !important; /* Stretch to fill width */
+                        gap: 15px !important;
+                    }
+                    /* Hide Desktop Tabs on Mobile */
+                    .diary-tabs {
+                        display: none !important;
+                    }
+                    /* Show Mobile Dropdown */
+                    .diary-mobile-dropdown {
+                        display: block !important;
+                        position: relative;
+                        width: 100%;
+                    }
+                    
+                    .diary-filters > div:last-child {
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                    /* Grid single column */
+                    .diary-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 15px !important;
+                    }
+                    /* Decorative hidden or scaled on mobile */
+                    div[style*="width: 340px"] {
+                        width: 280px !important;
+                        height: 160px !important;
+                        opacity: 0.5;
+                    }
+                }
+            `}</style>
+        </DashboardLayout >
     );
 };
 
