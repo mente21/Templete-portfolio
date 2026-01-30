@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Home, 
-  User, 
-  Layout, 
-  Star, 
-  Plane, 
-  Trophy, 
-  MessageSquare, 
+import {
+  Home,
+  User,
+  Layout,
+  Star,
+  Plane,
+  Trophy,
+  Map,
+  Book,
   Mail,
   Sun,
-  Moon,
-  Layers
+  Moon
 } from 'lucide-react';
 import { useCollection } from '../hooks/useCollection';
 
@@ -22,8 +22,8 @@ const navItems = [
   { id: 'skills', label: 'Expertise', icon: <Star size={22} />, href: '#skills' },
   { id: 'journey', label: 'Journey', icon: <Plane size={22} />, href: '#journey' },
   { id: 'achievements', label: 'Achievements', icon: <Trophy size={22} />, href: '#achievements' },
-  { id: 'services', label: 'Services', icon: <Layers size={22} />, href: '#services' },
-  { id: 'testimonials', label: 'Words', icon: <MessageSquare size={22} />, href: '#testimonials' },
+  { id: 'plan', label: 'Plan', icon: <Map size={22} />, href: '#plan' },
+  { id: 'diary', label: 'Diary', icon: <Book size={22} />, href: '#diary' },
   { id: 'contact', label: 'Contact', icon: <Mail size={22} />, href: '#contact' },
 ];
 
@@ -59,154 +59,157 @@ const SidebarNav = () => {
 
   return (
     <>
-    <motion.div 
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      style={{
-        position: 'fixed',
-        right: '24px',
-        top: '15px',
-        width: '80px',
-        height: 'auto',
-        maxHeight: '96vh',
-        background: 'var(--sidebar-bg)',
-        backdropFilter: 'blur(25px)',
-        borderRadius: '40px',
-        border: '1px solid var(--border-color)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '15px 0',
-        zIndex: 1000,
-        boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-        gap: '8px'
-      }}
-    >
-      {/* Profile Picture Logo */}
-      <motion.div 
-        whileHover={{ scale: 1.1 }}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
         style={{
-          width: '64px',
-          height: '64px',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          marginBottom: '10px',
-          cursor: 'pointer',
-          flexShrink: 0,
+          position: 'fixed',
+          right: '24px',
+          top: '15px',
+          width: '80px',
+          height: 'auto',
+          maxHeight: '96vh',
+          background: 'var(--sidebar-bg)',
+          backdropFilter: 'blur(25px)',
+          borderRadius: '40px',
+          border: '1px solid var(--border-color)',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+          padding: '15px 0',
+          zIndex: 1000,
+          boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
+          gap: '8px'
         }}
       >
-        <span style={{ 
-          fontFamily: "'Abril Fatface', serif", 
-          fontSize: '1.8rem', 
-          fontWeight: 700, 
-          color: 'white',
-          letterSpacing: '-1px'
-        }}>
-          SJ
-        </span>
-      </motion.div>
+        {/* Profile Picture Logo */}
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            marginBottom: '10px',
+            cursor: 'pointer',
+            flexShrink: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+          }}
+        >
+          <span style={{
+            fontFamily: "'Abril Fatface', serif",
+            fontSize: '1.8rem',
+            fontWeight: 700,
+            color: 'white',
+            letterSpacing: '-1px'
+          }}>
+            SJ
+          </span>
+        </motion.div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'center' }}>
-        {navItems.map((item) => (
-          <div 
-            key={item.id} 
-            style={{ position: 'relative' }}
-            onMouseEnter={() => setHoveredItem(item.id)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
-            <motion.a
-              href={item.href}
-              whileHover={{ scale: 1.15, background: 'rgba(255,255,255,0.08)' }}
-              whileTap={{ scale: 0.9 }}
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: hoveredItem === item.id ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                transition: 'all 0.2s ease',
-                textDecoration: 'none'
-              }}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'center' }}>
+          {navItems.map((item) => (
+            <div
+              key={item.id}
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setHoveredItem(item.id)}
+              onMouseLeave={() => setHoveredItem(null)}
             >
-              {item.icon}
-            </motion.a>
+              <motion.a
+                href={item.href}
+                whileHover={{ scale: 1.15, background: 'rgba(255,255,255,0.08)' }}
+                whileTap={{ scale: 0.9 }}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: hoveredItem === item.id ? 'var(--accent-primary)' : 'var(--text-secondary)',
+                  transition: 'all 0.2s ease',
+                  textDecoration: 'none'
+                }}
+              >
+                {item.icon}
+              </motion.a>
 
-            {/* Hover Tooltip Label */}
-            <AnimatePresence>
-              {hoveredItem === item.id && (
-                <motion.div
-                  initial={{ opacity: 0, x: -10, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 80, scale: 1 }}
-                  exit={{ opacity: 0, x: -10, scale: 0.9 }}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '0',
-                    transform: 'translateY(-50%)',
-                    background: 'var(--text-primary)',
-                    color: 'var(--bg-color)',
-                    padding: '8px 20px',
-                    borderRadius: '12px',
-                    fontSize: '0.85rem',
-                    fontWeight: 800,
-                    whiteSpace: 'nowrap',
-                    pointerEvents: 'none',
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-                    zIndex: 1001
-                  }}
-                >
-                  {item.label}
-                  <div style={{
-                    position: 'absolute',
-                    left: '-6px',
-                    top: '50%',
-                    transform: 'translateY(-50%) rotate(45deg)',
-                    width: '12px',
-                    height: '12px',
-                    background: 'var(--text-primary)',
-                    zIndex: -1
-                  }} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
-      </div>
+              {/* Hover Tooltip Label - FIXED: Appears on LEFT */}
+              <AnimatePresence>
+                {hoveredItem === item.id && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20, scale: 0.9 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: 20, scale: 0.9 }}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      right: '100%', /* Push to the left of the button */
+                      left: 'auto',
+                      transform: 'translateY(-50%)',
+                      background: 'var(--text-primary)',
+                      color: 'var(--bg-color)',
+                      padding: '8px 20px',
+                      borderRadius: '12px',
+                      fontSize: '0.85rem',
+                      fontWeight: 800,
+                      whiteSpace: 'nowrap',
+                      pointerEvents: 'none',
+                      boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                      zIndex: 1001,
+                      marginRight: '15px' /* Gap between tooltip and button */
+                    }}
+                  >
+                    {item.label}
+                    <div style={{
+                      position: 'absolute',
+                      right: '-4px', /* Arrow points to the button on the right */
+                      left: 'auto',
+                      top: '50%',
+                      transform: 'translateY(-50%) rotate(45deg)',
+                      width: '10px',
+                      height: '10px',
+                      background: 'var(--text-primary)',
+                      zIndex: -1
+                    }} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
 
-      {/* Theme Toggle & Settings at Bottom */}
-      <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '15px' }}>
-         <motion.button
+        {/* Theme Toggle & Settings at Bottom */}
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '15px' }}>
+          <motion.button
             onClick={toggleTheme}
             whileHover={{ scale: 1.1, background: 'rgba(255,b,0,0.1)' }}
             style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '16px',
-                border: 'none',
-                background: isDarkMode ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.05)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--accent-primary)',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
+              width: '48px',
+              height: '48px',
+              borderRadius: '16px',
+              border: 'none',
+              background: isDarkMode ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.05)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--accent-primary)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
             }}
-         >
+          >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-         </motion.button>
+          </motion.button>
 
-         {/* Settings button removed */}
-      </div>
-    </motion.div>
-    
-    <style>{`
+          {/* Settings button removed */}
+        </div>
+      </motion.div>
+
+      <style>{`
       /* Mobile Responsive Styles for Sidebar */
       @media (max-width: 768px) {
         /* Move sidebar to bottom on mobile with better visibility */

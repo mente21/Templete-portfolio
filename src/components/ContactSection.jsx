@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, MapPin, Phone, Instagram, Twitter, Youtube, Facebook, ExternalLink, Music, MessageCircle } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, MapPin, Phone, Instagram, Twitter, Youtube, Facebook, ExternalLink, Music, MessageCircle, ArrowUp, ArrowRight } from 'lucide-react';
 import { useCollection } from '../hooks/useCollection';
 
 const ContactSection = () => {
@@ -321,68 +321,202 @@ const ContactSection = () => {
                 </motion.div>
             </div>
 
+            {/* PREMIUM FOOTER REDESIGN */}
             <div style={{
-                marginTop: '100px',
-                borderTop: '1px solid var(--border-color)',
-                paddingTop: '60px',
-                paddingBottom: '20px'
+                marginTop: '160px',
+                borderTop: '1px solid rgba(255,255,255,0.1)',
+                paddingTop: '0',
+                paddingBottom: '40px',
+                position: 'relative'
             }}>
+                {/* Centered Back to Top Button sitting ON the border */}
                 <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    flexWrap: 'wrap',
-                    gap: '40px',
-                    marginBottom: '40px'
+                    position: 'absolute',
+                    top: '0',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    background: 'var(--bg-color)',
+                    padding: '0 20px',
+                    zIndex: 10
                 }}>
-                    {/* Brand & Identity */}
-                    <div style={{ maxWidth: '300px' }}>
-                        <h4 style={{
-                            fontSize: '1.5rem',
+                    <motion.button
+                        whileHover={{ scale: 1.1, boxShadow: '0 0 30px var(--accent-primary)44' }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        style={{
+                            width: '60px',
+                            height: '60px',
+                            borderRadius: '50%',
+                            background: 'var(--card-bg)',
+                            border: '1px solid var(--accent-primary)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            color: 'var(--accent-primary)',
+                            boxShadow: '0 0 15px rgba(0,0,0,0.2)'
+                        }}
+                    >
+                        <ArrowUp size={24} />
+                    </motion.button>
+                </div>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '60px',
+                    paddingTop: '100px',
+                    maxWidth: '1400px',
+                    margin: '0 auto'
+                }}>
+                    {/* Brand Identity Column */}
+                    <div>
+                        <h2 style={{
+                            fontSize: '4rem',
                             fontFamily: "'Abril Fatface', serif",
-                            color: 'var(--text-primary)',
-                            letterSpacing: '1px',
-                            textTransform: 'uppercase',
-                            margin: '0 0 15px 0'
+                            color: 'white',
+                            lineHeight: 0.9,
+                            marginBottom: '30px'
                         }}>
-                            Sarah Jenkins
-                        </h4>
+                            SARAH<br />
+                            <span style={{
+                                color: 'transparent',
+                                WebkitTextStroke: '1px var(--accent-primary)',
+                                opacity: 0.8
+                            }}>JENKINS</span>
+                        </h2>
                         <p style={{
-                            fontSize: '0.9rem',
                             color: 'var(--text-secondary)',
-                            fontFamily: "'Inter', sans-serif, sans-serif",
-                            lineHeight: 1.6,
-                            opacity: 0.7
+                            fontSize: '1rem',
+                            lineHeight: 1.7,
+                            maxWidth: '350px',
+                            fontFamily: "'Inter', sans-serif"
                         }}>
-                            Crafting advanced digital experiences with industrial precision and creative logic.
+                            Building digital legacies. merging technical mastery with artistic intuition to create web experiences that feel alive.
                         </p>
                     </div>
 
+                    {/* Navigation Column - Redesigned as SITE MAP */}
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h4 style={{ color: 'var(--accent-secondary)', fontFamily: "'Cinzel', serif", letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <span style={{ width: '8px', height: '8px', background: 'var(--accent-secondary)' }}></span>
+                            SITE MAP
+                        </h4>
 
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+                            {['Work', 'About', 'Services', 'Philosophy'].map((item, idx) => (
+                                <a key={item} href={`#${item.toLowerCase()}`}
+                                    className="nav-row"
+                                    style={{
+                                        textDecoration: 'none',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        padding: '15px 0',
+                                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                                        group: 'group'
+                                    }}>
+                                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '15px' }}>
+                                        <span style={{
+                                            fontFamily: "'JetBrains Mono', monospace",
+                                            color: 'var(--accent-primary)',
+                                            fontSize: '0.8rem',
+                                            opacity: 0.7
+                                        }}>0{idx + 1}</span>
+                                        <span className="nav-text" style={{
+                                            fontSize: '1.2rem',
+                                            fontFamily: "'Inter', sans-serif",
+                                            color: 'white',
+                                            fontWeight: 500,
+                                            transition: 'transform 0.3s ease'
+                                        }}>{item}</span>
+                                    </div>
+                                    <div className="nav-arrow" style={{ opacity: 0, transform: 'translateX(-10px)', transition: 'all 0.3s ease' }}>
+                                        <ArrowRight size={18} color="var(--accent-primary)" />
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                        <style>{`
+                            .nav-row:hover .nav-text {
+                                transform: translateX(10px);
+                                color: var(--accent-primary) !important;
+                            }
+                            .nav-row:hover .nav-arrow {
+                                opacity: 1 !important;
+                                transform: translateX(0) !important;
+                            }
+                        `}</style>
+                    </div>
+
+                    {/* Status & Info Column */}
+                    <div>
+                        <h4 style={{ color: 'var(--accent-secondary)', fontFamily: "'Cinzel', serif", letterSpacing: '2px', fontSize: '0.9rem', marginBottom: '20px' }}>STATUS</h4>
+
+                        <div style={{
+                            padding: '25px',
+                            background: 'rgba(255,255,255,0.03)',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(255,255,255,0.05)',
+                            backdropFilter: 'blur(5px)',
+                            marginBottom: '30px'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+                                <span style={{ position: 'relative', display: 'flex', height: '12px', width: '12px' }}>
+                                    <span style={{ position: 'absolute', display: 'inline-flex', height: '100%', width: '100%', borderRadius: '50%', background: '#4ade80', opacity: 0.75, animation: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite' }}></span>
+                                    <span style={{ position: 'relative', display: 'inline-flex', borderRadius: '50%', height: '12px', width: '12px', background: '#4ade80' }}></span>
+                                </span>
+                                <span style={{ color: 'white', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>ACCEPTING PROJECTS</span>
+                            </div>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+                                Currently open for new collaborations starting March 2026.
+                            </p>
+                        </div>
+
+                        <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: "'Inter', sans-serif" }}>
+                            <div style={{ marginBottom: '5px' }}>London, UK • 11:42 AM GMT</div>
+                            <a href="mailto:hello@sarah.design" style={{ color: 'var(--accent-primary)', textDecoration: 'none', borderBottom: '1px solid var(--accent-primary)' }}>hello@sarah.design</a>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Footer Bottom Bar */}
+                {/* Bottom Copyright Bar */}
                 <div style={{
+                    marginTop: '80px',
+                    paddingTop: '30px',
+                    borderTop: '1px solid rgba(255,255,255,0.05)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    paddingTop: '30px',
-                    borderTop: '1px solid rgba(255,255,255,0.05)',
-                    fontSize: '0.75rem',
-                    color: 'var(--text-secondary)',
-                    letterSpacing: '1px',
                     flexWrap: 'wrap',
                     gap: '20px',
-                    fontFamily: "'Inter', sans-serif, sans-serif",
-                    opacity: 0.6
+                    fontSize: '0.8rem',
+                    color: 'rgba(255,255,255,0.4)',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px'
                 }}>
-                    <div>
-                        © {new Date().getFullYear()} SARAH JENKINS • CREATIVE DIRECTOR
-                    </div>
-                    <div style={{ display: 'flex', gap: '20px' }}>
-                        <span>DESIGNED BY SARAH JENKINS</span>
+                    <div>© 2026 Sarah Jenkins. All rights reserved.</div>
+                    <div style={{ display: 'flex', gap: '30px' }}>
+                        <span>Privacy Policy</span>
+                        <span>Terms of Use</span>
+                        <span>Sitemap</span>
                     </div>
                 </div>
+
+                <style>{`
+                    @keyframes ping {
+                        75%, 100% {
+                            transform: scale(2);
+                            opacity: 0;
+                        }
+                    }
+                    @media (max-width: 768px) {
+                        .footer-link {
+                            font-size: 1.2rem !important;
+                        }
+                    }
+                `}</style>
             </div>
 
             <style>{`
