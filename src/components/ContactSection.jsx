@@ -25,7 +25,7 @@ const ContactSection = () => {
 
     const TikTokIcon = () => (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.3-.76-.41-1.42-.92-1.98-1.57-.02 1.35-.01 2.69-.01 4.04 0 3.01-.45 6.44-3.11 8.35-2.09 1.48-5.07 1.71-7.19.46-2.5-1.42-3.66-4.59-2.73-7.22.65-1.89 2.45-3.37 4.45-3.51V10c-2.02.13-3.83 1.53-4.38 3.47-.64 2.21.36 4.88 2.45 6.01 1.63.9 3.86.84 5.23-.42 1.25-1.07 1.62-2.92 1.5-4.51V.02h-.04Z"/>
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.3-.76-.41-1.42-.92-1.98-1.57-.02 1.35-.01 2.69-.01 4.04 0 3.01-.45 6.44-3.11 8.35-2.09 1.48-5.07 1.71-7.19.46-2.5-1.42-3.66-4.59-2.73-7.22.65-1.89 2.45-3.37 4.45-3.51V10c-2.02.13-3.83 1.53-4.38 3.47-.64 2.21.36 4.88 2.45 6.01 1.63.9 3.86.84 5.23-.42 1.25-1.07 1.62-2.92 1.5-4.51V.02h-.04Z" />
         </svg>
     );
 
@@ -48,19 +48,19 @@ const ContactSection = () => {
         const name = formData.get('name');
         const email = formData.get('email');
         const message = formData.get('message');
-        
+
         const subject = `Portfolio Inquiry from ${name}`;
         const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-        
+
         window.location.href = `mailto:${dynamicContact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         setStatus('Message prepared in your email client!');
     };
 
     if (loading) return null;
 
-    const contactItemStyle = { 
-        display: 'flex', 
-        alignItems: 'center', 
+    const contactItemStyle = {
+        display: 'flex',
+        alignItems: 'center',
         gap: '24px',
         padding: '12px',
         borderRadius: '20px',
@@ -68,10 +68,10 @@ const ContactSection = () => {
         cursor: 'default'
     };
 
-    const iconBoxStyle = { 
-        width: '56px', 
-        height: '56px', 
-        borderRadius: '16px', 
+    const iconBoxStyle = {
+        width: '56px',
+        height: '56px',
+        borderRadius: '16px',
         background: 'rgba(255, 107, 0, 0.05)',
         border: '1px solid rgba(255, 107, 0, 0.1)',
         display: 'flex',
@@ -81,20 +81,20 @@ const ContactSection = () => {
         flexShrink: 0
     };
 
-    const labelStyle = { 
-        fontSize: '0.7rem', 
-        color: 'var(--text-secondary)', 
-        letterSpacing: '2px', 
-        textTransform: 'uppercase', 
+    const labelStyle = {
+        fontSize: '0.7rem',
+        color: 'var(--text-secondary)',
+        letterSpacing: '2px',
+        textTransform: 'uppercase',
         marginBottom: '6px',
         fontWeight: 600,
         fontFamily: "'Inter', sans-serif, sans-serif",
         opacity: 0.6
     };
 
-    const infoStyle = { 
-        fontSize: '1.2rem', 
-        color: 'var(--text-primary)', 
+    const infoStyle = {
+        fontSize: '1.2rem',
+        color: 'var(--text-primary)',
         fontWeight: 400, // Natural weight
         letterSpacing: '0.5px',
         wordBreak: 'break-all',
@@ -102,8 +102,8 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="contact" style={{ 
-            padding: '120px 10%', 
+        <section id="contact" style={{
+            padding: '120px 10%',
             background: 'var(--bg-color)',
             position: 'relative',
             overflow: 'hidden',
@@ -124,14 +124,14 @@ const ContactSection = () => {
             <div className="section-header-premium" style={{ marginBottom: '80px', textAlign: 'left', pointerEvents: 'none' }}>
 
                 <h2 className="section-title-premium" style={{ justifyContent: 'flex-start' }}>
-                    <span className="section-title-accent">HAVE A</span> 
-                    <span className="section-title-stroke">CONCEPT?</span>
+                    <span className="section-title-accent">HAVE A</span>
+                    <span className="section-title-stroke">PROJECT?</span>
                 </h2>
             </div>
 
-            <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr', 
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr',
                 gap: '80px',
                 zIndex: 1,
                 position: 'relative'
@@ -143,9 +143,9 @@ const ContactSection = () => {
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                    <p style={{ 
-                        fontSize: '1.2rem', 
-                        color: 'var(--text-secondary)', 
+                    <p style={{
+                        fontSize: '1.2rem',
+                        color: 'var(--text-secondary)',
                         lineHeight: 1.8,
                         marginBottom: '60px',
                         maxWidth: '400px',
@@ -184,7 +184,7 @@ const ContactSection = () => {
                     {/* Social Hub */}
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', marginTop: '60px', paddingLeft: '12px' }}>
                         {socials.map((social, i) => (
-                            <motion.a 
+                            <motion.a
                                 key={i}
                                 href={social.link}
                                 target="_blank"
@@ -230,8 +230,8 @@ const ContactSection = () => {
                     <form onSubmit={handleEmailTransmit} className="contact-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
                         <div style={{ gridColumn: 'span 1' }}>
                             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '12px', fontFamily: "'Inter', sans-serif, sans-serif", fontWeight: 600 }}>Your Name</label>
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 name="name"
                                 placeholder="ALEX MERCER"
                                 required
@@ -250,8 +250,8 @@ const ContactSection = () => {
                         </div>
                         <div style={{ gridColumn: 'span 1' }}>
                             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '12px', fontFamily: "'Inter', sans-serif, sans-serif", fontWeight: 600 }}>Email Address</label>
-                            <input 
-                                type="email" 
+                            <input
+                                type="email"
                                 name="email"
                                 placeholder="ALEX@EXAMPLE.COM"
                                 required
@@ -270,7 +270,7 @@ const ContactSection = () => {
                         </div>
                         <div style={{ gridColumn: 'span 2' }}>
                             <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '12px', fontFamily: "'Inter', sans-serif, sans-serif", fontWeight: 600 }}>Your Message</label>
-                            <textarea 
+                            <textarea
                                 name="message"
                                 rows="6"
                                 placeholder="TELL ME ABOUT YOUR VISION"
@@ -290,7 +290,7 @@ const ContactSection = () => {
                             ></textarea>
                         </div>
                         <div style={{ gridColumn: 'span 2' }}>
-                            <motion.button 
+                            <motion.button
                                 type="submit"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
@@ -321,8 +321,8 @@ const ContactSection = () => {
                 </motion.div>
             </div>
 
-            <div style={{ 
-                marginTop: '100px', 
+            <div style={{
+                marginTop: '100px',
                 borderTop: '1px solid var(--border-color)',
                 paddingTop: '60px',
                 paddingBottom: '20px'
@@ -337,20 +337,20 @@ const ContactSection = () => {
                 }}>
                     {/* Brand & Identity */}
                     <div style={{ maxWidth: '300px' }}>
-                        <h4 style={{ 
-                            fontSize: '1.5rem', 
-                            fontFamily: "'Abril Fatface', serif", 
-                            color: 'var(--text-primary)', 
-                            letterSpacing: '1px', 
-                            textTransform: 'uppercase', 
-                            margin: '0 0 15px 0' 
+                        <h4 style={{
+                            fontSize: '1.5rem',
+                            fontFamily: "'Abril Fatface', serif",
+                            color: 'var(--text-primary)',
+                            letterSpacing: '1px',
+                            textTransform: 'uppercase',
+                            margin: '0 0 15px 0'
                         }}>
                             Sarah Jenkins
                         </h4>
-                        <p style={{ 
-                            fontSize: '0.9rem', 
-                            color: 'var(--text-secondary)', 
-                            fontFamily: "'Inter', sans-serif, sans-serif", 
+                        <p style={{
+                            fontSize: '0.9rem',
+                            color: 'var(--text-secondary)',
+                            fontFamily: "'Inter', sans-serif, sans-serif",
                             lineHeight: 1.6,
                             opacity: 0.7
                         }}>
