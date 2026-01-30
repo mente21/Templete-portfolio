@@ -435,6 +435,15 @@ import TravelPlanner from './components/TravelPlanner';
 import StrategicThinking from './components/StrategicThinking';
 import DiaryNewEntry from './components/DiaryNewEntry';
 import ExperimentalNewEntry from './components/ExperimentalNewEntry';
+import MovieNewEntry from './components/MovieNewEntry';
+import RecipeNewEntry from './components/RecipeNewEntry';
+import CourseNewEntry from './components/CourseNewEntry';
+import DocumentNewEntry from './components/DocumentNewEntry';
+import TravelNewEntry from './components/TravelNewEntry';
+import StrategyNewEntry from './components/StrategyNewEntry';
+import Library from './components/Library';
+import LibraryNewEntry from './components/LibraryNewEntry';
+import Bin from './components/Bin';
 
 function App() {
   return (
@@ -449,11 +458,20 @@ function App() {
         <Route path="/experimental-me" element={<ExperimentalMe />} />
         <Route path="/experimental-me/new" element={<ExperimentalNewEntry />} />
         <Route path="/movies" element={<MovieDatabase />} />
+        <Route path="/movies/new" element={<MovieNewEntry />} />
         <Route path="/recipes" element={<RecipeBook />} />
+        <Route path="/recipes/new" element={<RecipeNewEntry />} />
         <Route path="/courses" element={<CourseList />} />
+        <Route path="/courses/new" element={<CourseNewEntry />} />
         <Route path="/documents" element={<ImportantDocuments />} />
+        <Route path="/documents/new" element={<DocumentNewEntry />} />
         <Route path="/travel" element={<TravelPlanner />} />
+        <Route path="/travel/new" element={<TravelNewEntry />} />
         <Route path="/strategy" element={<StrategicThinking />} />
+        <Route path="/strategy/new" element={<StrategyNewEntry />} />
+        <Route path="/library" element={<Library />} />
+        <Route path="/library/new" element={<LibraryNewEntry />} />
+        <Route path="/bin" element={<Bin />} />
       </Routes>
     </Router>
   );

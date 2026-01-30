@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -6,10 +6,19 @@ import {
     Smile, PenTool, Trash2, Edit2
 } from 'lucide-react';
 import DashboardLayout from './DashboardLayout';
+import HeroImageUploader from './HeroImageUploader';
 
 const DiaryPage = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('June');
+    const [heroImage, setHeroImage] = useState(null);
+
+    useEffect(() => {
+        const heroImages = JSON.parse(localStorage.getItem('hero_images') || '{}');
+        if (heroImages.diary) {
+            setHeroImage(heroImages.diary);
+        }
+    }, []);
 
     const mockEntries = [
         {
@@ -104,12 +113,22 @@ const DiaryPage = () => {
     const handleDelete = (e, id) => {
         e.stopPropagation();
         if (window.confirm('Are you sure you want to delete this entry?')) {
+            const itemToDelete = entries.find(entry => entry.id === id);
             const updatedEntries = entries.filter(entry => entry.id !== id);
             setEntries(updatedEntries);
 
-            // Update localStorage (only user entries have numeric IDs usually, ensuring we only save user ones back)
-            // But if we want to support deleting mocks locally, we would need to store the deleted mock IDs. 
-            // For simplicity, we just won't re-render them in current session, and persisted deletions only apply to user entries.
+            // Move to Bin
+            if (itemToDelete) {
+                const binItems = JSON.parse(localStorage.getItem('bin_items') || '[]');
+                binItems.unshift({
+                    id: Date.now(),
+                    source: 'diary',
+                    deletedAt: new Date().toISOString(),
+                    data: itemToDelete
+                });
+                localStorage.setItem('bin_items', JSON.stringify(binItems));
+            }
+
             const userEntries = updatedEntries.filter(ent => typeof ent.id === 'number');
             localStorage.setItem('diary_entries', JSON.stringify(userEntries));
         }
@@ -126,17 +145,28 @@ const DiaryPage = () => {
             <div style={{
                 width: '100%',
                 height: '280px',
-                backgroundColor: '#A88B35',
+                backgroundColor: '#f59e0b',
                 borderRadius: '8px',
                 marginBottom: '30px',
                 position: 'relative',
                 overflow: 'hidden',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                backgroundImage: heroImage ? `url(${heroImage})` : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
             }}>
-                <div style={{ width: '100%', height: '100%', background: 'linear-gradient(to bottom right, #b45309, #fbbf24)', opacity: 0.8 }}>
-                    {/* Decorative lines */}
+                <HeroImageUploader
+                    pageKey="diary"
+                    currentImage={heroImage}
+                    onImageChange={setHeroImage}
+                />
+                <div style={{
+                    width: '100%',
+                    height: '100%',
+                    background: heroImage ? 'rgba(0,0,0,0.3)' : 'linear-gradient(to bottom right, #d97706, #fbbf24)',
+                    opacity: 0.8,
+                    position: 'relative'
+                }}>
+                    {/* Decorative diary pages */}
                     <div style={{
                         position: 'absolute',
                         top: '50%',

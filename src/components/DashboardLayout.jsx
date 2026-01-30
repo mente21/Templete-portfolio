@@ -96,10 +96,38 @@ const DashboardLayout = ({ children }) => {
                 </div>
 
                 <div style={{ marginTop: 'auto', padding: '0 12px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', color: '#888', fontSize: '14px' }}>
+                    <div
+                        onClick={() => navigate('/library')}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            padding: '12px',
+                            color: location.pathname === '/library' ? '#fff' : '#888',
+                            backgroundColor: location.pathname === '/library' ? 'rgba(255,255,255,0.08)' : 'transparent',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '14px',
+                            transition: 'background-color 0.2s, color 0.2s'
+                        }}
+                    >
                         <LayoutGrid size={18} /> Library
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', color: '#888', fontSize: '14px' }}>
+                    <div
+                        onClick={() => navigate('/bin')}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            padding: '12px',
+                            color: location.pathname === '/bin' ? '#fff' : '#888',
+                            backgroundColor: location.pathname === '/bin' ? 'rgba(255,255,255,0.08)' : 'transparent',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '14px',
+                            transition: 'background-color 0.2s, color 0.2s'
+                        }}
+                    >
                         <Trash2 size={18} /> Bin
                     </div>
                 </div>
