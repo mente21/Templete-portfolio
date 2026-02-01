@@ -1,9 +1,11 @@
 const getApiUrl = () => {
-    const isLocal = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
-    if (isLocal) {
-        return 'http://127.0.0.1:5050/api';
+    // 1. If explicitly set via environment variable (e.g. in Vercel), use it
+    if (import.meta.env.VITE_API_URL) {
+        return import.meta.env.VITE_API_URL;
     }
-    return `http://${window.location.hostname}:5050/api`;
+
+    // 2. Default for local development
+    return 'http://127.0.0.1:5050/api';
 };
 
 const API_URL = getApiUrl();
