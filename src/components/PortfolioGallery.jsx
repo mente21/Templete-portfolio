@@ -219,6 +219,13 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
 };
 
 const PortfolioCard = ({ item, index, onClick }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    // Navigate to project detail page
+    navigate(`/project/${item.id}`);
+  };
+  
   return (
     <motion.div
       layoutId={`portfolio-card-${item.id || index}`}
@@ -233,7 +240,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
           boxShadow: '0 10px 30px rgba(217, 70, 239, 0.15)'
         }
       }}
-      onClick={onClick}
+      onClick={handleClick}
       className="ad-card portfolio-card-container"
       style={{
         position: 'relative',

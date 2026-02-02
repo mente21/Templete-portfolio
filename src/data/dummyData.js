@@ -27,11 +27,14 @@ export const dummyData = {
       category: "My Art Collection",
       imageUrl: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000&auto=format&fit=crop",
       description: "A series of digital artworks exploring the intersection of light, color, and futuristic landscapes.",
+      details: "Neon Horizons is an experimental journey into the aesthetics of synthwave and futurism. Each piece in this collection was meticulously crafted using a combination of generative algorithms and digital hand-painting. The goal was to capture the feeling of a digital sunset in a world that never sleeps. This collection has been featured in several digital art galleries across the metaverse.",
+      year: "2024",
+      tags: ["Digital Art", "Synthwave", "3D Rendering"],
       gallery: [
         "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000",
         "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1000"
       ],
-      link: "#",
+      link: "https://example.com/neon-horizons",
       color: "#FF3366"
     },
     {
@@ -40,8 +43,11 @@ export const dummyData = {
       category: "My Designs",
       imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop",
       description: "Complete brand system and visual language designed for a high-end architectural firm.",
+      details: "Zenith Identity was a full-scale rebranding project for a leading architectural firm. The project included a new logo design, typography system, color palette, and a comprehensive set of brand guidelines. The visual language was inspired by architectural blueprints and modern minimalism, aiming to convey strength, precision, and innovation. The final deliverables included digital assets, stationary, and physical signage designs.",
+      year: "2023",
+      tags: ["Branding", "UI/UX", "Identity"],
       gallery: ["https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000"],
-      link: "#",
+      link: "https://example.com/zenith",
       color: "#00C9A7"
     },
     {
@@ -50,8 +56,11 @@ export const dummyData = {
       category: "My Memories",
       imageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000&auto=format&fit=crop",
       description: "A photographic journey through the vibrant streets and quiet corners of Tokyo after dark.",
+      details: "This series of photographs captures the unique energy of Tokyo during the late hours. From the neon-drenched streets of Shinjuku to the quiet, lantern-lit alleys of Yanaka, Tokyo Nights explores the contrast between the city's chaotic public spaces and its serene private moments. The collection was shot using a high-ISO film technique to preserve the natural grain and atmosphere of the urban nightscape.",
+      year: "2022",
+      tags: ["Photography", "Travel", "Visual Story"],
       gallery: ["https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=1000"],
-      link: "#",
+      link: "https://example.com/tokyo-nights",
       color: "#845EC2"
     }
   ],

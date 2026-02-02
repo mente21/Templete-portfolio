@@ -45,6 +45,7 @@ import Bin from './components/Bin';
 import PlanPage from './components/PlanPage';
 import SettingsPage from './components/SettingsPage';
 import AdminLoginPage from './components/AdminLoginPage';
+import ProjectDetailPage from './components/ProjectDetailPage';
 
 // Hooks
 import { useCollection } from './hooks/useCollection';
@@ -236,6 +237,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/admin-login" element={<AdminLoginPage />} />
+        <Route path="/project/:id" element={<ProjectDetailPage />} />
         
         {/* Protected Admin Routes */}
         <Route path="/art-gallery" element={<ArtGalleryPage />} />
