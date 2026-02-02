@@ -14,9 +14,26 @@ export const dummyData = {
       desc: "I am Dominique, a multi-disciplinary designer with a passion for human-centered digital products. With over 8 years of experience in the creative industry, I have helped startups and Fortune 500 companies alike to find their unique visual voice. My work is driven by curiosity and the belief that good design makes life easier and more beautiful.",
       imageUrl: "/dominique-1.png",
       stats: "8+ YEARS, 120+ PROJECTS, 15+ AWARDS",
+      detailedBio: "My journey in design began with a simple curiosity about how digital interfaces could shape human behavior. Over nearly a decade, that curiosity has evolved into a disciplined practice focused on pixel-perfection and meaningful user experiences. I believe that every design should tell a story and every interaction should feel like a natural conversation.\n\nI've spent my career working at the intersection of psychology, technology, and aesthetic beauty. Whether I'm building a robust design system for a fintech giant or crafting a playful mobile app for a startup, my goal remains the same: to create products that people actually love to use. I am constantly exploring new tools and methodologies, from generative design to motion-driven storytelling, ensuring that my work stays at the cutting edge of digital innovation.",
+      mission: "To bridge the gap between complex technological capabilities and intuitive human experiences through elegant, purposeful design.",
+      philosophy: [
+        {
+          title: "User-First Mentality",
+          description: "Good design is invisible—it simply works. I prioritize the human on the other side of the screen above all else."
+        },
+        {
+          title: "Aesthetic Precision",
+          description: "Details aren't just details; they make the product. I obsess over the small things that elevate a project from good to exceptional."
+        },
+        {
+          title: "Continuous Evolution",
+          description: "Innovation happens when we step outside our comfort zones. I am a lifelong student of design and technology."
+        }
+      ],
       gallery: [
         "/dominique-2.png",
-        
+        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000",
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000"
       ]
     }
   ],

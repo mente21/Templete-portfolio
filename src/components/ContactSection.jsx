@@ -398,18 +398,40 @@ const ContactSection = () => {
                             SITE MAP
                         </h4>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-                            {['About', 'Services', 'Philosophy'].map((item, idx) => (
-                                <a key={item} href={`#${item.toLowerCase()}`}
+                        <div 
+                            className="site-map-grid"
+                            style={{ 
+                                display: 'grid', 
+                                gridTemplateColumns: 'repeat(2, 1fr)', 
+                                gap: '0 60px',
+                                marginTop: '10px'
+                            }}>
+                            {[
+                                { name: 'Home', id: 'home' },
+                                { name: 'About', id: 'about' },
+                                { name: 'Visual Stories', id: 'portfolio' },
+                                { name: 'Philosophy', id: 'philosophy' },
+                                { name: 'Life OS', id: 'life-os' },
+                                { name: 'Journey', id: 'journey' },
+                                { name: 'Achievements', id: 'achievements' },
+                                { name: 'Contact', id: 'contact' }
+                            ].map((item, idx) => (
+                                <div key={item.id} 
+                                    onClick={() => {
+                                        const element = document.getElementById(item.id);
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }}
                                     className="nav-row"
                                     style={{
                                         textDecoration: 'none',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'space-between',
-                                        padding: '15px 0',
+                                        padding: '12px 0',
                                         borderBottom: '1px solid rgba(255,255,255,0.05)',
-                                        group: 'group'
+                                        cursor: 'pointer'
                                     }}>
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '15px' }}>
                                         <span style={{
@@ -417,19 +439,19 @@ const ContactSection = () => {
                                             color: 'var(--accent-primary)',
                                             fontSize: '0.8rem',
                                             opacity: 0.7
-                                        }}>0{idx + 1}</span>
+                                        }}>{(idx + 1).toString().padStart(2, '0')}</span>
                                         <span className="nav-text" style={{
                                             fontSize: '1.2rem',
                                             fontFamily: "'Inter', sans-serif",
                                             color: 'white',
                                             fontWeight: 500,
                                             transition: 'transform 0.3s ease'
-                                        }}>{item}</span>
+                                        }}>{item.name}</span>
                                     </div>
                                     <div className="nav-arrow" style={{ opacity: 0, transform: 'translateX(-10px)', transition: 'all 0.3s ease' }}>
                                         <ArrowRight size={18} color="var(--accent-primary)" />
                                     </div>
-                                </a>
+                                </div>
                             ))}
                         </div>
                         <style>{`
@@ -437,10 +459,16 @@ const ContactSection = () => {
                                 transform: translateX(10px);
                                 color: var(--accent-primary) !important;
                             }
-                            .nav-row:hover .nav-arrow {
-                                opacity: 1 !important;
-                                transform: translateX(0) !important;
-                            }
+                             .nav-row:hover .nav-arrow {
+                                 opacity: 1 !important;
+                                 transform: translateX(0) !important;
+                             }
+                             @media (max-width: 768px) {
+                                 .site-map-grid {
+                                     grid-template-columns: 1fr !important;
+                                     gap: 0 !important;
+                                 }
+                             }
                         `}</style>
                     </div>
 

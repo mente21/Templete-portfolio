@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import {
   Lightbulb, PenTool, Zap, RefreshCw, Heart, Layers, ArrowUpRight, Scale, Anchor, Target, Palette, Feather
 } from 'lucide-react';
@@ -62,6 +63,7 @@ const philosophies = [
 ];
 
 const SkillsInterests = () => {
+  const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
@@ -155,6 +157,10 @@ const SkillsInterests = () => {
               transition={{ delay: idx * 0.1 }}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                navigate(`/philosophy/${item.id}`);
+              }}
               style={{
                 position: 'relative',
                 background: 'var(--card-bg)',
@@ -165,7 +171,7 @@ const SkillsInterests = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                cursor: 'default',
+                cursor: 'pointer',
                 overflow: 'hidden',
                 transition: 'all 0.4s ease',
                 boxShadow: isHovered ? `0 20px 40px -10px ${item.color}22` : 'none'

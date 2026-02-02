@@ -46,6 +46,8 @@ import PlanPage from './components/PlanPage';
 import SettingsPage from './components/SettingsPage';
 import AdminLoginPage from './components/AdminLoginPage';
 import ProjectDetailPage from './components/ProjectDetailPage';
+import AboutDetailPage from './components/AboutDetailPage';
+import PhilosophyDetailPage from './components/PhilosophyDetailPage';
 
 // Hooks
 import { useCollection } from './hooks/useCollection';
@@ -238,6 +240,8 @@ function App() {
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
+        <Route path="/about-detail" element={<AboutDetailPage />} />
+        <Route path="/philosophy/:id" element={<PhilosophyDetailPage />} />
         
         {/* Protected Admin Routes */}
         <Route path="/art-gallery" element={<ArtGalleryPage />} />

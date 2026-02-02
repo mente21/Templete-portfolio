@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { useCollection } from '../hooks/useCollection';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, FileText, ArrowRight, Download } from 'lucide-react';
 
 
 const AboutSection = () => {
+  const navigate = useNavigate();
   const { data: aboutData, loading } = useCollection('about');
 
 
@@ -237,6 +239,37 @@ const AboutSection = () => {
               </div>
             ))}
         </div>
+
+        {/* Learn More Button */}
+        <motion.button
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate('/about-detail');
+          }}
+          whileHover={{ x: 10, backgroundColor: 'rgba(255, 107, 0, 0.1)' }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            marginTop: '60px',
+            background: 'transparent',
+            border: '1px solid var(--accent-primary)',
+            padding: '16px 32px',
+            borderRadius: '100px',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.3s ease'
+          }}
+        >
+          Learn More About Dominique
+          <ArrowRight size={18} color="var(--accent-primary)" />
+        </motion.button>
 
       </motion.div>
 

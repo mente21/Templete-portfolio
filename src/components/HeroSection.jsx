@@ -110,6 +110,7 @@ const HeroSection = () => {
 
   return (
     <section 
+      id="home"
       onMouseMove={handleMouseMove} 
       onMouseLeave={handleMouseLeave}
       className="hero-section"
