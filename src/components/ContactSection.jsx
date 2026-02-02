@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Mail, Linkedin, Github, Send, MapPin, Phone, Instagram, Twitter, Youtube, Facebook, ExternalLink, Music, MessageCircle, ArrowUp, ArrowRight } from 'lucide-react';
 import { useCollection } from '../hooks/useCollection';
 
@@ -399,8 +400,12 @@ const ContactSection = () => {
                         </h4>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-                            {['About', 'Services', 'Philosophy'].map((item, idx) => (
-                                <a key={item} href={`#${item.toLowerCase()}`}
+                            {[
+                                { name: 'About', path: '/about-detail' },
+                                { name: 'Services', path: '/services-detail' },
+                                { name: 'Philosophy', path: '/philosophy-detail' }
+                            ].map((item, idx) => (
+                                <Link key={item.name} to={item.path}
                                     className="nav-row"
                                     style={{
                                         textDecoration: 'none',
@@ -424,12 +429,12 @@ const ContactSection = () => {
                                             color: 'white',
                                             fontWeight: 500,
                                             transition: 'transform 0.3s ease'
-                                        }}>{item}</span>
+                                        }}>{item.name}</span>
                                     </div>
                                     <div className="nav-arrow" style={{ opacity: 0, transform: 'translateX(-10px)', transition: 'all 0.3s ease' }}>
                                         <ArrowRight size={18} color="var(--accent-primary)" />
                                     </div>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                         <style>{`

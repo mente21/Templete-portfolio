@@ -45,6 +45,9 @@ import Bin from './components/Bin';
 import PlanPage from './components/PlanPage';
 import SettingsPage from './components/SettingsPage';
 import AdminLoginPage from './components/AdminLoginPage';
+import AboutDetailPage from './components/AboutDetailPage';
+import ServicesDetailPage from './components/ServicesDetailPage';
+import PhilosophyDetailPage from './components/PhilosophyDetailPage';
 
 // Hooks
 import { useCollection } from './hooks/useCollection';
@@ -236,16 +239,21 @@ function App() {
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/admin-login" element={<AdminLoginPage />} />
-        
+
+        {/* Footer Detail Pages */}
+        <Route path="/about-detail" element={<AboutDetailPage />} />
+        <Route path="/services-detail" element={<ServicesDetailPage />} />
+        <Route path="/philosophy-detail" element={<PhilosophyDetailPage />} />
+
         {/* Protected Admin Routes */}
         <Route path="/art-gallery" element={<ArtGalleryPage />} />
         <Route path="/design-gallery" element={<DesignGalleryPage />} />
         <Route path="/memories-gallery" element={<MemoriesGalleryPage />} />
-        
+
         <Route path="/diary" element={<ProtectedRoute><DiaryPage /></ProtectedRoute>} />
         <Route path="/diary/new" element={<ProtectedRoute><DiaryNewEntry /></ProtectedRoute>} />
         <Route path="/plan" element={<ProtectedRoute><PlanPage /></ProtectedRoute>} />
-        
+
         <Route path="/experimental-me" element={<ProtectedRoute><ExperimentalMe /></ProtectedRoute>} />
         <Route path="/experimental-me/new" element={<ProtectedRoute><ExperimentalNewEntry /></ProtectedRoute>} />
         <Route path="/movies" element={<ProtectedRoute><MovieDatabase /></ProtectedRoute>} />
