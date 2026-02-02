@@ -399,7 +399,7 @@ const ContactSection = () => {
                         </h4>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-                            {['Work', 'About', 'Services', 'Philosophy'].map((item, idx) => (
+                            {['About', 'Services', 'Philosophy'].map((item, idx) => (
                                 <a key={item} href={`#${item.toLowerCase()}`}
                                     className="nav-row"
                                     style={{
