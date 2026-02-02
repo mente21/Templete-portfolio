@@ -52,19 +52,19 @@ const SidebarNav = () => {
         animate={{ x: 0, opacity: 1 }}
         style={{
           position: 'fixed',
-          right: '24px',
+          right: '20px',
           top: '15px',
-          width: '80px',
+          width: '70px',
           height: 'auto',
-          maxHeight: '96vh',
+          maxHeight: '94vh',
           background: 'var(--sidebar-bg)',
           backdropFilter: 'blur(25px)',
-          borderRadius: '40px',
+          borderRadius: '35px',
           border: '1px solid var(--border-color)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          padding: '15px 0',
+          padding: '12px 0',
           zIndex: 1000,
           boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
           gap: '8px'
@@ -74,8 +74,8 @@ const SidebarNav = () => {
         <motion.div
           whileHover={{ scale: 1.1 }}
           style={{
-            width: '64px', height: '64px', borderRadius: '16px',
-            marginBottom: '10px', cursor: 'pointer', flexShrink: 0,
+            width: '52px', height: '52px', borderRadius: '16px',
+            marginBottom: '8px', cursor: 'pointer', flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
             boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
@@ -85,8 +85,8 @@ const SidebarNav = () => {
             src="/favicon.png" 
             alt="Dominique" 
             style={{ 
-              width: '80%', 
-              height: '80%', 
+              width: '75%', 
+              height: '75%', 
               objectFit: 'contain',
               borderRadius: '8px' 
             }} 
@@ -100,7 +100,7 @@ const SidebarNav = () => {
               whileHover={{ scale: 1.15, background: 'rgba(255,255,255,0.08)' }}
               whileTap={{ scale: 0.9 }}
               style={{
-                width: '48px', height: '48px', borderRadius: '16px',
+                width: '40px', height: '40px', borderRadius: '12px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: hoveredItem === item.id ? 'var(--accent-primary)' : 'var(--text-secondary)',
                 transition: 'all 0.2s ease', textDecoration: 'none'
@@ -117,22 +117,22 @@ const SidebarNav = () => {
                   exit={{ opacity: 0, x: 20, scale: 0.9 }}
                   style={{
                     position: 'absolute', top: '50%', right: '100%', transform: 'translateY(-50%)',
-                    background: 'var(--text-primary)', color: 'var(--bg-color)', padding: '8px 20px',
-                    borderRadius: '12px', fontSize: '0.85rem', fontWeight: 800, whiteSpace: 'nowrap',
+                    background: 'var(--text-primary)', color: 'var(--bg-color)', padding: '6px 14px',
+                    borderRadius: '8px', fontSize: '0.8rem', fontWeight: 700, whiteSpace: 'nowrap',
                     pointerEvents: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', zIndex: 1001, marginRight: '15px'
                   }}
                 >
                   {item.label}
-                  <div style={{ position: 'absolute', right: '-4px', top: '50%', transform: 'translateY(-50%) rotate(45deg)', width: '10px', height: '10px', background: 'var(--text-primary)', zIndex: -1 }} />
+                  <div style={{ position: 'absolute', right: '-4px', top: '50%', transform: 'translateY(-50%) rotate(45deg)', width: '8px', height: '8px', background: 'var(--text-primary)', zIndex: -1 }} />
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         ))}
 
-        <div style={{ marginTop: 'auto', paddingBottom: '15px' }}>
-          <motion.button onClick={toggleTheme} whileHover={{ scale: 1.1 }} style={{ width: '48px', height: '48px', borderRadius: '16px', border: 'none', background: isDarkMode ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)', cursor: 'pointer' }}>
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+        <div style={{ marginTop: 'auto', paddingBottom: '5px' }}>
+          <motion.button onClick={toggleTheme} whileHover={{ scale: 1.1 }} style={{ width: '40px', height: '40px', borderRadius: '12px', border: 'none', background: isDarkMode ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)', cursor: 'pointer' }}>
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </motion.button>
         </div>
       </motion.div>
