@@ -38,7 +38,7 @@ export const dummyData = {
       id: "2",
       title: "Zenith Identity",
       category: "My Designs",
-      imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=1000&auto=format&fit=crop",
+      imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop",
       description: "Complete brand system and visual language designed for a high-end architectural firm.",
       gallery: ["https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000"],
       link: "#",

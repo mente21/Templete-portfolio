@@ -76,7 +76,7 @@ const HeroSection = () => {
   };
 
   // Ensure we display the long form even if DB has short form
-  const rawRoles = dynamicHome.roles.replace(/UI\/UX DESIGNER/gi, "USER EXPERIENCE & INTERFACE DESIGNER");
+  const rawRoles = dynamicHome.roles.replace(/UI\/UX DESIGNER/gi, "VISUAL INTERFACE\nARTIST");
   const roles = rawRoles.split(',').map(r => r.trim());
 
   useEffect(() => {
@@ -174,7 +174,7 @@ const HeroSection = () => {
           </h1>
         )}
 
-        <div style={{ margin: '20px 0' }}>
+        <div style={{ margin: '20px 0', minHeight: '160px', display: 'flex', alignItems: 'center' }}>
           {loading ? (
              <div className="skeleton" style={{ width: '400px', height: '50px', borderRadius: '8px' }}></div>
           ) : (
@@ -185,6 +185,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.4 }}
+                style={{ width: '100%' }}
               >
                 <h2 style={{ 
                     fontSize: 'clamp(2rem, 4vw, 3.5rem)', 
@@ -196,7 +197,9 @@ const HeroSection = () => {
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     animation: 'shine 4s linear infinite',
-                    letterSpacing: '2px'
+                    letterSpacing: '2px',
+                    whiteSpace: 'pre-line',
+                    lineHeight: 1.2
                 }}>
                   {roles[roleIndex]}
                 </h2>
