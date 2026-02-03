@@ -55,6 +55,9 @@ import JourneyDetailPage from './footer bini/JourneyDetailPage';
 // Hooks
 import { useCollection } from './hooks/useCollection';
 
+// Static Data
+import { portfolioData } from './data/portfolioData';
+
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoaded } = useAdminAuth();
   if (!isLoaded) return null;
@@ -62,13 +65,12 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const PortfolioHome = () => {
-  const { data: portfolio, loading: portfolioLoading } = useCollection('portfolio');
   const { data: skills, loading: skillsLoading } = useCollection('skills');
   const { data: journey, loading: journeyLoading } = useCollection('journey');
   
   // Use static achievements data instead of database
   const achievements = React.useMemo(() => {
-    const achievementsData = [
+    return [
       {
         id: 'cert-1',
         title: 'GOOGLE UX CERT',
@@ -211,14 +213,17 @@ This credential demonstrates foundational knowledge in protecting systems and da
         imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800'
       }
     ];
-    return achievementsData;
+  }, []);
+
+  // Use static portfolio data instead of database
+  const portfolio = React.useMemo(() => {
+    return portfolioData;
   }, []);
 
   // Debug logging
   React.useEffect(() => {
-    console.log('[PortfolioHome] Portfolio data:', portfolio);
-    console.log('[PortfolioHome] Portfolio loading:', portfolioLoading);
-  }, [portfolio, portfolioLoading]);
+    console.log('[PortfolioHome] Skills data:', skills);
+  }, [skills]);
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedType, setSelectedType] = useState(null);

@@ -2,22 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, ArrowLeft, ExternalLink, Calendar, Tag, Layers, Eye } from 'lucide-react';
-import { useCollection } from '../hooks/useCollection';
+import { portfolioData } from '../data/portfolioData';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: portfolio } = useCollection('portfolio');
   const [project, setProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    if (portfolio && id) {
-      const foundProject = portfolio.find(p => p.id === id);
+    if (portfolioData && id) {
+      const foundProject = portfolioData.find(p => p.id === id);
       setProject(foundProject);
     }
-  }, [portfolio, id]);
+  }, [id]);
 
   if (!project) {
     return (
