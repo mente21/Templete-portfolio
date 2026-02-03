@@ -238,53 +238,7 @@ const JourneyTimeline = ({ milestones = [], onOpenDetail }) => {
         <div style={{ padding: '100px', textAlign: 'center', color: 'var(--text-secondary)' }}>No milestones found.</div>
       )}
 
-      {/* View Full Journey CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        style={{ marginTop: '0px', display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 2 }}
-      >
-        <motion.button
-          whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(217, 70, 239, 0.3)' }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            background: 'transparent',
-            border: '1px solid var(--accent-primary)',
-            padding: '16px 40px',
-            borderRadius: '100px',
-            color: 'var(--text-primary)',
-            fontFamily: "'Cinzel', serif",
-            fontSize: '1rem',
-            letterSpacing: '2px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
-            position: 'relative',
-            overflow: 'hidden',
-            textTransform: 'uppercase'
-          }}
-        >
-          <span style={{ position: 'relative', zIndex: 1 }}>View Full Journey</span>
-          <ArrowRight size={20} color="var(--accent-primary)" style={{ position: 'relative', zIndex: 1 }} />
 
-          {/* Hover Fill Effect */}
-          <motion.div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'var(--accent-primary)',
-              zIndex: 0,
-              opacity: 0
-            }}
-            whileHover={{ opacity: 0.1 }}
-          />
-        </motion.button>
-      </motion.div>
 
       {/* Responsive Styles */}
       <style>{`

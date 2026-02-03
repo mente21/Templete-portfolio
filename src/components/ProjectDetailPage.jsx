@@ -258,11 +258,44 @@ const ProjectDetailPage = () => {
           </div>
         </motion.div>
 
+        {/* Additional Project Details */}
+        {project.details && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{
+              marginBottom: '80px',
+              padding: '50px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '24px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            <h2 style={{
+              fontSize: '2.5rem',
+              marginBottom: '30px',
+              fontWeight: 700,
+              fontFamily: "'Inter', sans-serif"
+            }}>
+              Project Details
+            </h2>
+            <p style={{
+              fontSize: '1.1rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.8,
+              fontFamily: "'Inter', sans-serif"
+            }}>
+              {project.details}
+            </p>
+          </motion.div>
+        )}
+
         {/* Image Gallery */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           {/* Main Image */}
           <div style={{
@@ -403,39 +436,6 @@ const ProjectDetailPage = () => {
             </div>
           )}
         </motion.div>
-
-        {/* Additional Project Details */}
-        {project.details && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            style={{
-              marginTop: '80px',
-              padding: '50px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              borderRadius: '24px',
-              border: '1px solid rgba(255, 255, 255, 0.1)'
-            }}
-          >
-            <h2 style={{
-              fontSize: '2.5rem',
-              marginBottom: '30px',
-              fontWeight: 700,
-              fontFamily: "'Inter', sans-serif"
-            }}>
-              Project Details
-            </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.8,
-              fontFamily: "'Inter', sans-serif"
-            }}>
-              {project.details}
-            </p>
-          </motion.div>
-        )}
       </div>
 
       {/* Fullscreen Image Modal */}

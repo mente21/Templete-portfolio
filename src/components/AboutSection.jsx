@@ -244,7 +244,7 @@ const AboutSection = () => {
         <motion.button
           onClick={() => {
             window.scrollTo(0, 0);
-            navigate('/about-detail');
+            navigate('/about');
           }}
           whileHover={{ x: 10, backgroundColor: 'rgba(255, 107, 0, 0.1)' }}
           whileTap={{ scale: 0.95 }}

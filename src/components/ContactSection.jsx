@@ -3,7 +3,10 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Send, MapPin, Phone, Instagram, Twitter, Youtube, Facebook, ExternalLink, Music, MessageCircle, ArrowUp, ArrowRight } from 'lucide-react';
 import { useCollection } from '../hooks/useCollection';
 
+import { useNavigate } from 'react-router-dom';
+
 const ContactSection = () => {
+    const navigate = useNavigate();
     const { data: contactData, loading } = useCollection('contact');
     const [status, setStatus] = useState('');
 
@@ -407,22 +410,14 @@ const ContactSection = () => {
                                 marginTop: '10px'
                             }}>
                             {[
-                                { name: 'Home', id: 'home' },
-                                { name: 'About', id: 'about' },
-                                { name: 'Visual Stories', id: 'portfolio' },
-                                { name: 'Philosophy', id: 'philosophy' },
-                                { name: 'Life OS', id: 'life-os' },
-                                { name: 'Journey', id: 'journey' },
-                                { name: 'Achievements', id: 'achievements' },
-                                { name: 'Contact', id: 'contact' }
+                                { name: 'About', path: '/about' },
+                                { name: 'Services', path: '/services' },
+                                { name: 'Philosophy', path: '/philosophy' },
+                                { name: 'Life OS', path: '/life-os' },
+                                { name: 'Journey', path: '/journey' }
                             ].map((item, idx) => (
-                                <div key={item.id} 
-                                    onClick={() => {
-                                        const element = document.getElementById(item.id);
-                                        if (element) {
-                                            element.scrollIntoView({ behavior: 'smooth' });
-                                        }
-                                    }}
+                                <div key={idx} 
+                                    onClick={() => navigate(item.path)}
                                     className="nav-row"
                                     style={{
                                         textDecoration: 'none',
