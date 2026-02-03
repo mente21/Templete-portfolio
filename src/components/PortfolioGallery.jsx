@@ -152,65 +152,57 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
       <style>{`
         @media (max-width: 768px) {
           #portfolio {
-            padding: 60px 5% !important;
+            padding: 80px 20px !important;
           }
           .grid-premium {
-            grid-template-columns: repeat(2, 1fr) !important; /* 2 Columns */
-            gap: 10px !important;
+            grid-template-columns: 1fr !important; /* Single Column for better readability on mobile */
+            gap: 20px !important;
           }
-          /* Ensure title is centered on mobile */
           .section-title-premium {
-             font-size: 2.2rem !important; 
-             display: flex !important;
-             flex-direction: column !important;
-             align-items: center !important;
+             font-size: 2.5rem !important; 
              text-align: center !important;
              width: 100% !important;
-             margin-bottom: 20px !important;
+             margin-bottom: 30px !important;
           }
-          /* Adjust filter container for mobile - HIDDEN as requested */
           .filter-container {
-             display: none !important;
+             display: flex !important;
+             overflow-x: auto !important;
+             justify-content: flex-start !important;
+             padding: 10px 0 !important;
+             margin-bottom: 30px !important;
+             -webkit-overflow-scrolling: touch;
+             /* Hide scrollbar but keep functionality */
+             scrollbar-width: none;
+             -ms-overflow-style: none;
+          }
+          .filter-container::-webkit-scrollbar {
+             display: none;
+          }
+          .filter-container button {
+             white-space: nowrap;
+             padding: 8px 16px !important;
           }
         }
 
         @media (max-width: 480px) {
           #portfolio {
-            padding: 20px 10px !important;
+            padding: 60px 15px !important;
+          }
+          .section-title-premium {
+             font-size: 2.2rem !important;
           }
         }
         
         .portfolio-card-container {
-             height: 500px;
-        }
-        .portfolio-card-title {
-             fontSize: 2rem;
+             height: 480px;
         }
 
         @media (max-width: 768px) {
              .portfolio-card-container {
-                  height: 250px !important; /* Adjusted slightly */
+                  height: 400px !important; 
              }
              .portfolio-card-title {
-                  font-size: 1.2rem !important; /* Smaller font for mobile grid */
-             }
-             /* Adjust padding inside card for mobile */
-             div[style*="padding: 30px"] {
-                padding: 15px !important;
-             }
-             /* Hide description on very small screens if needed, or truncate */
-             p {
-                font-size: 0.8rem !important;
-                line-height: 1.4 !important;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-             }
-             /* Smaller button */
-             button {
-                padding: 8px 16px !important;
-                font-size: 0.8rem !important;
+                  font-size: 1.4rem !important; 
              }
         }
       `}</style>
@@ -221,24 +213,28 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
 const PortfolioCard = ({ item, index, onClick }) => {
   const navigate = useNavigate();
   
-  const handleClick = () => {
+  const handleClick = (e) => {
+    // Prevent default and stop propagation just in case
+    e.stopPropagation();
+    
     // Navigate to project detail page
-    navigate(`/project/${item.id}`);
+    if (item.id) {
+       navigate(`/project/${item.id}`);
+    } else if (onClick) {
+       onClick(item);
+    }
   };
   
   return (
     <motion.div
-      layoutId={`portfolio-card-${item.id || index}`}
-      initial="visible" // Force visible state to prevent invisibility issues
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover="hover"
-      viewport={{ once: true }}
-      variants={{
-        visible: { opacity: 1, y: 0 },
-        hover: {
-          y: -5, // Reduced movement
-          borderColor: 'var(--accent-primary)',
-          boxShadow: '0 10px 30px rgba(217, 70, 239, 0.15)'
-        }
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.1,
+        ease: [0.21, 0.47, 0.32, 0.98]
       }}
       onClick={handleClick}
       className="ad-card portfolio-card-container"
@@ -249,7 +245,8 @@ const PortfolioCard = ({ item, index, onClick }) => {
         cursor: 'pointer',
         boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
         isolation: 'isolate',
-        border: '1px solid rgba(255,255,255,0.1)'
+        border: '1px solid rgba(255,255,255,0.1)',
+        background: 'rgba(255,255,255,0.02)'
       }}
     >
       {/* Dynamic Background Image */}
@@ -261,29 +258,30 @@ const PortfolioCard = ({ item, index, onClick }) => {
           zIndex: 0
         }}
         variants={{
-          hover: { scale: 1.05 }
+          hover: { scale: 1.08 }
         }}
-        transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+        transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
       >
         <img
-          src={item.imageUrl || item.image}
+          src={item.imageUrl || item.image || 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000'}
           alt={item.title}
+          loading="lazy"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: 'brightness(0.85) contrast(1.1)'
+            filter: 'brightness(0.7) contrast(1.1)'
           }}
         />
         {/* Gradient Overlay for Text Readability */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.1) 100%)'
+          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.1) 100%)'
         }} />
       </motion.div>
 
-      {/* "Sponsored" / Category Tag */}
+      {/* Category Tag */}
       <div style={{
         position: 'absolute',
         top: '25px',
@@ -313,110 +311,96 @@ const PortfolioCard = ({ item, index, onClick }) => {
       {/* Content Overlay */}
       <motion.div
         variants={{
-          initial: { gap: '5px' },
-          visible: { gap: '5px' },
-          hover: { gap: '15px' }
+          hover: { y: -10 }
         }}
+        transition={{ duration: 0.4 }}
         style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           width: '100%',
-          padding: '30px',
+          padding: '40px 30px',
           zIndex: 2,
           display: 'flex',
           flexDirection: 'column'
         }}
       >
-        <motion.h3
+        <h3
           className="portfolio-card-title"
           style={{
             fontFamily: "'Inter', sans-serif",
             fontWeight: 800,
             color: 'white',
             lineHeight: 1.2,
-            textShadow: '0 2px 10px rgba(0,0,0,0.8)'
-            // fontSize handled by class
+            textShadow: '0 2px 10px rgba(0,0,0,0.8)',
+            marginBottom: '12px'
           }}
         >
           {item.title}
-        </motion.h3>
+        </h3>
 
-        <motion.div
-          variants={{
-            initial: { height: 0, opacity: 0 },
-            visible: { height: 0, opacity: 0 },
-            hover: { height: 'auto', opacity: 1 }
-          }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          style={{ overflow: 'hidden' }}
-        >
-          <p style={{
-            fontSize: '1rem',
-            color: 'rgba(255,255,255,0.85)',
-            lineHeight: 1.6,
-            fontFamily: "'Inter', sans-serif",
-            marginBottom: '10px'
-          }}>
-            {item.description || item.desc}
-          </p>
-        </motion.div>
+        <p style={{
+          fontSize: '1rem',
+          color: 'rgba(255,255,255,0.7)',
+          lineHeight: 1.5,
+          fontFamily: "'Inter', sans-serif",
+          marginBottom: '20px',
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden'
+        }}>
+          {item.description || item.desc}
+        </p>
 
         {/* PROMINENT CTA BUTTON */}
-        <motion.div
+        <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: '10px'
+            justifyContent: 'space-between'
           }}
         >
-          <motion.button
+          <motion.div
             variants={{
               hover: {
                 scale: 1.05,
                 backgroundColor: 'var(--accent-primary)',
-                color: 'black',
-                border: '1px solid var(--accent-primary)'
+                color: 'black'
               }
             }}
-            whileTap={{ scale: 0.98 }}
             style={{
               background: 'white',
               color: 'black',
-              border: 'none',
-              padding: '16px 28px',
-              borderRadius: '14px',
-              fontSize: '0.95rem',
+              padding: '14px 24px',
+              borderRadius: '12px',
+              fontSize: '0.9rem',
               fontWeight: 800,
-              letterSpacing: '0.5px',
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
               cursor: 'pointer',
               boxShadow: '0 5px 20px rgba(0,0,0,0.4)',
-              transition: 'all 0.2s ease',
-              flex: 1,
-              maxWidth: '200px'
+              transition: 'all 0.3s ease'
             }}
           >
-            VIEW PROJECT
+            VIEW STORY
             <ArrowRight size={18} />
-          </motion.button>
+          </motion.div>
 
-          {/* Subtle indicator if needed */}
           <div style={{
-            width: '40px',
-            height: '40px',
+            width: '44px',
+            height: '44px',
             borderRadius: '50%',
-            border: '2px solid rgba(255,255,255,0.2)',
+            border: '1px solid rgba(255,255,255,0.2)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            background: 'rgba(255,255,255,0.05)'
           }}>
             <Eye size={18} color="rgba(255,255,255,0.7)" />
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );
