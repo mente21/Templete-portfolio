@@ -237,7 +237,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
         ease: [0.21, 0.47, 0.32, 0.98]
       }}
       onClick={handleClick}
-      className="ad-card portfolio-card-container"
+      className="premium-card portfolio-card-container"
       style={{
         position: 'relative',
         borderRadius: '24px',
@@ -251,7 +251,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
     >
       {/* Dynamic Background Image */}
       <motion.div
-        className="ad-bg-image-wrapper"
+        className="premium-bg-image-wrapper"
         style={{
           position: 'absolute',
           inset: 0,
