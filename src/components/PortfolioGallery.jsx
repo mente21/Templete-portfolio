@@ -32,6 +32,7 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
         justifyContent: 'center',
         alignContent: 'flex-start',
         padding: '20px',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
         maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
       }}>
         {Array.from({ length: 120 }).map((_, i) => {
@@ -155,10 +156,19 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
             padding: 80px 20px !important;
           }
           .grid-premium {
+            display: grid !important;
             grid-template-columns: 1fr !important;
             gap: 24px !important;
             position: relative !important;
-            zIndex: 10 !important; /* Force items well above background icons */
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 10 !important;
+          }
+          .portfolio-card-container {
+             height: 420px !important; 
+             visibility: visible !important;
+             opacity: 1 !important;
+             display: block !important;
           }
           .section-title-premium {
              font-size: 2.5rem !important; 
@@ -179,18 +189,26 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
           .filter-container::-webkit-scrollbar {
              display: none;
           }
-          .filter-container button {
-             white-space: nowrap;
-             padding: 8px 16px !important;
-          }
+        }
+
+        .fade-in-up {
+           animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        @keyframes fadeInUp {
+           from {
+             opacity: 0;
+             transform: translateY(30px);
+           }
+           to {
+             opacity: 1;
+             transform: translateY(0);
+           }
         }
 
         @media (max-width: 480px) {
           #portfolio {
             padding: 60px 15px !important;
-          }
-          .section-title-premium {
-             font-size: 2.2rem !important;
           }
         }
         
@@ -199,9 +217,6 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
         }
 
         @media (max-width: 768px) {
-             .portfolio-card-container {
-                  height: 420px !important; 
-             }
              .portfolio-card-title {
                   font-size: 1.5rem !important; 
              }
@@ -209,8 +224,6 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
                 font-size: 0.9rem !important;
                 line-height: 1.5 !important;
                 color: rgba(255, 255, 255, 0.7) !important;
-                opacity: 1 !important;
-                visibility: visible !important;
              }
         }
       `}</style>
@@ -235,17 +248,9 @@ const PortfolioCard = ({ item, index, onClick }) => {
   
   return (
     <motion.div
-      initial={{ opacity: 0.01, y: 15 }} // Started with slightly more than 0 to avoid being "hidden" by some browsers
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
       whileHover="hover"
-      transition={{ 
-        duration: 0.6, 
-        delay: index % 3 * 0.1, // Staggered delay based on row position
-        ease: "easeOut"
-      }}
-      onClick={handleClick}
-      className="premium-card portfolio-card-container"
+      initial={{ opacity: 1 }} // Explicitly visible by default
+      className="premium-card portfolio-card-container fade-in-up"
       style={{
         position: 'relative',
         borderRadius: '24px',
@@ -254,8 +259,8 @@ const PortfolioCard = ({ item, index, onClick }) => {
         boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
         isolation: 'isolate',
         border: '1px solid rgba(255,255,255,0.08)',
-        background: '#111', // Solid dark background as fallback
-        zIndex: 2 // Ensure it's above background decorative items
+        background: '#0a0a0a', // Solid black fallback
+        zIndex: 5
       }}
     >
       {/* Dynamic Background Image */}
