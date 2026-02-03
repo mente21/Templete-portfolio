@@ -98,7 +98,10 @@ const AboutSection = () => {
       {/* 3D Frame Container */}
       <div style={{ perspective: '1000px', display: 'flex', justifyContent: 'center' }}>
         <motion.div
-           style={{ rotateX, rotateY, transformStyle: 'preserve-3d', position: 'relative' }}
+           style={{ 
+             rotateX, rotateY, transformStyle: 'preserve-3d', position: 'relative',
+             width: '100%', maxWidth: '380px'
+           }}
            initial={{ opacity: 0, x: window.innerWidth > 768 ? -50 : 0 }}
            whileInView={{ opacity: 1, x: 0 }}
            transition={{ duration: 1, ease: 'easeOut' }}
@@ -303,9 +306,8 @@ const AboutSection = () => {
             perspective: none !important;
           }
 
-          /* Disable x-axis entry animation on mobile to prevent shift */
+          /* Remove conflicting transform that squashed the container */
           #about > div:first-child > div {
-            transform: none !important;
             margin: 0 auto !important;
           }
           
