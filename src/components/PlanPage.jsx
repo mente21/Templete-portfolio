@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Check, X, ArrowLeft, MoreVertical, Edit2, Trash2, Settings, Calendar, Filter, Loader2 } from 'lucide-react';
+import { Plus, Check, X, ArrowLeft, MoreVertical, Edit2, Trash2, Settings, Calendar, Filter, Loader2, Menu } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { planApi, binApi, plannerCategoryApi } from '../utils/api';
 
@@ -13,6 +13,7 @@ const PlanPage = () => {
     const [showCompleted, setShowCompleted] = useState(true);
     const [sortBy, setSortBy] = useState('newest'); // 'newest', 'oldest', 'alphabetical'
     const [viewMode, setViewMode] = useState('list'); // 'list', 'scheduled'
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -185,21 +186,30 @@ const PlanPage = () => {
         <div className="plan-page-root" style={{ backgroundColor: '#121212', minHeight: '100vh', padding: '40px', fontFamily: "'Inter', sans-serif", color: '#fff' }}>
             
             {/* Header */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="plan-header">
+                <div className="header-left">
                     <button
                         onClick={() => navigate('/')}
-                        style={{ marginRight: '20px', cursor: 'pointer', color: '#fff', background: '#222', border: '1px solid #333', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px' }}
+                        className="back-btn"
                     >
                         <ArrowLeft size={20} />
                     </button>
-                    <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 800 }}>Plan & Routines</h1>
+                    <h1 className="plan-title">Plan & Routines</h1>
+                </div>
+
+                <div className="mobile-menu-toggle">
+                    <button 
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                        className="hamburger-btn"
+                    >
+                        {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
                 
-                <div style={{ display: 'flex', gap: '12px' }}>
+                <div className="header-actions">
                     <button 
                         onClick={() => setViewMode(viewMode === 'list' ? 'scheduled' : 'list')}
-                        style={{ background: viewMode === 'scheduled' ? '#fff' : '#222', color: viewMode === 'scheduled' ? '#000' : '#fff', border: '1px solid #333', padding: '10px 18px', borderRadius: '10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600, fontSize: '14px' }}
+                        className={`view-mode-btn ${viewMode === 'scheduled' ? 'active' : ''}`}
                     >
                         <Calendar size={18} /> {viewMode === 'scheduled' ? 'List View' : 'Scheduled'}
                     </button>
@@ -207,7 +217,7 @@ const PlanPage = () => {
                     <div style={{ position: 'relative' }}>
                         <button
                             onClick={() => setIsOptionsOpen(!isOptionsOpen)}
-                            style={{ background: '#222', color: '#fff', border: '1px solid #333', padding: '10px 18px', borderRadius: '10px', cursor: 'pointer', fontWeight: 600, fontSize: '14px' }}
+                            className="options-btn"
                         >
                             Options
                         </button>
@@ -239,24 +249,42 @@ const PlanPage = () => {
                 </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '30px', height: 'calc(100vh - 160px)' }}>
+            <div className="plan-content-wrapper">
                 {/* Sidebar - Categories */}
-                <div style={{ width: '350px', overflowY: 'auto', paddingRight: '10px' }}>
+                <div className={`plan-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                         <h2 style={{ fontSize: '20px', fontWeight: 700 }}>Categories</h2>
-                        <button 
-                            onClick={() => { setIsEditingCategory(false); setCurrentCategory({ slug: '', title: '', subtitle: '', color: '#be185d', gradient: 'linear-gradient(135deg, #be185d, #db2777)' }); setIsCategoryModalOpen(true); }}
-                            style={{ background: '#333', border: 'none', color: '#fff', width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                        >
-                            <Plus size={18} />
-                        </button>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                            <button 
+                                onClick={() => { setIsEditingCategory(false); setCurrentCategory({ slug: '', title: '', subtitle: '', color: '#be185d', gradient: 'linear-gradient(135deg, #be185d, #db2777)' }); setIsCategoryModalOpen(true); }}
+                                style={{ background: '#333', border: 'none', color: '#fff', width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                            >
+                                <Plus size={18} />
+                            </button>
+                            <button 
+                                className="mobile-close-sidebar"
+                                onClick={() => setIsSidebarOpen(false)}
+                                style={{ background: '#333', border: 'none', color: '#fff', width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', display: 'none', alignItems: 'center', justifyContent: 'center' }}
+                            >
+                                <X size={18} />
+                            </button>
+                        </div>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div className="categories-list">
                         <motion.div
                             whileHover={{ x: 5 }}
-                            onClick={() => setActiveFilter('All')}
-                            style={{ padding: '16px', background: activeFilter === 'All' ? '#fff' : '#1e1e1e', color: activeFilter === 'All' ? '#000' : '#fff', borderRadius: '14px', cursor: 'pointer', border: '1px solid #333', transition: 'all 0.2s' }}
+                            onClick={() => { setActiveFilter('All'); setIsSidebarOpen(false); }}
+                            className="category-item-all"
+                            style={{ 
+                                padding: '16px', 
+                                background: activeFilter === 'All' ? '#fff' : '#1e1e1e', 
+                                color: activeFilter === 'All' ? '#000' : '#fff', 
+                                borderRadius: '14px', 
+                                cursor: 'pointer', 
+                                border: '1px solid #333', 
+                                transition: 'all 0.2s' 
+                            }}
                         >
                             <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 700 }}>All Tasks</h3>
                             <p style={{ margin: '4px 0 0', opacity: 0.6, fontSize: '13px' }}>{tasks.filter(t => !t.completed).length} active</p>
@@ -269,8 +297,17 @@ const PlanPage = () => {
                                 style={{ position: 'relative', overflow: 'hidden' }}
                             >
                                 <div
-                                    onClick={() => setActiveFilter(cat.slug)}
-                                    style={{ padding: '20px', background: cat.gradient, borderRadius: '16px', cursor: 'pointer', border: activeFilter === cat.slug ? '2px solid #fff' : '1px solid rgba(255,255,255,0.1)', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', transition: 'all 0.2s' }}
+                                    onClick={() => { setActiveFilter(cat.slug); setIsSidebarOpen(false); }}
+                                    className="category-item-card"
+                                    style={{ 
+                                        padding: '20px', 
+                                        background: cat.gradient, 
+                                        borderRadius: '16px', 
+                                        cursor: 'pointer', 
+                                        border: activeFilter === cat.slug ? '2px solid #fff' : '1px solid rgba(255,255,255,0.1)', 
+                                        boxShadow: '0 4px 15px rgba(0,0,0,0.2)', 
+                                        transition: 'all 0.2s' 
+                                    }}
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                                         <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800 }}>{cat.title}</h3>
@@ -300,14 +337,14 @@ const PlanPage = () => {
                 </div>
 
                 {/* Main Content - Tasks */}
-                <div style={{ flex: 1, background: '#000', borderRadius: '24px', border: '1px solid #222', padding: '30px', overflowY: 'auto' }}>
+                <div className="plan-main">
                     {isLoading ? (
-                        <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <Loader2 className="animate-spin" size={40} color="#555" />
                         </div>
                     ) : (
                         <>
-                            <div style={{ marginBottom: '30px' }}>
+                            <div className="main-header">
                                 <h2 style={{ fontSize: '24px', fontWeight: 800, margin: 0 }}>
                                     {viewMode === 'scheduled' ? 'Scheduled Timeline' : (activeFilter === 'All' ? 'Upcoming Focus' : categories.find(c => c.slug === activeFilter)?.title)}
                                 </h2>
@@ -316,12 +353,12 @@ const PlanPage = () => {
                                 </p>
                             </div>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            <div className="tasks-container">
                                 {viewMode === 'list' ? (
                                     <>
-                                        <h3 style={{ fontSize: '12px', fontWeight: 800, color: '#444', textTransform: 'uppercase', letterSpacing: '1.5px' }}>Active Tasks</h3>
+                                        <h3 className="section-label">Active Tasks</h3>
                                         {activeTasks.length === 0 && (
-                                            <div style={{ padding: '40px', textAlign: 'center', background: '#0a0a0a', borderRadius: '16px', border: '1px dashed #333' }}>
+                                            <div className="empty-state">
                                                 <p style={{ color: '#555', margin: 0 }}>No active tasks found.</p>
                                             </div>
                                         )}
@@ -338,7 +375,7 @@ const PlanPage = () => {
 
                                         {showCompleted && completedTasks.length > 0 && (
                                             <>
-                                                <h3 style={{ fontSize: '12px', fontWeight: 800, color: '#444', textTransform: 'uppercase', letterSpacing: '1.5px', marginTop: '30px' }}>Completed</h3>
+                                                <h3 className="section-label" style={{ marginTop: '30px' }}>Completed</h3>
                                                 {completedTasks.map(task => (
                                                     <TaskItem 
                                                         key={task.id} 
@@ -355,7 +392,7 @@ const PlanPage = () => {
                                     </>
                                 ) : (
                                     /* Scheduled View - Grouped by Date */
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                                    <div className="scheduled-view">
                                         {Object.entries(
                                             tasks.reduce((groups, task) => {
                                                 const date = task.date || 'No Date';
@@ -364,7 +401,7 @@ const PlanPage = () => {
                                                 return groups;
                                             }, {})
                                         ).sort((a, b) => new Date(a[0]) - new Date(b[0])).map(([date, dateTasks]) => (
-                                            <div key={date}>
+                                            <div key={date} style={{ marginBottom: '30px' }}>
                                                 <h3 style={{ fontSize: '14px', fontWeight: 800, color: '#be185d', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                                                     <Calendar size={14} /> {date === 'No Date' ? 'Unscheduled' : new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
                                                 </h3>
@@ -396,7 +433,7 @@ const PlanPage = () => {
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsAddModalOpen(true)}
-                style={{ position: 'fixed', bottom: '40px', right: '40px', width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #d946ef, #a21caf)', color: '#fff', border: 'none', boxShadow: '0 10px 25px rgba(217, 70, 239, 0.4)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50 }}
+                className="add-task-float"
             >
                 <Plus size={32} />
             </motion.button>
@@ -511,6 +548,254 @@ const PlanPage = () => {
             </AnimatePresence>
 
             <style>{`
+                .plan-page-root {
+                    padding: 40px !important;
+                }
+                .plan-content-wrapper {
+                    display: flex;
+                    gap: 30px;
+                    height: calc(100vh - 160px);
+                }
+                .plan-sidebar {
+                    width: 350px;
+                    overflow-y: auto;
+                    padding-right: 10px;
+                }
+                .categories-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+                .plan-main {
+                    flex: 1;
+                    background: #000;
+                    border-radius: 24px;
+                    border: 1px solid #222;
+                    padding: 30px;
+                    overflow-y: auto;
+                }
+                .tasks-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                .section-label {
+                    font-size: 12px;
+                    font-weight: 800;
+                    color: #444;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                }
+                .empty-state {
+                    padding: 40px;
+                    text-align: center;
+                    background: #0a0a0a;
+                    borderRadius: 16px;
+                    border: 1px dashed #333;
+                }
+                .add-task-float {
+                    position: fixed;
+                    bottom: 40px;
+                    right: 40px;
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, #d946ef, #a21caf);
+                    color: #fff;
+                    border: none;
+                    box-shadow: 0 10px 25px rgba(217, 70, 239, 0.4);
+                    cursor: pointer;
+                    display: flex;
+                    alignItems: center;
+                    justifyContent: center;
+                    zIndex: 50;
+                }
+
+                @media (max-width: 1024px) {
+                    .plan-sidebar {
+                        width: 280px;
+                    }
+                }
+
+                .plan-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 40px;
+                }
+                .header-left {
+                    display: flex;
+                    align-items: center;
+                }
+                .back-btn {
+                    margin-right: 20px;
+                    cursor: pointer;
+                    color: #fff;
+                    background: #222;
+                    border: 1px solid #333;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 12px;
+                }
+                .plan-title {
+                    margin: 0;
+                    font-size: 28px;
+                    font-weight: 800;
+                }
+                .header-actions {
+                    display: flex;
+                    gap: 12px;
+                }
+                .view-mode-btn {
+                    background: #222;
+                    color: #fff;
+                    border: 1px solid #333;
+                    padding: 10px 18px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .view-mode-btn.active {
+                    background: #fff;
+                    color: #000;
+                }
+                .options-btn {
+                    background: #222;
+                    color: #fff;
+                    border: 1px solid #333;
+                    padding: 10px 18px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .modal-content {
+                    width: 100%;
+                    max-width: 500px;
+                    background-color: #161616;
+                    border-radius: 24px;
+                    padding: 40px;
+                    border: 1px solid #333;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+                }
+
+                .mobile-menu-toggle {
+                    display: none;
+                }
+                .hamburger-btn {
+                    background: #222;
+                    color: #fff;
+                    border: 1px solid #333;
+                    width: 44px;
+                    height: 44px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 12px;
+                    cursor: pointer;
+                }
+
+                @media (max-width: 768px) {
+                    .mobile-menu-toggle {
+                        display: block;
+                        position: absolute;
+                        right: 20px;
+                        top: 20px;
+                    }
+                    .plan-header {
+                        position: relative;
+                        padding-right: 60px;
+                    }
+                    .plan-page-root {
+                        padding: 20px !important;
+                    }
+                    .plan-header {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 20px;
+                        margin-bottom: 30px;
+                    }
+                    .header-actions {
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                    .plan-content-wrapper {
+                        flex-direction: column;
+                        height: auto;
+                        gap: 20px;
+                        position: relative;
+                    }
+                    .plan-sidebar {
+                        position: fixed;
+                        top: 0;
+                        left: -100%;
+                        width: 85%;
+                        max-width: 320px;
+                        height: 100vh;
+                        background: #161616;
+                        z-index: 1000;
+                        padding: 30px 20px;
+                        box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+                        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                        border-right: 1px solid #333;
+                        margin-bottom: 0;
+                        max-height: none;
+                    }
+                    .plan-sidebar.open {
+                        left: 0;
+                    }
+                    .mobile-close-sidebar {
+                        display: flex !important;
+                    }
+                    .categories-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                        grid-template-columns: none;
+                    }
+                    .plan-main {
+                        padding: 20px;
+                        border-radius: 16px;
+                        height: auto;
+                        min-height: 500px;
+                    }
+                    .modal-content {
+                        padding: 30px 20px;
+                        border-radius: 20px;
+                    }
+                    .add-task-float {
+                        bottom: 20px;
+                        right: 20px;
+                        width: 54px;
+                        height: 54px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .back-btn {
+                        margin-right: 12px;
+                        width: 36px;
+                        height: 36px;
+                    }
+                    .plan-title {
+                        font-size: 20px !important;
+                    }
+                    .header-actions {
+                        flex-wrap: wrap;
+                    }
+                    .view-mode-btn, .options-btn {
+                        padding: 8px 12px;
+                        font-size: 12px;
+                    }
+                }
+
                 .hover-item:hover { background: #222; }
                 .animate-spin { animation: spin 1s linear infinite; }
                 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -564,7 +849,7 @@ const Modal = ({ children, onClose }) => (
             initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 20 }}
-            style={{ width: '100%', maxWidth: '500px', backgroundColor: '#161616', borderRadius: '24px', padding: '40px', border: '1px solid #333', boxShadow: '0 20px 50px rgba(0,0,0,0.6)' }}
+            className="modal-content"
             onClick={(e) => e.stopPropagation()}
         >
             {children}

@@ -28,7 +28,7 @@ const AboutDetailPage = () => {
         }}>
             {/* Navigation */}
             <nav style={{
-                padding: '30px 50px',
+                padding: 'clamp(15px, 3vw, 30px) clamp(20px, 5vw, 50px)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -68,10 +68,11 @@ const AboutDetailPage = () => {
                 <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                     <h1 style={{
                         fontFamily: "'Abril Fatface', serif",
-                        fontSize: 'clamp(3rem, 6vw, 5rem)',
+                        fontSize: 'clamp(2.5rem, 8vw, 5rem)',
                         margin: 0,
                         textTransform: 'uppercase',
-                        letterSpacing: '2px'
+                        letterSpacing: '2px',
+                        lineHeight: 1
                     }}>
                         Dominique
                     </h1>
@@ -125,7 +126,7 @@ const AboutDetailPage = () => {
 
                     {/* RIGHT: Detailed Info */}
                     <div style={{ paddingTop: '20px' }}>
-                        <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', marginBottom: '20px' }}>
+                        <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '20px' }}>
                             Creative Director
                         </h2>
                         <div style={{
@@ -247,9 +248,11 @@ const AboutDetailPage = () => {
                         EXPERTISE AREAS
                     </h3>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '40px' }}>
-                        {/* Card 1 */}
-                        <div>
+                    <div className="modal-content-grid" style={{
+                  display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
+                  gap: 'clamp(20px, 5vw, 50px)', height: '100%', overflowY: 'auto', paddingRight: '10px'
+                }}>
+        <div>
                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', overflow: 'hidden' }}>
                                 <img src={gallery1} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="hover-scale" />
                             </div>
@@ -320,15 +323,23 @@ const AboutDetailPage = () => {
                 </div>
 
                 {/* SECTION 4: Subscribe/Connect */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', background: '#0f0f0f' }}>
-                    <div style={{ padding: '80px' }}>
-                        <h3 style={{ fontSize: '2.5rem', fontFamily: "'Abril Fatface', serif", marginBottom: '30px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '80px', background: '#0f0f0f' }} className="collab-section">
+                    <div style={{ padding: 'clamp(30px, 8vw, 80px)' }}>
+                        <h3 style={{ 
+                            fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', 
+                            fontFamily: "'Abril Fatface', serif", 
+                            color: 'white',
+                            marginBottom: '30px',
+                            textTransform: 'uppercase',
+                            overflowWrap: 'break-word',
+                            lineHeight: 1.1
+                        }}>
                             Collaborate & Create
                         </h3>
-                        <p style={{ opacity: 0.7, marginBottom: '40px', lineHeight: 1.7 }}>
+                        <p style={{ opacity: 0.7, marginBottom: '40px', lineHeight: 1.7, fontSize: 'clamp(0.9rem, 2vw, 1.05rem)' }}>
                             The journey of a thousand miles begins with a single email. Whether you have a project in mind or just want to discuss the future of design, I'm always open to new signals.
                         </p>
-                        <div style={{ display: 'flex', gap: '15px' }}>
+                        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                             <input
                                 type="email"
                                 placeholder="Your email address"
@@ -364,15 +375,29 @@ const AboutDetailPage = () => {
 
             <style>{`
         .hover-scale:hover { transform: scale(1.05); }
+        @media (min-width: 1024px) {
+           .collab-section {
+             grid-template-columns: 1fr 1fr !important;
+           }
+        }
         @media (max-width: 1024px) {
            div[style*="grid-template-columns: 1fr 1fr"] {
              grid-template-columns: 1fr !important;
              gap: 60px !important;
            }
+           .collab-section {
+             grid-template-columns: 1fr !important;
+           }
+           .collab-section div[style*="position: relative"] {
+             height: 300px;
+           }
         }
         @media (max-width: 768px) {
           .thumbnails-grid {
              display: none !important;
+          }
+          nav {
+            padding: 20px !important;
           }
           /* Ensure main image takes full width but respects padding */
           div[style*="padding: 60px 40px"] {

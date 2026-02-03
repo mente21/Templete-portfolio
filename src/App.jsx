@@ -316,9 +316,8 @@ This credential demonstrates foundational knowledge in protecting systems and da
                   width: 'min(1000px, 95vw)', height: 'min(750px, 85vh)',
                   background: 'var(--card-bg)', borderRadius: '40px',
                   border: `1.5px solid ${selectedItem.color || 'var(--accent-primary)'}`,
-                  padding: '40px', display: 'flex', flexDirection: 'column', gap: '30px',
-                  boxShadow: '0 50px 100px rgba(0,0,0,0.5)', overflow: 'hidden',
-                  pointerEvents: 'auto', position: 'relative'
+                  pointerEvents: 'auto', position: 'relative',
+                  padding: 'clamp(15px, 4vw, 40px)'
                 }}
               >
                 <button
@@ -330,18 +329,19 @@ This credential demonstrates foundational knowledge in protecting systems and da
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: 'var(--text-primary)', cursor: 'pointer', zIndex: 10
                   }}
+                  className="modal-close-trigger"
                 >
                   <X size={24} />
                 </button>
 
                 <div className="modal-content-grid" style={{
-                  display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                  gap: '50px', height: '100%', overflowY: 'auto', paddingRight: '10px'
+                  display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
+                  gap: 'clamp(20px, 5vw, 50px)', height: '100%', overflowY: 'auto', paddingRight: '10px'
                 }}>
                   {images.length > 0 && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                      <div style={{
-                        width: '100%', height: '450px', borderRadius: '24px',
+                      <div className="modal-image-wrapper" style={{
+                        width: '100%', height: 'clamp(200px, 40vh, 450px)', borderRadius: '24px',
                         overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
                         position: 'relative'
                       }}>
@@ -375,9 +375,16 @@ This credential demonstrates foundational knowledge in protecting systems and da
                     </div>
                   )}
                   <div style={{ display: 'flex', flexDirection: 'column', padding: '10px 0' }}>
-                    <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-primary)', marginBottom: '20px', textTransform: 'uppercase' }}>{selectedItem.title}</h2>
+                    <h2 style={{ 
+                      fontSize: 'clamp(1.5rem, 6vw, 3.5rem)', 
+                      color: 'var(--text-primary)', 
+                      marginBottom: '20px', 
+                      textTransform: 'uppercase',
+                      overflowWrap: 'break-word',
+                      lineHeight: 1.1
+                    }}>{selectedItem.title}</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                      <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: 1.9, marginBottom: '10px' }}>
+                      <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: 'var(--text-secondary)', lineHeight: 1.9, marginBottom: '10px' }}>
                         {selectedItem.description || selectedItem.desc}
                       </p>
                       
@@ -407,7 +414,7 @@ This credential demonstrates foundational knowledge in protecting systems and da
                             color: 'rgba(255,255,255,0.85)', 
                             lineHeight: 2, 
                             whiteSpace: 'pre-line',
-                            fontSize: '1.05rem',
+                            fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)',
                             fontFamily: "'Inter', sans-serif"
                           }}>
                             {selectedItem.detailedDescription}

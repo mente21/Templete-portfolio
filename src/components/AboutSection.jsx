@@ -99,16 +99,17 @@ const AboutSection = () => {
       <div style={{ perspective: '1000px', display: 'flex', justifyContent: 'center' }}>
         <motion.div
            style={{ rotateX, rotateY, transformStyle: 'preserve-3d', position: 'relative' }}
-           initial={{ opacity: 0, x: -50 }}
+           initial={{ opacity: 0, x: window.innerWidth > 768 ? -50 : 0 }}
            whileInView={{ opacity: 1, x: 0 }}
            transition={{ duration: 1, ease: 'easeOut' }}
            viewport={{ once: true }}
         >
           {/* Main Floating Frame */}
           <div style={{
-            width: '380px', height: '480px', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)',
-            borderRadius: '40px', border: '1px solid var(--border-color)', padding: '24px',
-            boxShadow: '0 50px 100px -20px rgba(0,0,0,0.5)', position: 'relative', overflow: 'hidden'
+            width: 'min(380px, 100%)', height: 'min(480px, 60vh)', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)',
+            borderRadius: '40px', border: '1px solid var(--border-color)', padding: 'clamp(12px, 3vw, 24px)',
+            boxShadow: '0 50px 100px -20px rgba(0,0,0,0.5)', position: 'relative', overflow: 'hidden',
+            margin: '0 auto'
           }}>
             <div style={{ position: 'absolute', inset: '12px', border: '1px solid rgba(255, 107, 0, 0.3)', borderRadius: '32px', pointerEvents: 'none', zIndex: 1 }}></div>
             <div 
@@ -296,11 +297,30 @@ const AboutSection = () => {
           /* Move image container to the top */
           #about > div:first-child {
             order: 1 !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            perspective: none !important;
+          }
+
+          /* Disable x-axis entry animation on mobile to prevent shift */
+          #about > div:first-child > div {
+            transform: none !important;
+            margin: 0 auto !important;
           }
           
           /* Move content to the bottom */
           #about > div:nth-child(2) {
             order: 2 !important;
+            width: 100% !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+
+          .section-title-premium {
+            justify-content: center !important;
           }
         }
       `}</style>
