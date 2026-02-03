@@ -153,41 +153,7 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
       <style>{`
         @media (max-width: 768px) {
           #portfolio {
-            padding: 80px 20px !important;
-          }
-          .grid-premium {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-            position: relative !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            z-index: 10 !important;
-          }
-          .portfolio-card-container {
-             height: 420px !important; 
-             visibility: visible !important;
-             opacity: 1 !important;
-             display: block !important;
-          }
-          .section-title-premium {
-             font-size: 2.5rem !important; 
-             text-align: center !important;
-             width: 100% !important;
-             margin-bottom: 30px !important;
-          }
-          .filter-container {
-             display: flex !important;
-             overflow-x: auto !important;
-             justify-content: flex-start !important;
-             padding: 10px 0 !important;
-             margin-bottom: 30px !important;
-             -webkit-overflow-scrolling: touch;
-             scrollbar-width: none;
-             -ms-overflow-style: none;
-          }
-          .filter-container::-webkit-scrollbar {
-             display: none;
+            display: none !important;
           }
         }
 
@@ -206,25 +172,8 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
            }
         }
 
-        @media (max-width: 480px) {
-          #portfolio {
-            padding: 60px 15px !important;
-          }
-        }
-        
         .portfolio-card-container {
              height: 480px;
-        }
-
-        @media (max-width: 768px) {
-             .portfolio-card-title {
-                  font-size: 1.5rem !important; 
-             }
-             p {
-                font-size: 0.9rem !important;
-                line-height: 1.5 !important;
-                color: rgba(255, 255, 255, 0.7) !important;
-             }
         }
       `}</style>
     </section>
