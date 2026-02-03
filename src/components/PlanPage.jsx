@@ -590,7 +590,7 @@ const PlanPage = () => {
                     padding: 40px;
                     text-align: center;
                     background: #0a0a0a;
-                    borderRadius: 16px;
+                    border-radius: 16px;
                     border: 1px dashed #333;
                 }
                 .add-task-float {
@@ -606,9 +606,9 @@ const PlanPage = () => {
                     box-shadow: 0 10px 25px rgba(217, 70, 239, 0.4);
                     cursor: pointer;
                     display: flex;
-                    alignItems: center;
-                    justifyContent: center;
-                    zIndex: 50;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 50;
                 }
 
                 @media (max-width: 1024px) {
@@ -801,7 +801,7 @@ const PlanPage = () => {
                 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
                 ::-webkit-scrollbar { width: 5px; }
                 ::-webkit-scrollbar-track { background: transparent; }
-                ::-webkit-scrollbar-thumb { background: #333; borderRadius: 10px; }
+                ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
             `}</style>
         </div>
     );
