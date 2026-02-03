@@ -155,8 +155,10 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
             padding: 80px 20px !important;
           }
           .grid-premium {
-            grid-template-columns: 1fr !important; /* Single Column for better readability on mobile */
-            gap: 20px !important;
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+            position: relative !important;
+            zIndex: 10 !important; /* Force items well above background icons */
           }
           .section-title-premium {
              font-size: 2.5rem !important; 
@@ -171,7 +173,6 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
              padding: 10px 0 !important;
              margin-bottom: 30px !important;
              -webkit-overflow-scrolling: touch;
-             /* Hide scrollbar but keep functionality */
              scrollbar-width: none;
              -ms-overflow-style: none;
           }
@@ -199,10 +200,17 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
 
         @media (max-width: 768px) {
              .portfolio-card-container {
-                  height: 400px !important; 
+                  height: 420px !important; 
              }
              .portfolio-card-title {
-                  font-size: 1.4rem !important; 
+                  font-size: 1.5rem !important; 
+             }
+             p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                color: rgba(255, 255, 255, 0.7) !important;
+                opacity: 1 !important;
+                visibility: visible !important;
              }
         }
       `}</style>
@@ -227,14 +235,14 @@ const PortfolioCard = ({ item, index, onClick }) => {
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0.01, y: 15 }} // Started with slightly more than 0 to avoid being "hidden" by some browsers
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.1 }}
       whileHover="hover"
       transition={{ 
-        duration: 0.8, 
-        delay: index * 0.1,
-        ease: [0.21, 0.47, 0.32, 0.98]
+        duration: 0.6, 
+        delay: index % 3 * 0.1, // Staggered delay based on row position
+        ease: "easeOut"
       }}
       onClick={handleClick}
       className="premium-card portfolio-card-container"
@@ -243,10 +251,11 @@ const PortfolioCard = ({ item, index, onClick }) => {
         borderRadius: '24px',
         overflow: 'hidden',
         cursor: 'pointer',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+        boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
         isolation: 'isolate',
-        border: '1px solid rgba(255,255,255,0.1)',
-        background: 'rgba(255,255,255,0.02)'
+        border: '1px solid rgba(255,255,255,0.08)',
+        background: '#111', // Solid dark background as fallback
+        zIndex: 2 // Ensure it's above background decorative items
       }}
     >
       {/* Dynamic Background Image */}
