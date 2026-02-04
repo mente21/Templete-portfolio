@@ -13,7 +13,7 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
     : items.filter(item => item.category === activeCategory);
 
   return (
-    <section id="portfolio" className="constellation-wrapper" style={{
+    <section id="portfolio" className="constellation-wrapper portfolio-section" style={{
       borderTop: '1px solid var(--border-color)',
       padding: '120px 10%',
       position: 'relative'
@@ -50,12 +50,19 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
         })}
       </div>
 
-      <div className="section-header-premium">
+      <div className="section-header-premium visual-stories-header">
         <h2 className="section-title-premium" style={{ fontFamily: "'Inter', sans-serif" }}>
           <span className="section-title-accent">VISUAL</span>
           <span style={{ color: 'gray' }}>STORIES</span>
         </h2>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .portfolio-section {
+            display: none !important;
+          }
+        }
+      `}</style>
 
       {/* Category Filter */}
       {categories.length > 1 && (
@@ -209,7 +216,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
         boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
         isolation: 'isolate',
         border: '1px solid rgba(255,255,255,0.08)',
-        background: '#0a0a0a', // Solid black fallback
+        background: 'var(--node-bg)', // Dynamic fallback
         zIndex: 5
       }}
     >
@@ -335,8 +342,8 @@ const PortfolioCard = ({ item, index, onClick }) => {
               }
             }}
             style={{
-              background: 'white',
-              color: 'black',
+              background: 'var(--text-primary)',
+              color: 'var(--bg-color)',
               padding: '14px 24px',
               borderRadius: '12px',
               fontSize: '0.9rem',

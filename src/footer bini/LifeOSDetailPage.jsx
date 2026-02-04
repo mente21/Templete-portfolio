@@ -16,8 +16,8 @@ const LifeOSDetailPage = () => {
     return (
         <div style={{
             minHeight: '100vh',
-            background: '#0a0a0a',
-            color: 'white',
+            background: 'var(--bg-color)',
+            color: 'var(--text-primary)',
             fontFamily: "'Inter', sans-serif",
             paddingBottom: '100px'
         }}>
@@ -27,14 +27,14 @@ const LifeOSDetailPage = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderBottom: '1px solid rgba(255,255,255,0.05)'
+                borderBottom: '1px solid var(--border-color)'
             }}>
                 <button
                     onClick={() => navigate('/')}
                     style={{
                         background: 'none',
                         border: 'none',
-                        color: 'white',
+                        color: 'var(--text-primary)',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '10px',
@@ -49,7 +49,7 @@ const LifeOSDetailPage = () => {
                 <div style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: '0.8rem',
-                    color: 'rgba(255,255,255,0.5)'
+                    color: 'var(--text-secondary)'
                 }}>
                     SYSTEM / OPTIMIZATION
                 </div>
@@ -93,7 +93,7 @@ const LifeOSDetailPage = () => {
                         <div style={{
                             width: '100%',
                             aspectRatio: '1/1',
-                            backgroundColor: '#1a1a1a',
+                            backgroundColor: 'var(--card-bg)',
                             marginBottom: '20px',
                             overflow: 'hidden'
                         }}>
@@ -116,13 +116,13 @@ const LifeOSDetailPage = () => {
                             marginBottom: '40px',
                             fontFamily: "'JetBrains Mono', monospace"
                         }}>
-                            Livable, Not Workable <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>— her mantra</span>
+                            Livable, Not Workable <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>— her mantra</span>
                         </div>
 
                         <p style={{
                             fontSize: '1.1rem',
                             lineHeight: 1.8,
-                            color: 'rgba(255,255,255,0.8)',
+                            color: 'var(--text-secondary)',
                             marginBottom: '40px'
                         }}>
                             Chaos is part of the journey, but meaning is something we manufacture. Dominique's "Livable Life" is a comprehensive system of rituals, peace, and reflection designed to maximize joy while minimizing fear. It is the architecture upon which she builds her legacy.
@@ -132,8 +132,8 @@ const LifeOSDetailPage = () => {
                             <button onClick={() => navigate('/')} style={{
                                 flex: 1,
                                 padding: '18px',
-                                background: 'white',
-                                color: 'black',
+                                background: 'var(--text-primary)',
+                                color: 'var(--bg-color)',
                                 border: 'none',
                                 fontSize: '1rem',
                                 fontWeight: 600,
@@ -145,18 +145,18 @@ const LifeOSDetailPage = () => {
                             </button>
                         </div>
 
-                        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px' }}>
+                        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '30px' }}>
                              <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
                                 <span style={{ fontWeight: 600 }}>Mind</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Psychology, Reflection, Peace</span>
+                                <span style={{ color: 'var(--text-secondary)' }}>Psychology, Reflection, Peace</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
                                 <span style={{ fontWeight: 600 }}>Soul</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Coffee Rituals, Music, Fashion</span>
+                                <span style={{ color: 'var(--text-secondary)' }}>Coffee Rituals, Music, Fashion</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
                                 <span style={{ fontWeight: 600 }}>Body</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Movement, Rest, Nourishment</span>
+                                <span style={{ color: 'var(--text-secondary)' }}>Movement, Rest, Nourishment</span>
                             </div>
                         </div>
                     </div>
@@ -175,21 +175,21 @@ const LifeOSDetailPage = () => {
                     </h3>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '40px' }}>
                         <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                             <div style={{ aspectRatio: '1/1', background: 'var(--card-bg)', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                                 <img src="/dominique/traditional_coffee_cup.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                             <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Coffee & Connection</div>
                             <div style={{ opacity: 0.7, marginBottom: '20px' }}>The traditional ceremony as a foundation for friendship.</div>
                         </div>
                          <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                             <div style={{ aspectRatio: '1/1', background: 'var(--card-bg)', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                                 <img src="/dominique/desk_office.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                             <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Education & Growth</div>
                             <div style={{ opacity: 0.7, marginBottom: '20px' }}>Psychology as a tool for understanding our own spirit.</div>
                         </div>
                          <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                             <div style={{ aspectRatio: '1/1', background: 'var(--card-bg)', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                                 <img src="/dominique/pancakes.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                             <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Nourishment & Joy</div>
@@ -210,7 +210,7 @@ const LifeOSDetailPage = () => {
                         <h3 style={{ fontSize: '2rem', marginBottom: '30px', fontFamily: "'Abril Fatface', serif" }}>
                             The Spirit of Living
                         </h3>
-                        <div style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                        <div style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                              <p>
                                 Order is not about being neat; it's about being ready — ready to experience every drop of life that we are given.
                             </p>
@@ -219,7 +219,7 @@ const LifeOSDetailPage = () => {
                             </p>
                         </div>
                     </div>
-                    <div style={{ aspectRatio: '4/5', background: '#1a1a1a', overflow: 'hidden' }}>
+                    <div style={{ aspectRatio: '4/5', background: 'var(--card-bg)', overflow: 'hidden' }}>
                          <img src="/dominique/interior_flowers.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                 </div>

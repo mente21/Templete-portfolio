@@ -149,9 +149,9 @@ const PhilosophyDetailPage = () => {
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          background: 'rgba(0,0,0,0.8)',
+          background: 'var(--sidebar-bg)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255,255,255,0.05)',
+          borderBottom: '1px solid var(--border-color)',
           padding: '20px 5%'
         }}
       >
@@ -163,7 +163,7 @@ const PhilosophyDetailPage = () => {
             style={{
               background: 'none',
               border: 'none',
-              color: 'white',
+              color: 'var(--text-primary)',
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
@@ -182,7 +182,7 @@ const PhilosophyDetailPage = () => {
             alignItems: 'center',
             gap: '15px',
             padding: '8px 20px',
-            background: 'rgba(255,255,255,0.03)',
+            background: 'var(--border-color)',
             borderRadius: '100px',
             border: `1px solid ${philosophy.color}33`
           }}>
@@ -235,7 +235,7 @@ const PhilosophyDetailPage = () => {
                 lineHeight: 0.9,
                 fontFamily: "'Cinzel', serif",
                 marginBottom: '20px',
-                color: 'white'
+                color: 'var(--text-primary)'
               }}
             >
               {philosophy.title}
@@ -272,7 +272,7 @@ const PhilosophyDetailPage = () => {
               overflow: 'hidden',
               position: 'relative',
               boxShadow: `0 40px 80px -20px rgba(0,0,0,0.6)`,
-              border: '1px solid rgba(255,255,255,0.05)'
+              border: '1px solid var(--border-color)'
             }}
           >
             <img 
@@ -308,12 +308,12 @@ const PhilosophyDetailPage = () => {
               {philosophy.tags.map(tag => (
                 <span key={tag} style={{
                   padding: '10px 20px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'var(--border-color)',
+                  border: '1px solid var(--border-color)',
                   borderRadius: '12px',
                   fontSize: '0.9rem',
                   fontWeight: 600,
-                  color: 'white'
+                  color: 'var(--text-primary)'
                 }}>
                   #{tag}
                 </span>
@@ -346,7 +346,7 @@ const PhilosophyDetailPage = () => {
               opacity: 0.1
             }} />
 
-            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '35px', color: 'white', display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '35px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '15px' }}>
               <Target size={24} color={philosophy.color} />
               EXECUTIVE <br />PRINCIPLES
             </h3>
@@ -381,8 +381,8 @@ const PhilosophyDetailPage = () => {
             marginTop: '120px',
             padding: '100px 5%',
             borderRadius: '40px',
-            background: `linear-gradient(135deg, rgba(255,255,255,0.02), ${philosophy.color}08)`,
-            border: '1px solid rgba(255,255,255,0.05)',
+            background: `linear-gradient(135deg, var(--border-color), ${philosophy.color}08)`,
+            border: '1px solid var(--border-color)',
             textAlign: 'center',
             position: 'relative'
           }}
@@ -394,7 +394,7 @@ const PhilosophyDetailPage = () => {
             fontSize: '2rem',
             fontWeight: 300,
             fontStyle: 'italic',
-            color: 'white',
+            color: 'var(--text-primary)',
             lineHeight: 1.5,
             position: 'relative',
             zIndex: 1,

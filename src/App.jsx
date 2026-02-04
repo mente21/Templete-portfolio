@@ -304,9 +304,9 @@ Milestones:
                         <div style={{ 
                           marginTop: '5px', 
                           padding: '30px', 
-                          background: 'rgba(255,255,255,0.03)', 
+                          background: 'var(--border-color)', 
                           borderRadius: '20px', 
-                          border: '1px solid rgba(255,255,255,0.05)' 
+                          border: '1px solid var(--border-color)' 
                         }}>
                           <h3 style={{ 
                             fontSize: '1.05rem', 
@@ -323,7 +323,7 @@ Milestones:
                             {selectedType === 'achievement' ? 'About this Credential' : 'Project Details'}
                           </h3>
                           <p style={{ 
-                            color: 'rgba(255,255,255,0.85)', 
+                            color: 'var(--text-secondary)', 
                             lineHeight: 2, 
                             whiteSpace: 'pre-line',
                             fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)',
@@ -350,10 +350,10 @@ Milestones:
                                     <span key={idx} style={{ 
                                         padding: '10px 18px', 
                                         borderRadius: '100px', 
-                                        background: 'rgba(255,255,255,0.05)', 
+                                        background: 'var(--border-color)', 
                                         color: selectedItem.color || 'var(--accent-primary)', 
                                         fontSize: '0.9rem',
-                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        border: '1px solid var(--border-color)',
                                         fontFamily: "'JetBrains Mono', monospace"
                                     }}>
                                         {tech}
@@ -379,10 +379,10 @@ Milestones:
                                     <span key={idx} style={{ 
                                         padding: '10px 18px', 
                                         borderRadius: '100px', 
-                                        background: 'rgba(255,255,255,0.05)', 
+                                        background: 'var(--border-color)', 
                                         color: selectedItem.color || 'var(--accent-primary)', 
                                         fontSize: '0.9rem',
-                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        border: '1px solid var(--border-color)',
                                         fontFamily: "'JetBrains Mono', monospace"
                                     }}>
                                         {skill}
@@ -391,10 +391,10 @@ Milestones:
                                     <span key={idx} style={{ 
                                         padding: '10px 18px', 
                                         borderRadius: '100px', 
-                                        background: 'rgba(255,255,255,0.05)', 
+                                        background: 'var(--border-color)', 
                                         color: selectedItem.color || 'var(--accent-primary)', 
                                         fontSize: '0.9rem',
-                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        border: '1px solid var(--border-color)',
                                         fontFamily: "'JetBrains Mono', monospace"
                                     }}>
                                         {skill.trim()}
@@ -409,9 +409,9 @@ Milestones:
                         <div style={{ 
                           marginTop: '10px',
                           padding: '20px',
-                          background: 'rgba(255,255,255,0.02)',
+                          background: 'var(--border-color)',
                           borderRadius: '16px',
-                          border: '1px solid rgba(255,255,255,0.05)',
+                          border: '1px solid var(--border-color)',
                           display: 'flex',
                           gap: '30px',
                           flexWrap: 'wrap'

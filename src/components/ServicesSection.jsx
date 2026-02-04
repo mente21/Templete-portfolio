@@ -152,7 +152,7 @@ const ServicesSection = () => {
                             {service.price && (
                                 <div>
                                     <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif, sans-serif", letterSpacing: '1px' }}>STARTING AT</span>
-                                    <div style={{ fontSize: '1.25rem', fontFamily: "'Abril Fatface', serif", color: 'white' }}>{service.price}</div>
+                                    <div style={{ fontSize: '1.25rem', fontFamily: "'Abril Fatface', serif", color: 'var(--text-primary)' }}>{service.price}</div>
                                 </div>
                             )}
                             <a href="#contact" style={{ 

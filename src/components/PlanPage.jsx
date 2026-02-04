@@ -183,7 +183,7 @@ const PlanPage = () => {
     };
 
     return (
-        <div className="plan-page-root" style={{ backgroundColor: '#121212', minHeight: '100vh', padding: '40px', fontFamily: "'Inter', sans-serif", color: '#fff' }}>
+        <div className="plan-page-root" style={{ backgroundColor: 'var(--bg-color)', minHeight: '100vh', padding: '40px', fontFamily: "'Inter', sans-serif", color: 'var(--text-primary)' }}>
             
             {/* Header */}
             <div className="plan-header">
@@ -227,18 +227,18 @@ const PlanPage = () => {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 10 }}
-                                    style={{ position: 'absolute', top: '100%', right: 0, marginTop: '10px', background: '#1a1a1a', border: '1px solid #333', borderRadius: '12px', padding: '8px', width: '220px', zIndex: 100, boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}
+                                    style={{ position: 'absolute', top: '100%', right: 0, marginTop: '10px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '8px', width: '220px', zIndex: 100, boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}
                                 >
-                                    <div style={{ padding: '12px', fontSize: '14px', color: '#eee', cursor: 'pointer', borderRadius: '8px', display: 'flex', justifyContent: 'space-between' }} onClick={() => setShowCompleted(!showCompleted)} className="hover-item">
+                                    <div style={{ padding: '12px', fontSize: '14px', color: 'var(--text-primary)', cursor: 'pointer', borderRadius: '8px', display: 'flex', justifyContent: 'space-between' }} onClick={() => setShowCompleted(!showCompleted)} className="hover-item">
                                         <span>Show Completed</span>
                                         {showCompleted && <Check size={16} color="#22c55e" />}
                                     </div>
-                                    <div style={{ borderBottom: '1px solid #333', margin: '4px 0' }}></div>
+                                    <div style={{ borderBottom: '1px solid var(--border-color)', margin: '4px 0' }}></div>
                                     <div style={{ padding: '8px 12px', fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '1px' }}>Sort By</div>
-                                    <div style={{ padding: '10px 12px', fontSize: '14px', color: sortBy === 'newest' ? '#fff' : '#888', cursor: 'pointer', borderRadius: '8px' }} onClick={() => setSortBy('newest')} className="hover-item">Newest First</div>
-                                    <div style={{ padding: '10px 12px', fontSize: '14px', color: sortBy === 'alphabetical' ? '#fff' : '#888', cursor: 'pointer', borderRadius: '8px' }} onClick={() => setSortBy('alphabetical')} className="hover-item">Alphabetical</div>
+                                    <div style={{ padding: '10px 12px', fontSize: '14px', color: sortBy === 'newest' ? 'var(--accent-primary)' : 'var(--text-secondary)', cursor: 'pointer', borderRadius: '8px' }} onClick={() => setSortBy('newest')} className="hover-item">Newest First</div>
+                                    <div style={{ padding: '10px 12px', fontSize: '14px', color: sortBy === 'alphabetical' ? 'var(--accent-primary)' : 'var(--text-secondary)', cursor: 'pointer', borderRadius: '8px' }} onClick={() => setSortBy('alphabetical')} className="hover-item">Alphabetical</div>
                                     
-                                    <div style={{ borderBottom: '1px solid #333', margin: '4px 0' }}></div>
+                                    <div style={{ borderBottom: '1px solid var(--border-color)', margin: '4px 0' }}></div>
                                     <div style={{ padding: '12px', fontSize: '14px', color: '#ef4444', cursor: 'pointer', borderRadius: '8px', fontWeight: 600 }} onClick={handleClearAll} className="hover-item">
                                         Clear All Tasks
                                     </div>
@@ -257,7 +257,7 @@ const PlanPage = () => {
                         <div style={{ display: 'flex', gap: '8px' }}>
                             <button 
                                 onClick={() => { setIsEditingCategory(false); setCurrentCategory({ slug: '', title: '', subtitle: '', color: '#be185d', gradient: 'linear-gradient(135deg, #be185d, #db2777)' }); setIsCategoryModalOpen(true); }}
-                                style={{ background: '#333', border: 'none', color: '#fff', width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                style={{ background: 'var(--border-color)', border: 'none', color: 'var(--text-primary)', width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                             >
                                 <Plus size={18} />
                             </button>
@@ -278,11 +278,11 @@ const PlanPage = () => {
                             className="category-item-all"
                             style={{ 
                                 padding: '16px', 
-                                background: activeFilter === 'All' ? '#fff' : '#1e1e1e', 
-                                color: activeFilter === 'All' ? '#000' : '#fff', 
+                                background: activeFilter === 'All' ? 'var(--text-primary)' : 'var(--card-bg)', 
+                                color: activeFilter === 'All' ? 'var(--bg-color)' : 'var(--text-primary)', 
                                 borderRadius: '14px', 
                                 cursor: 'pointer', 
-                                border: '1px solid #333', 
+                                border: '1px solid var(--border-color)', 
                                 transition: 'all 0.2s' 
                             }}
                         >
@@ -304,7 +304,7 @@ const PlanPage = () => {
                                         background: cat.gradient, 
                                         borderRadius: '16px', 
                                         cursor: 'pointer', 
-                                        border: activeFilter === cat.slug ? '2px solid #fff' : '1px solid rgba(255,255,255,0.1)', 
+                                        border: activeFilter === cat.slug ? '2px solid var(--text-primary)' : '1px solid rgba(255,255,255,0.1)', 
                                         boxShadow: '0 4px 15px rgba(0,0,0,0.2)', 
                                         transition: 'all 0.2s' 
                                     }}
@@ -348,7 +348,7 @@ const PlanPage = () => {
                                 <h2 style={{ fontSize: '24px', fontWeight: 800, margin: 0 }}>
                                     {viewMode === 'scheduled' ? 'Scheduled Timeline' : (activeFilter === 'All' ? 'Upcoming Focus' : categories.find(c => c.slug === activeFilter)?.title)}
                                 </h2>
-                                <p style={{ color: '#666', marginTop: '4px', fontSize: '14px' }}>
+                                <p style={{ color: 'var(--text-secondary)', marginTop: '4px', fontSize: '14px' }}>
                                     {viewMode === 'scheduled' ? 'Tasks organized by date' : new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
                                 </p>
                             </div>
@@ -359,7 +359,7 @@ const PlanPage = () => {
                                         <h3 className="section-label">Active Tasks</h3>
                                         {activeTasks.length === 0 && (
                                             <div className="empty-state">
-                                                <p style={{ color: '#555', margin: 0 }}>No active tasks found.</p>
+                                                <p style={{ color: 'var(--text-secondary)', margin: 0 }}>No active tasks found.</p>
                                             </div>
                                         )}
                                         {activeTasks.map(task => (
@@ -451,7 +451,7 @@ const PlanPage = () => {
                                     value={isEditModalOpen ? editingTask?.title : newTask.title}
                                     onChange={(e) => isEditModalOpen ? setEditingTask({ ...editingTask, title: e.target.value }) : setNewTask({ ...newTask, title: e.target.value })}
                                     placeholder="Task description..."
-                                    style={{ width: '100%', minHeight: '100px', background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff', padding: '15px', fontSize: '16px', outline: 'none' }}
+                                    style={{ width: '100%', minHeight: '100px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '12px', color: 'var(--text-primary)', padding: '15px', fontSize: '16px', outline: 'none' }}
                                 />
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
@@ -460,7 +460,7 @@ const PlanPage = () => {
                                     <select
                                         value={isEditModalOpen ? editingTask?.category : newTask.category}
                                         onChange={(e) => isEditModalOpen ? setEditingTask({ ...editingTask, category: e.target.value }) : setNewTask({ ...newTask, category: e.target.value })}
-                                        style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '10px', color: '#fff', padding: '12px', outline: 'none' }}
+                                        style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '10px', color: 'var(--text-primary)', padding: '12px', outline: 'none' }}
                                     >
                                         {categories.map(cat => (
                                             <option key={cat.id} value={cat.slug}>{cat.title}</option>
@@ -474,20 +474,20 @@ const PlanPage = () => {
                                         value={isEditModalOpen ? editingTask?.time : newTask.time}
                                         onChange={(e) => isEditModalOpen ? setEditingTask({ ...editingTask, time: e.target.value }) : setNewTask({ ...newTask, time: e.target.value })}
                                         placeholder="e.g. 10:00 AM"
-                                        style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '10px', color: '#fff', padding: '12px', outline: 'none' }}
+                                        style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '10px', color: 'var(--text-primary)', padding: '12px', outline: 'none' }}
                                     />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>
                                 <button
                                     onClick={() => isEditModalOpen ? handleEditTask() : handleAddTask()}
-                                    style={{ flex: 1, background: '#fff', color: '#000', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: 800, cursor: 'pointer', fontSize: '15px' }}
+                                    style={{ flex: 1, background: 'var(--text-primary)', color: 'var(--bg-color)', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: 800, cursor: 'pointer', fontSize: '15px' }}
                                 >
                                     {isEditModalOpen ? 'Save Changes' : 'Create Task'}
                                 </button>
                                 <button
                                     onClick={() => { setIsAddModalOpen(false); setIsEditModalOpen(false); setEditingTask(null); }}
-                                    style={{ background: '#222', color: '#888', border: '1px solid #333', padding: '14px 20px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer' }}
+                                    style={{ background: 'var(--card-bg)', color: 'var(--text-secondary)', border: '1px solid var(--border-color)', padding: '14px 20px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer' }}
                                 >
                                     Cancel
                                 </button>
@@ -506,7 +506,7 @@ const PlanPage = () => {
                                 <input
                                     value={currentCategory.title}
                                     onChange={(e) => setCurrentCategory({ ...currentCategory, title: e.target.value })}
-                                    style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff', padding: '15px', fontSize: '16px', outline: 'none' }}
+                                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '12px', color: 'var(--text-primary)', padding: '15px', fontSize: '16px', outline: 'none' }}
                                 />
                             </div>
                             <div>
@@ -514,7 +514,7 @@ const PlanPage = () => {
                                 <input
                                     value={currentCategory.subtitle}
                                     onChange={(e) => setCurrentCategory({ ...currentCategory, subtitle: e.target.value })}
-                                    style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff', padding: '15px', fontSize: '16px', outline: 'none' }}
+                                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '12px', color: 'var(--text-primary)', padding: '15px', fontSize: '16px', outline: 'none' }}
                                 />
                             </div>
                             <div style={{ display: 'flex', gap: '15px' }}>
@@ -523,7 +523,7 @@ const PlanPage = () => {
                                     <input
                                         value={currentCategory.color}
                                         onChange={(e) => setCurrentCategory({ ...currentCategory, color: e.target.value })}
-                                        style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff', padding: '15px', fontSize: '16px', outline: 'none' }}
+                                        style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '12px', color: 'var(--text-primary)', padding: '15px', fontSize: '16px', outline: 'none' }}
                                     />
                                 </div>
                                 <div style={{ width: '60px', height: '60px', borderRadius: '12px', background: currentCategory.color, marginTop: '25px', border: '4px solid #333' }}></div>
@@ -533,12 +533,12 @@ const PlanPage = () => {
                                 <input
                                     value={currentCategory.gradient}
                                     onChange={(e) => setCurrentCategory({ ...currentCategory, gradient: e.target.value })}
-                                    style={{ width: '100%', background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff', padding: '15px', fontSize: '14px', outline: 'none', fontFamily: 'monospace' }}
+                                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '12px', color: 'var(--text-primary)', padding: '15px', fontSize: '14px', outline: 'none', fontFamily: 'monospace' }}
                                 />
                             </div>
                             <button
                                 onClick={handleSaveCategory}
-                                style={{ background: '#fff', color: '#000', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: 800, cursor: 'pointer', marginTop: '10px' }}
+                                style={{ background: 'var(--text-primary)', color: 'var(--bg-color)', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: 800, cursor: 'pointer', marginTop: '10px' }}
                             >
                                 Save Category
                             </button>
@@ -568,9 +568,9 @@ const PlanPage = () => {
                 }
                 .plan-main {
                     flex: 1;
-                    background: #000;
+                    background: var(--bg-color);
                     border-radius: 24px;
-                    border: 1px solid #222;
+                    border: 1px solid var(--border-color);
                     padding: 30px;
                     overflow-y: auto;
                 }
@@ -589,9 +589,9 @@ const PlanPage = () => {
                 .empty-state {
                     padding: 40px;
                     text-align: center;
-                    background: #0a0a0a;
+                    background: var(--card-bg);
                     border-radius: 16px;
-                    border: 1px dashed #333;
+                    border: 1px dashed var(--border-color);
                 }
                 .add-task-float {
                     position: fixed;
@@ -630,9 +630,9 @@ const PlanPage = () => {
                 .back-btn {
                     margin-right: 20px;
                     cursor: pointer;
-                    color: #fff;
-                    background: #222;
-                    border: 1px solid #333;
+                    color: var(--text-primary);
+                    background: var(--card-bg);
+                    border: 1px solid var(--border-color);
                     width: 40px;
                     height: 40px;
                     display: flex;
@@ -663,8 +663,8 @@ const PlanPage = () => {
                     font-size: 14px;
                 }
                 .view-mode-btn.active {
-                    background: #fff;
-                    color: #000;
+                    background: var(--text-primary);
+                    color: var(--bg-color);
                 }
                 .options-btn {
                     background: #222;
@@ -679,10 +679,10 @@ const PlanPage = () => {
                 .modal-content {
                     width: 100%;
                     max-width: 500px;
-                    background-color: #161616;
+                    background-color: var(--bg-color);
                     border-radius: 24px;
                     padding: 40px;
-                    border: 1px solid #333;
+                    border: 1px solid var(--border-color);
                     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
                 }
 
@@ -739,12 +739,12 @@ const PlanPage = () => {
                         width: 85%;
                         max-width: 320px;
                         height: 100vh;
-                        background: #161616;
+                        background: var(--bg-color);
                         z-index: 1000;
                         padding: 30px 20px;
                         box-shadow: 20px 0 50px rgba(0,0,0,0.8);
                         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                        border-right: 1px solid #333;
+                        border-right: 1px solid var(--border-color);
                         margin-bottom: 0;
                         max-height: none;
                     }
@@ -812,17 +812,17 @@ const TaskItem = ({ task, catStyles, onToggle, onDelete, onEdit, isCompleted }) 
     <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        style={{ display: 'flex', gap: '15px', padding: '18px', backgroundColor: '#181818', borderRadius: '18px', borderLeft: `6px solid ${catStyles.color}`, border: '1px solid #222', alignItems: 'center', opacity: isCompleted ? 0.6 : 1 }}
+        style={{ display: 'flex', gap: '15px', padding: '18px', backgroundColor: 'var(--card-bg)', borderRadius: '18px', borderLeft: `6px solid ${catStyles.color}`, border: '1px solid var(--border-color)', alignItems: 'center', opacity: isCompleted ? 0.6 : 1 }}
     >
         <div
             onClick={() => onToggle(task.id)}
             style={{ width: '26px', height: '26px', borderRadius: '50%', background: isCompleted ? '#22c55e' : 'transparent', border: isCompleted ? 'none' : '2px solid #333', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
         >
-            {isCompleted && <Check size={16} color="#000" />}
+            {isCompleted && <Check size={16} color="var(--bg-color)" />}
         </div>
         
         <div style={{ flex: 1 }}>
-            <h4 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: isCompleted ? '#666' : '#fff', textDecoration: isCompleted ? 'line-through' : 'none' }}>{task.title}</h4>
+            <h4 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: isCompleted ? 'var(--text-secondary)' : 'var(--text-primary)', textDecoration: isCompleted ? 'line-through' : 'none' }}>{task.title}</h4>
             <div style={{ display: 'flex', gap: '10px', fontSize: '11px', color: '#555', marginTop: '6px', fontWeight: 700, textTransform: 'uppercase' }}>
                 <span style={{ color: catStyles.color }}>{catStyles.title}</span>
                 <span>•</span>
@@ -831,8 +831,8 @@ const TaskItem = ({ task, catStyles, onToggle, onDelete, onEdit, isCompleted }) 
         </div>
 
         <div style={{ display: 'flex', gap: '8px' }}>
-            <button onClick={() => onEdit(task)} style={{ background: 'none', border: 'none', color: '#444', cursor: 'pointer' }}><Edit2 size={16} /></button>
-            <button onClick={() => onDelete(task.id)} style={{ background: 'none', border: 'none', color: '#444', cursor: 'pointer' }}><Trash2 size={16} /></button>
+            <button onClick={() => onEdit(task)} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}><Edit2 size={16} /></button>
+            <button onClick={() => onDelete(task.id)} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}><Trash2 size={16} /></button>
         </div>
     </motion.div>
 );

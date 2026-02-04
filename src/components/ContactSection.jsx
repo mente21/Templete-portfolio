@@ -9,6 +9,25 @@ const ContactSection = () => {
     const navigate = useNavigate();
     const { data: contactData, loading } = useCollection('contact');
     const [status, setStatus] = useState('');
+    const [currentTime, setCurrentTime] = useState('');
+
+    React.useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const options = {
+                timeZone: 'Africa/Addis_Ababa',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            };
+            const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+            setCurrentTime(timeString);
+        };
+
+        updateTime();
+        const interval = setInterval(updateTime, 60000);
+        return () => clearInterval(interval);
+    }, []);
 
     const dynamicContact = contactData?.[0] || {
         email: "hello@dominique.design",
@@ -301,7 +320,7 @@ const ContactSection = () => {
                                     width: '100%',
                                     padding: '18px',
                                     background: 'var(--accent-primary)',
-                                    color: 'white',
+                                    color: 'var(--bg-color)',
                                     border: 'none',
                                     borderRadius: '12px',
                                     fontFamily: "'Inter', sans-serif, sans-serif",
@@ -377,7 +396,7 @@ const ContactSection = () => {
                         <h2 style={{
                             fontSize: '4rem',
                             fontFamily: "'Abril Fatface', serif",
-                            color: 'white',
+                            color: 'var(--text-primary)',
                             lineHeight: 0.9,
                             marginBottom: '30px'
                         }}>
@@ -438,7 +457,7 @@ const ContactSection = () => {
                                         <span className="nav-text" style={{
                                             fontSize: '1.2rem',
                                             fontFamily: "'Inter', sans-serif",
-                                            color: 'white',
+                                            color: 'var(--text-primary)',
                                             fontWeight: 500,
                                             transition: 'transform 0.3s ease'
                                         }}>{item.name}</span>
@@ -484,7 +503,7 @@ const ContactSection = () => {
                                     <span style={{ position: 'absolute', display: 'inline-flex', height: '100%', width: '100%', borderRadius: '50%', background: '#4ade80', opacity: 0.75, animation: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite' }}></span>
                                     <span style={{ position: 'relative', display: 'inline-flex', borderRadius: '50%', height: '12px', width: '12px', background: '#4ade80' }}></span>
                                 </span>
-                                <span style={{ color: 'white', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>ACCEPTING PROJECTS</span>
+                                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>ACCEPTING PROJECTS</span>
                             </div>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
                                 Currently open for new collaborations starting March 2026.
@@ -492,7 +511,7 @@ const ContactSection = () => {
                         </div>
 
                         <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: "'Inter', sans-serif" }}>
-                            <div style={{ marginBottom: '5px' }}>London, UK • 11:42 AM GMT</div>
+                            <div style={{ marginBottom: '5px' }}>Addis Ababa, Ethiopia • {currentTime || '...'} EAT</div>
                             <a href="mailto:hello@dominique.design" style={{ color: 'var(--accent-primary)', textDecoration: 'none', borderBottom: '1px solid var(--accent-primary)' }}>hello@dominique.design</a>
                         </div>
                     </div>

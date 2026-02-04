@@ -97,7 +97,7 @@ const SkillsInterests = () => {
           transform: 'translate(-50%, -50%)',
           fontSize: '15rem',
           fontWeight: 900,
-          color: 'rgba(255,255,255,0.02)',
+          color: 'var(--text-stroke)',
           fontFamily: "'Playfair Display', serif", // More elegant font
           zIndex: -1,
           pointerEvents: 'none',
@@ -137,7 +137,7 @@ const SkillsInterests = () => {
           <span className="section-title-accent">MY</span>
           <span className="section-title-stroke"> PHILOSOPHY</span>
           {/* Subtle glow behind title */}
-          <div style={{ position: 'absolute', inset: '-20px', background: 'var(--accent-primary)', filter: 'blur(50px)', zIndex: -1, opacity: 0.15 }}></div>
+          <div style={{ position: 'absolute', inset: '-20px', background: 'var(--accent-primary)', filter: 'blur(50px)', zIndex: -1, opacity: 0.1 }}></div>
         </h2>
       </div>
 
@@ -169,8 +169,8 @@ const SkillsInterests = () => {
               }}
               style={{
                 position: 'relative',
-                background: '#0a0a0a',
-                border: `1px solid ${isHovered ? item.color : 'rgba(255,255,255,0.05)'}`,
+                background: 'var(--node-bg)',
+                border: `1px solid ${isHovered ? item.color : 'var(--border-color)'}`,
                 borderRadius: '24px',
                 padding: '40px',
                 height: '380px',
@@ -199,7 +199,7 @@ const SkillsInterests = () => {
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: `linear-gradient(to top, #0a0a0a 20%, transparent 100%)`
+                  background: `linear-gradient(to top, var(--node-bg) 20%, transparent 100%)`
                 }} />
               </div>
 
@@ -214,7 +214,7 @@ const SkillsInterests = () => {
                     width: '50px',
                     height: '50px',
                     borderRadius: '12px',
-                    background: isHovered ? item.color : 'rgba(255,255,255,0.05)',
+                    background: isHovered ? item.color : 'var(--border-color)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -226,7 +226,7 @@ const SkillsInterests = () => {
                   <div style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: '0.9rem',
-                    color: 'rgba(255,255,255,0.3)',
+                    color: 'var(--text-stroke)',
                     fontWeight: 700
                   }}>
                     0{idx + 1}
@@ -236,7 +236,7 @@ const SkillsInterests = () => {
                 <h3 style={{
                   fontSize: '2rem',
                   fontFamily: "'Cinzel', serif",
-                  color: 'white',
+                  color: 'var(--text-primary)',
                   marginBottom: '10px'
                 }}>
                   {item.title}
@@ -258,7 +258,7 @@ const SkillsInterests = () => {
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <p style={{
                   fontSize: '0.95rem',
-                  color: 'rgba(255,255,255,0.8)',
+                  color: 'var(--text-secondary)',
                   lineHeight: 1.6,
                   fontFamily: "'Inter', sans-serif",
                   marginBottom: '20px',
@@ -268,7 +268,7 @@ const SkillsInterests = () => {
                   {item.description}
                 </p>
 
-                <div style={{ height: '1px', width: '100%', background: 'rgba(255,255,255,0.1)', marginBottom: '20px' }} />
+                <div style={{ height: '1px', width: '100%', background: 'var(--border-color)', marginBottom: '20px' }} />
 
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   {item.tags.map(tag => (
@@ -277,7 +277,7 @@ const SkillsInterests = () => {
                       color: isHovered ? '#fff' : 'rgba(255,255,255,0.4)',
                       padding: '4px 10px',
                       borderRadius: '4px',
-                      background: 'rgba(255,255,255,0.05)',
+                      background: 'var(--border-color)',
                       transition: 'color 0.3s ease'
                     }}>
                       #{tag}

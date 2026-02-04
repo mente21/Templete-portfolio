@@ -11,9 +11,9 @@ export const dummyData = {
     {
       title: "Livable, Not Just Workable",
       desc: "My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.",
-      imageUrl: "/dominique/abstract_art.png",
+      imageUrl: "/dominique/eye_closeup_final.jpg",
       stats: "1M+ REACH, 100+ ADVOCACY POSTS, INFINITE COURAGE",
-      detailedBio: "As an Ethiopian-born student of psychology, I've learned that life isn't about finding a 'workable' path—it's about building a 'livable' one. My story is a collection of moments: the aroma of traditional coffee, the stroke of an abstract painting, and the deep connections formed with those I love. \n\nSince my Stage 4 diagnosis in April 2024, my mission has expanded. It's no longer just about awareness; it's about documenting the beauty in everything from fashion to friendship. This site is a record of that spirit—a place where the daily rhythm of life meets a purpose that transcends the diagnosis.",
+      detailedBio: "As an Ethiopian-born student of psychology, I've learned that life isn't about finding a 'workable' path—it's about building a 'livable' one. My story is a collection of moments: the aroma of traditional coffee, the stroke of an abstract painting, and the deep connections formed with those I love. \\n\\nSince my Stage 4 diagnosis in April 2024, my mission has expanded. It's no longer just about awareness; it's about documenting the beauty in everything from fashion to friendship. This site is a record of that spirit—a place where the daily rhythm of life meets a purpose that transcends the diagnosis.",
       mission: "To show that a life of meaning is built through food, peace, ideas, and the simple joy of a morning cup of coffee.",
       philosophy: [
         {
@@ -30,9 +30,10 @@ export const dummyData = {
         }
       ],
       gallery: [
-        "/dominique/traditional_coffee_cup.png",
-        "/dominique/abstract_art.png",
-        "/dominique/interior_flowers.png"
+        "/dominique/eye_closeup_final.jpg",
+        "/dominique/coffee_1.png",
+        "/dominique/food_cut.png",
+        "/dominique/tibs.png"
       ]
     }
   ],

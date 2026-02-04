@@ -118,7 +118,7 @@ const MemoriesGalleryPage = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: '#f0f0f0', fontFamily: "'Inter', sans-serif" }}>
+        <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-color)', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif" }}>
 
             {/* Navigation */}
             <nav style={{
@@ -129,13 +129,13 @@ const MemoriesGalleryPage = () => {
                 position: 'fixed',
                 top: 0, left: 0, width: '100%',
                 zIndex: 50,
-                background: 'linear-gradient(to bottom, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0) 100%)',
+                background: 'var(--sidebar-bg)',
                 backdropFilter: 'blur(2px)'
             }}>
                 <motion.button
                     onClick={() => navigate('/')}
                     whileHover={{ x: -4, color: '#d946ef' }}
-                    style={{ background: 'none', border: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1px' }}
+                    style={{ background: 'none', border: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1px' }}
                 >
                     <ArrowLeft size={20} /> Back to Hub
                 </motion.button>
@@ -152,7 +152,7 @@ const MemoriesGalleryPage = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ fontFamily: "'Abril Fatface', serif", fontSize: 'clamp(2.5rem, 6vw, 5rem)', marginBottom: '30px', lineHeight: 1.1, position: 'relative', zIndex: 1, color: 'white', letterSpacing: '-1px', textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
+                    style={{ fontFamily: "'Abril Fatface', serif", fontSize: 'clamp(2.5rem, 6vw, 5rem)', marginBottom: '30px', lineHeight: 1.1, position: 'relative', zIndex: 1, color: 'var(--text-primary)', letterSpacing: '-1px', textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
                 >
                     <span style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #a1a1aa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>
                         Moments, captured
@@ -161,8 +161,8 @@ const MemoriesGalleryPage = () => {
 
                 <motion.div initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }} transition={{ duration: 0.8, delay: 0.4 }} style={{ width: '60px', height: '2px', background: '#f97316', margin: '0 auto 30px', position: 'relative', zIndex: 1 }} />
 
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '550px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.7, position: 'relative', zIndex: 1, fontFamily: "'Inter', sans-serif", fontWeight: 300, letterSpacing: '0.5px' }}>
-                    <span style={{ fontStyle: 'italic', color: 'white' }}>"Time stands still."</span> <br />
+                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} style={{ color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.7, position: 'relative', zIndex: 1, fontFamily: "'Inter', sans-serif", fontWeight: 300, letterSpacing: '0.5px' }}>
+                    <span style={{ fontStyle: 'italic', color: 'var(--text-primary)' }}>"Time stands still."</span> <br />
                     A collection of visual stories from my journeys around the world.
                 </motion.p>
             </header>
@@ -189,15 +189,15 @@ const MemoriesGalleryPage = () => {
                         </div>
                         <div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                <h3 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '1.4rem', margin: 0, color: 'white' }}>{item.title}</h3>
+                                <h3 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '1.4rem', margin: 0, color: 'var(--text-primary)' }}>{item.title}</h3>
                                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                                    <button onClick={(e) => handleLike(e, item.id)} style={{ background: 'none', border: 'none', padding: 0, display: 'flex', alignItems: 'center', gap: '6px', color: item.isLiked ? '#ef4444' : 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                                    <button onClick={(e) => handleLike(e, item.id)} style={{ background: 'none', border: 'none', padding: 0, display: 'flex', alignItems: 'center', gap: '6px', color: item.isLiked ? '#ef4444' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                                         <Heart size={18} fill={item.isLiked ? "#ef4444" : "none"} /> {item.likes}
                                     </button>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}><MessageCircle size={18} /> {item.comments.length}</div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}><MessageCircle size={18} /> {item.comments.length}</div>
                                 </div>
                             </div>
-                            <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.description}</p>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{item.description}</p>
                         </div>
                     </motion.div>
                 ))}
@@ -208,39 +208,39 @@ const MemoriesGalleryPage = () => {
                 {selectedItem && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ position: 'fixed', inset: 0, zIndex: 100, background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }} onClick={() => setSelectedItem(null)}>
                         <div style={{ position: 'absolute', top: '30px', right: '30px', display: 'flex', gap: '20px', zIndex: 101, pointerEvents: 'auto' }}>
-                            <button onClick={(e) => { e.stopPropagation(); }} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', opacity: 0.7 }}><Share2 size={24} /></button>
-                            <button onClick={() => setSelectedItem(null)} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}><X size={32} /></button>
+                            <button onClick={(e) => { e.stopPropagation(); }} style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', opacity: 0.7 }}><Share2 size={24} /></button>
+                            <button onClick={() => setSelectedItem(null)} style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}><X size={32} /></button>
                         </div>
-                        <motion.div layoutId={`memory-piece-${selectedItem.id}`} style={{ display: 'flex', background: '#111', maxWidth: '1200px', width: '95vw', height: '85vh', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} onClick={(e) => e.stopPropagation()}>
+                        <motion.div layoutId={`memory-piece-${selectedItem.id}`} style={{ display: 'flex', background: 'var(--card-bg)', maxWidth: '1200px', width: '95vw', height: '85vh', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} onClick={(e) => e.stopPropagation()}>
                             <style>{`@media (max-width: 900px) { .lightbox-content { flex-direction: column; overflow-y: auto !important; } .lightbox-image { height: 50% !important; width: 100% !important; } .lightbox-details { width: 100% !important; padding: 20px !important; } }`}</style>
                             <div className="lightbox-image" style={{ width: '65%', height: '100%', background: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src={selectedItem.src} alt={selectedItem.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                             </div>
-                            <div className="lightbox-details" style={{ width: '35%', display: 'flex', flexDirection: 'column', padding: '40px', background: '#111', borderLeft: '1px solid #222' }}>
+                            <div className="lightbox-details" style={{ width: '35%', display: 'flex', flexDirection: 'column', padding: '40px', background: 'var(--card-bg)', borderLeft: '1px solid var(--border-color)' }}>
                                 <div style={{ marginBottom: '30px' }}>
                                     <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', margin: '0 0 10px 0', lineHeight: 1.1 }}>{selectedItem.title}</h2>
-                                    <p style={{ fontSize: '0.9rem', color: '#888', margin: 0 }}>{selectedItem.year} — {selectedItem.medium}</p>
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>{selectedItem.year} — {selectedItem.medium}</p>
                                 </div>
                                 <div style={{ flex: 1, overflowY: 'auto', paddingRight: '10px' }}>
-                                    <p style={{ color: '#ccc', lineHeight: 1.6, marginTop: 0 }}>{selectedItem.description}</p>
-                                    <div style={{ margin: '30px 0', borderTop: '1px solid #222', paddingTop: '20px' }}>
+                                    <p style={{ color: 'var(--text-primary)', lineHeight: 1.6, marginTop: 0 }}>{selectedItem.description}</p>
+                                    <div style={{ margin: '30px 0', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                                            <button onClick={(e) => handleLike(e, selectedItem.id)} style={{ background: 'none', border: '1px solid #333', borderRadius: '4px', padding: '8px 16px', color: selectedItem.isLiked ? '#ef4444' : 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                            <button onClick={(e) => handleLike(e, selectedItem.id)} style={{ background: 'none', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '8px 16px', color: selectedItem.isLiked ? '#ef4444' : 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                 <Heart size={18} fill={selectedItem.isLiked ? "#ef4444" : "none"} /> Like ({selectedItem.likes})
                                             </button>
-                                            <span style={{ color: '#666', fontSize: '0.9rem' }}>{selectedItem.comments.length} comments</span>
+                                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{selectedItem.comments.length} comments</span>
                                         </div>
                                     </div>
                                     <div style={{ marginTop: '20px' }}>
-                                        <h4 style={{ margin: '0 0 15px 0', fontSize: '0.9rem', color: '#666', textTransform: 'uppercase' }}>Recent Comments</h4>
+                                        <h4 style={{ margin: '0 0 15px 0', fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Recent Comments</h4>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                                            {selectedItem.comments.length > 0 ? (selectedItem.comments.map((c, i) => (<div key={i} style={{ fontSize: '0.9rem' }}><span style={{ fontWeight: 'bold', color: '#d946ef' }}>{c.user}</span><p style={{ margin: '2px 0 0 0', color: '#aaa' }}>{c.text}</p></div>))) : (<p style={{ color: '#444', fontStyle: 'italic' }}>No comments yet.</p>)}
+                                            {selectedItem.comments.length > 0 ? (selectedItem.comments.map((c, i) => (<div key={i} style={{ fontSize: '0.9rem' }}><span style={{ fontWeight: 'bold', color: '#d946ef' }}>{c.user}</span><p style={{ margin: '2px 0 0 0', color: 'var(--text-secondary)' }}>{c.text}</p></div>))) : (<p style={{ color: '#444', fontStyle: 'italic' }}>No comments yet.</p>)}
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{ marginTop: '20px', borderTop: '1px solid #222', paddingTop: '20px' }}>
+                                <div style={{ marginTop: '20px', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
                                     <form onSubmit={handleAddComment} style={{ display: 'flex', gap: '10px' }}>
-                                        <input type="text" placeholder="Write a comment..." value={commentInput} onChange={(e) => setCommentInput(e.target.value)} style={{ flex: 1, background: '#222', border: 'none', borderRadius: '4px', padding: '12px', color: 'white', fontFamily: "'Inter', sans-serif" }} />
+                                        <input type="text" placeholder="Write a comment..." value={commentInput} onChange={(e) => setCommentInput(e.target.value)} style={{ flex: 1, background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '12px', color: 'var(--text-primary)', fontFamily: "'Inter', sans-serif" }} />
                                         <button type="submit" style={{ background: '#f97316', border: 'none', borderRadius: '4px', padding: '0 15px', color: 'white', cursor: 'pointer' }}><Send size={18} /></button>
                                     </form>
                                 </div>
@@ -249,6 +249,22 @@ const MemoriesGalleryPage = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <footer className="gallery-footer" style={{
+                textAlign: 'center',
+                padding: '50px',
+                borderTop: '1px solid rgba(255,255,255,0.05)',
+                color: '#444',
+                fontSize: '0.8rem',
+                textTransform: 'uppercase',
+                letterSpacing: '2px'
+            }}>
+                © 2024 Visual Stories Collection
+            </footer>
+            <style>{`
+                @media (max-width: 768px) {
+                    .gallery-footer { display: none !important; }
+                }
+            `}</style>
         </div>
     );
 };

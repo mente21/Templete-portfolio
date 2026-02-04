@@ -335,8 +335,8 @@ const MilestoneCard = ({ milestone, isLeft, onClick }) => {
       whileHover={{ y: -8, boxShadow: `0 20px 40px -10px ${milestone.color || 'var(--accent-primary)'}22` }}
       onClick={onClick}
       style={{
-        background: 'rgba(255, 255, 255, 0.02)',
-        border: `1px solid rgba(255, 255, 255, 0.05)`,
+        background: 'var(--card-bg)',
+        border: `1px solid var(--border-color)`,
         borderRadius: '16px',
         padding: '35px',
         cursor: 'pointer',

@@ -18,7 +18,7 @@ const AboutDetailPage = () => {
 
     if (loading || !about) {
         return (
-            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-color)', color: 'white' }}>
+            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-color)', color: 'var(--text-primary)' }}>
                 <div className="skeleton" style={{ width: '200px', height: '40px', borderRadius: '8px' }}></div>
             </div>
         );
@@ -36,13 +36,13 @@ const AboutDetailPage = () => {
             <div style={{ position: 'absolute', bottom: '10%', left: '-10%', width: '400px', height: '400px', background: 'rgba(217, 70, 239, 0.05)', filter: 'blur(100px)', borderRadius: '50%', zIndex: 0 }} />
 
             {/* Navigation */}
-            <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border-color)', padding: '20px 5%' }}>
+            <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'var(--sidebar-bg)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border-color)', padding: '20px 5%' }}>
                 <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center' }}>
                     <motion.button
                         whileHover={{ x: -10 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate('/')}
-                        style={{ background: 'none', border: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', fontSize: '1rem', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}
+                        style={{ background: 'none', border: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', fontSize: '1rem', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}
                     >
                         <ArrowLeft size={24} />
                         BACK TO PORTFOLIO
@@ -71,7 +71,7 @@ const AboutDetailPage = () => {
                         transition={{ duration: 1, delay: 0.2 }}
                     >
                         <span style={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '4px', color: 'var(--accent-primary)', textTransform: 'uppercase', marginBottom: '20px', display: 'block' }}>The Full Story</span>
-                        <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 800, marginBottom: '30px', color: 'white', lineHeight: 1.1, fontFamily: "'Inter', sans-serif" }}>
+                        <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 800, marginBottom: '30px', color: 'var(--text-primary)', lineHeight: 1.1, fontFamily: "'Inter', sans-serif" }}>
                             BEYOND THE <br />
                             <span style={{ color: 'var(--accent-primary)' }}>DIAGNOSIS</span>
                         </h1>
@@ -81,8 +81,8 @@ const AboutDetailPage = () => {
                         
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
                             {statItems.map((stat, i) => (
-                                <div key={i} style={{ padding: '20px', background: 'rgba(255,255,255,0.02)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                    <div style={{ fontSize: '2rem', fontWeight: 800, color: 'white' }}>{stat.value}</div>
+                                <div key={i} style={{ padding: '20px', background: 'var(--card-bg)', borderRadius: '20px', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>{stat.value}</div>
                                     <div style={{ fontSize: '0.7rem', color: 'var(--accent-primary)', letterSpacing: '2px', fontWeight: 800, textTransform: 'uppercase' }}>{stat.label}</div>
                                 </div>
                             ))}
@@ -98,9 +98,9 @@ const AboutDetailPage = () => {
                         transition={{ duration: 1 }}
                         viewport={{ once: true }}
                     >
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '40px', color: 'white' }}>HER MISSION</h2>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '40px', color: 'var(--text-primary)' }}>HER MISSION</h2>
                         <div style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-                            <p style={{ marginBottom: '30px', color: 'white', fontWeight: 500, borderLeft: '4px solid var(--accent-primary)', paddingLeft: '25px', fontSize: '1.4rem' }}>
+                            <p style={{ marginBottom: '30px', color: 'var(--text-primary)', fontWeight: 500, borderLeft: '4px solid var(--accent-primary)', paddingLeft: '25px', fontSize: '1.4rem' }}>
                                 "{about.mission}"
                             </p>
                             {about.detailedBio.split('\n\n').map((p, i) => (
@@ -118,7 +118,7 @@ const AboutDetailPage = () => {
                     >
                         <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '40px', padding: '50px', boxShadow: '0 30px 60px rgba(0,0,0,0.3)' }}>
                             <Sparkles size={40} color="var(--accent-primary)" style={{ marginBottom: '30px' }} />
-                            <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '25px', color: 'white' }}>LIFE PILLARS</h3>
+                            <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '25px', color: 'var(--text-primary)' }}>LIFE PILLARS</h3>
                             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                 {['Heritage', 'Livable Philosophy', 'Resilience', 'Advocacy'].map((item, idx) => (
                                     <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
@@ -133,7 +133,7 @@ const AboutDetailPage = () => {
 
                 {/* Philosophy Grid */}
                 <div>
-                    <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '60px', textAlign: 'center', color: 'white' }}>MY PHILOSOPHY</h2>
+                    <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '60px', textAlign: 'center', color: 'var(--text-primary)' }}>MY PHILOSOPHY</h2>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
                         {about.philosophy?.map((philo, i) => (
                             <motion.div
@@ -144,8 +144,8 @@ const AboutDetailPage = () => {
                                 viewport={{ once: true }}
                                 style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '30px', padding: '50px', position: 'relative', overflow: 'hidden' }}
                             >
-                                <div style={{ position: 'absolute', top: '-10px', right: '-10px', fontSize: '6rem', fontWeight: 900, color: 'rgba(255,107,0,0.03)', zIndex: 0 }}>0{i+1}</div>
-                                <h4 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '20px', color: 'white', display: 'flex', alignItems: 'center', gap: '15px', position: 'relative', zIndex: 1 }}>
+                                <div style={{ position: 'absolute', top: '-10px', right: '-10px', fontSize: '6rem', fontWeight: 900, color: 'var(--text-stroke)', zIndex: 0 }}>0{i+1}</div>
+                                <h4 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '20px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '15px', position: 'relative', zIndex: 1 }}>
                                     {i === 0 ? <Users size={24} color="var(--accent-primary)" /> : i === 1 ? <Sparkles size={24} color="var(--accent-primary)" /> : <Compass size={24} color="var(--accent-primary)" />}
                                     {philo.title}
                                 </h4>
@@ -158,12 +158,12 @@ const AboutDetailPage = () => {
 
             {/* Footer Style */}
             <footer style={{ padding: '80px 5%', borderTop: '1px solid var(--border-color)', textAlign: 'center' }}>
-                <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'white', marginBottom: '40px' }}>WANT TO WORK TOGETHER?</h3>
+                <h3 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '40px' }}>WANT TO WORK TOGETHER?</h3>
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => navigate('/')}
-                    style={{ background: 'var(--accent-primary)', color: 'white', border: 'none', padding: '20px 60px', borderRadius: '100px', fontSize: '1.2rem', fontWeight: 700, cursor: 'pointer', fontFamily: "'Inter', sans-serif" }}
+                    style={{ background: 'var(--accent-primary)', color: 'var(--bg-color)', border: 'none', padding: '20px 60px', borderRadius: '100px', fontSize: '1.2rem', fontWeight: 700, cursor: 'pointer', fontFamily: "'Inter', sans-serif" }}
                 >
                     LET'S CONNECT
                 </motion.button>

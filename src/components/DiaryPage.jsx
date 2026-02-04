@@ -135,10 +135,10 @@ const DiaryPage = () => {
             {/* Title Area */}
             <div className="diary-header" style={{ marginBottom: '30px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '15px' }}>
-                    <PenTool size={42} color="#fff" />
-                    <h1 style={{ fontSize: '48px', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#fff', margin: 0, letterSpacing: '-0.5px' }}>Daily journal</h1>
+                    <PenTool size={42} color="var(--text-primary)" />
+                    <h1 style={{ fontSize: '48px', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: 'var(--text-primary)', margin: 0, letterSpacing: '-0.5px' }}>Daily journal</h1>
                 </div>
-                <p style={{ color: '#999', fontSize: '18px', marginTop: '10px', maxWidth: '800px', lineHeight: 1.6 }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '18px', marginTop: '10px', maxWidth: '800px', lineHeight: 1.6 }}>
                     The act of thinking about my life and writing it down each day
                 </p>
             </div>
@@ -149,7 +149,7 @@ const DiaryPage = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 marginBottom: '20px',
-                borderBottom: '1px solid #333',
+                borderBottom: '1px solid var(--border-color)',
                 paddingBottom: '15px'
             }}>
                 <div className="diary-tabs" style={{ 
@@ -166,8 +166,8 @@ const DiaryPage = () => {
                         <span
                             key={month}
                             style={{
-                                color: activeTab === month ? '#fff' : '#888',
-                                borderBottom: activeTab === month ? '2px solid #fff' : 'none',
+                                color: activeTab === month ? 'var(--text-primary)' : 'var(--text-secondary)',
+                                borderBottom: activeTab === month ? '2px solid var(--text-primary)' : 'none',
                                 paddingBottom: '15px',
                                 marginBottom: '-16px',
                                 cursor: 'pointer',
@@ -191,9 +191,9 @@ const DiaryPage = () => {
                             width: '100%',
                             padding: '12px',
                             borderRadius: '8px',
-                            background: '#202020',
-                            color: '#fff',
-                            border: '1px solid #333',
+                            background: 'var(--card-bg)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color)',
                             fontSize: '16px',
                             outline: 'none',
                             appearance: 'none',
@@ -204,7 +204,7 @@ const DiaryPage = () => {
                             <option key={month} value={month}>{month}</option>
                         ))}
                     </select>
-                    <ChevronDown size={20} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#fff', zIndex: 10 }} />
+                    <ChevronDown size={20} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--text-primary)', zIndex: 10 }} />
                 </div>
 
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -217,11 +217,11 @@ const DiaryPage = () => {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             style={{
-                                background: '#1a1a1a',
-                                border: '1px solid #333',
+                                background: 'var(--card-bg)',
+                                border: '1px solid var(--border-color)',
                                 borderRadius: '4px',
                                 padding: '6px 12px',
-                                color: '#fff',
+                                color: 'var(--text-primary)',
                                 outline: 'none',
                                 fontSize: '14px'
                             }}
@@ -232,19 +232,19 @@ const DiaryPage = () => {
                         style={{ padding: '8px', cursor: 'pointer', color: '#888', transition: 'color 0.2s' }}
                         title={`Sort: ${sortOrder === 'newest' ? 'Newest' : 'Oldest'}`}
                     >
-                        <ArrowUpDown size={18} style={{ color: sortOrder === 'newest' ? '#fff' : '#888' }} />
+                        <ArrowUpDown size={18} style={{ color: sortOrder === 'newest' ? 'var(--text-primary)' : 'var(--text-secondary)' }} />
                     </div>
                     <div 
                         onClick={() => setIsSearchVisible(!isSearchVisible)}
-                        style={{ padding: '8px', cursor: 'pointer', color: isSearchVisible ? '#fff' : '#888', transition: 'color 0.2s' }}
+                        style={{ padding: '8px', cursor: 'pointer', color: isSearchVisible ? 'var(--text-primary)' : 'var(--text-secondary)', transition: 'color 0.2s' }}
                     >
                         <Search size={18} />
                     </div>
                     <button
                         onClick={() => navigate('/diary/new')}
                         style={{
-                            backgroundColor: '#fff',
-                            color: 'black',
+                            backgroundColor: 'var(--text-primary)',
+                            color: 'var(--bg-color)',
                             border: 'none',
                             padding: '8px 16px',
                             borderRadius: '6px',
@@ -269,11 +269,11 @@ const DiaryPage = () => {
                             key={entry.id || idx}
                             whileHover={{ y: -4, borderColor: '#555' }}
                             style={{
-                                backgroundColor: '#202020',
+                                backgroundColor: 'var(--card-bg)',
                                 borderRadius: '12px',
                                 padding: '0',
                                 overflow: 'hidden',
-                                border: '1px solid #333',
+                                border: '1px solid var(--border-color)',
                                 transition: 'all 0.2s',
                                 cursor: 'pointer',
                                 minHeight: '180px',
@@ -307,7 +307,7 @@ const DiaryPage = () => {
                                 </div>
                             )}
                             <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <div style={{ fontSize: '15px', fontWeight: 700, color: '#e5e5e5', marginBottom: '8px' }}>
+                                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '8px' }}>
                                     {entry.day}
                                 </div>
                                 <div style={{ fontSize: '13px', color: '#ca8a04', marginBottom: '16px', fontWeight: 600, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
@@ -315,14 +315,14 @@ const DiaryPage = () => {
                                 </div>
 
                                 {entry.title && (
-                                    <div style={{ fontSize: '18px', fontWeight: 600, color: '#fff', marginBottom: '10px' }}>
+                                    <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '10px' }}>
                                         {entry.title}
                                     </div>
                                 )}
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                                     {(Array.isArray(entry.content) ? entry.content : []).map((line, i) => (
-                                        <div key={i} style={{ fontSize: '14px', color: '#a3a3a3', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                                        <div key={i} style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                                             <span style={{ color: '#444', marginTop: '4px' }}>•</span> {line}
                                         </div>
                                     ))}
@@ -330,7 +330,7 @@ const DiaryPage = () => {
 
                                 <div style={{ marginTop: '25px', display: 'flex', gap: '8px' }}>
                                     {(entry.tags || []).map(tag => (
-                                        <span key={tag} style={{ fontSize: '11px', background: 'rgba(255,255,255,0.06)', padding: '4px 10px', borderRadius: '100px', color: '#888', border: '1px solid rgba(255,255,255,0.05)' }}>#{tag}</span>
+                                        <span key={tag} style={{ fontSize: '11px', background: 'var(--border-color)', padding: '4px 10px', borderRadius: '100px', color: 'var(--text-secondary)', border: '1px solid var(--border-color)' }}>#{tag}</span>
                                     ))}
                                 </div>
                             </div>

@@ -141,8 +141,8 @@ const ArtGalleryPage = () => {
     return (
         <div style={{
             minHeight: '100vh',
-            backgroundColor: '#0a0a0a', // Deep dark bg
-            color: '#f0f0f0',
+            backgroundColor: 'var(--bg-color)',
+            color: 'var(--text-primary)',
             fontFamily: "'Inter', sans-serif"
         }}>
 
@@ -157,7 +157,7 @@ const ArtGalleryPage = () => {
                 left: 0,
                 width: '100%',
                 zIndex: 50,
-                background: 'linear-gradient(to bottom, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0) 100%)',
+                background: 'var(--sidebar-bg)',
                 backdropFilter: 'blur(2px)'
             }}>
                 <motion.button
@@ -166,7 +166,7 @@ const ArtGalleryPage = () => {
                     style={{
                         background: 'none',
                         border: 'none',
-                        color: 'white',
+                        color: 'var(--text-primary)',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
@@ -223,7 +223,7 @@ const ArtGalleryPage = () => {
                         lineHeight: 1.1,
                         position: 'relative',
                         zIndex: 1,
-                        color: 'white',
+                        color: 'var(--text-primary)',
                         letterSpacing: '-1px', // Adjusted letter spacing for new text
                         textShadow: '0 10px 30px rgba(0,0,0,0.5)'
                     }}
@@ -257,7 +257,7 @@ const ArtGalleryPage = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     style={{
-                        color: 'rgba(255,255,255,0.7)',
+                        color: 'var(--text-secondary)',
                         maxWidth: '550px',
                         margin: '0 auto',
                         fontSize: '1.2rem',
@@ -269,7 +269,7 @@ const ArtGalleryPage = () => {
                         letterSpacing: '0.5px'
                     }}
                 >
-                    <span style={{ fontStyle: 'italic', color: 'white' }}>"Where light meets shadow."</span> <br />
+                    <span style={{ fontStyle: 'italic', color: 'var(--text-primary)' }}>"Where light meets shadow."</span> <br />
                     An exploration of digital realms, abstract emotions, and the silent beauty of the future.
                 </motion.p>
             </header>
@@ -323,7 +323,7 @@ const ArtGalleryPage = () => {
                         {/* Content Below Image (Outside) */}
                         <div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                <h3 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '1.4rem', margin: 0, color: 'white' }}>
+                                <h3 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '1.4rem', margin: 0, color: 'var(--text-primary)' }}>
                                     {art.title}
                                 </h3>
                                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -336,7 +336,7 @@ const ArtGalleryPage = () => {
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '6px',
-                                            color: art.isLiked ? '#ef4444' : 'rgba(255,255,255,0.6)',
+                                            color: art.isLiked ? '#ef4444' : 'var(--text-secondary)',
                                             cursor: 'pointer',
                                             fontSize: '0.9rem',
                                             transition: 'color 0.2s'
@@ -344,7 +344,7 @@ const ArtGalleryPage = () => {
                                     >
                                         <Heart size={18} fill={art.isLiked ? "#ef4444" : "none"} /> {art.likes}
                                     </button>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                                         <MessageCircle size={18} /> {art.comments.length}
                                     </div>
                                 </div>
@@ -352,7 +352,7 @@ const ArtGalleryPage = () => {
 
                             <p style={{
                                 fontSize: '0.9rem',
-                                color: 'rgba(255,255,255,0.6)',
+                                color: 'var(--text-secondary)',
                                 margin: 0,
                                 lineHeight: 1.5,
                                 display: '-webkit-box',
@@ -399,13 +399,13 @@ const ArtGalleryPage = () => {
                         }}>
                             <button
                                 onClick={(e) => { e.stopPropagation(); /* Add share logic */ }}
-                                style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', opacity: 0.7 }}
+                                style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', opacity: 0.7 }}
                             >
                                 <Share2 size={24} />
                             </button>
                             <button
                                 onClick={() => setSelectedArt(null)}
-                                style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}
+                                style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}
                             >
                                 <X size={32} />
                             </button>
@@ -416,7 +416,7 @@ const ArtGalleryPage = () => {
                             layoutId={`art-piece-${selectedArt.id}`}
                             style={{
                                 display: 'flex',
-                                background: '#111',
+                                background: 'var(--card-bg)',
                                 maxWidth: '1200px',
                                 width: '95vw',
                                 height: '85vh',
@@ -448,44 +448,44 @@ const ArtGalleryPage = () => {
                             </div>
 
                             {/* Right: Interaction Panel */}
-                            <div className="lightbox-details" style={{ width: '35%', display: 'flex', flexDirection: 'column', padding: '40px', background: '#111', borderLeft: '1px solid #222' }}>
+                            <div className="lightbox-details" style={{ width: '35%', display: 'flex', flexDirection: 'column', padding: '40px', background: 'var(--card-bg)', borderLeft: '1px solid var(--border-color)' }}>
 
                                 {/* Metadata */}
                                 <div style={{ marginBottom: '30px' }}>
                                     <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', margin: '0 0 10px 0', lineHeight: 1.1 }}>
                                         {selectedArt.title}
                                     </h2>
-                                    <p style={{ fontSize: '0.9rem', color: '#888', margin: 0 }}>
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>
                                         {selectedArt.year} — {selectedArt.medium}
                                     </p>
                                 </div>
 
                                 <div style={{ flex: 1, overflowY: 'auto', paddingRight: '10px' }}>
-                                    <p style={{ color: '#ccc', lineHeight: 1.6, marginTop: 0 }}>
+                                    <p style={{ color: 'var(--text-primary)', lineHeight: 1.6, marginTop: 0 }}>
                                         {selectedArt.description}
                                     </p>
 
-                                    <div style={{ margin: '30px 0', borderTop: '1px solid #222', paddingTop: '20px' }}>
+                                    <div style={{ margin: '30px 0', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                                             <button
                                                 onClick={(e) => handleLike(e, selectedArt.id)}
-                                                style={{ background: 'none', border: '1px solid #333', borderRadius: '4px', padding: '8px 16px', color: selectedArt.isLiked ? '#ef4444' : 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+                                                style={{ background: 'none', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '8px 16px', color: selectedArt.isLiked ? '#ef4444' : 'var(--text-primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
                                             >
                                                 <Heart size={18} fill={selectedArt.isLiked ? "#ef4444" : "none"} /> Like ({selectedArt.likes})
                                             </button>
-                                            <span style={{ color: '#666', fontSize: '0.9rem' }}>{selectedArt.comments.length} comments</span>
+                                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{selectedArt.comments.length} comments</span>
                                         </div>
                                     </div>
 
                                     {/* Comments List */}
                                     <div style={{ marginTop: '20px' }}>
-                                        <h4 style={{ margin: '0 0 15px 0', fontSize: '0.9rem', color: '#666', textTransform: 'uppercase' }}>Recent Comments</h4>
+                                        <h4 style={{ margin: '0 0 15px 0', fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Recent Comments</h4>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                             {selectedArt.comments.length > 0 ? (
                                                 selectedArt.comments.map((c, i) => (
                                                     <div key={i} style={{ fontSize: '0.9rem' }}>
                                                         <span style={{ fontWeight: 'bold', color: '#d946ef' }}>{c.user}</span>
-                                                        <p style={{ margin: '2px 0 0 0', color: '#aaa' }}>{c.text}</p>
+                                                        <p style={{ margin: '2px 0 0 0', color: 'var(--text-secondary)' }}>{c.text}</p>
                                                     </div>
                                                 ))
                                             ) : (
@@ -496,7 +496,7 @@ const ArtGalleryPage = () => {
                                 </div>
 
                                 {/* Add Comment */}
-                                <div style={{ marginTop: '20px', borderTop: '1px solid #222', paddingTop: '20px' }}>
+                                <div style={{ marginTop: '20px', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
                                     <form onSubmit={handleAddComment} style={{ display: 'flex', gap: '10px' }}>
                                         <input
                                             type="text"
@@ -505,11 +505,11 @@ const ArtGalleryPage = () => {
                                             onChange={(e) => setCommentInput(e.target.value)}
                                             style={{
                                                 flex: 1,
-                                                background: '#222',
-                                                border: 'none',
+                                                background: 'var(--bg-color)',
+                                                border: '1px solid var(--border-color)',
                                                 borderRadius: '4px',
                                                 padding: '12px',
-                                                color: 'white',
+                                                color: 'var(--text-primary)',
                                                 fontFamily: "'Inter', sans-serif"
                                             }}
                                         />
@@ -534,7 +534,7 @@ const ArtGalleryPage = () => {
                 )}
             </AnimatePresence>
 
-            <footer style={{
+            <footer className="gallery-footer" style={{
                 textAlign: 'center',
                 padding: '50px',
                 borderTop: '1px solid rgba(255,255,255,0.05)',
@@ -545,6 +545,11 @@ const ArtGalleryPage = () => {
             }}>
                 © 2024 Visual Stories Collection
             </footer>
+            <style>{`
+                @media (max-width: 768px) {
+                    .gallery-footer { display: none !important; }
+                }
+            `}</style>
         </div>
     );
 };

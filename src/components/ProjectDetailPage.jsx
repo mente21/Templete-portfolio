@@ -35,7 +35,7 @@ const ProjectDetailPage = () => {
             style={{
               padding: '12px 24px',
               background: 'var(--accent-primary)',
-              color: 'white',
+              color: 'var(--bg-color)',
               border: 'none',
               borderRadius: '12px',
               cursor: 'pointer',
@@ -89,9 +89,9 @@ const ProjectDetailPage = () => {
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          background: 'rgba(0, 0, 0, 0.8)',
+          background: 'var(--sidebar-bg)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: '1px solid var(--border-color)',
           padding: '20px 5%'
         }}
       >
@@ -131,9 +131,9 @@ const ProjectDetailPage = () => {
             alignItems: 'center',
             gap: '12px',
             padding: '8px 20px',
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: 'var(--border-color)',
             borderRadius: '100px',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
+            border: '1px solid var(--border-color)'
           }}>
             <div style={{
               width: '8px',
@@ -174,7 +174,7 @@ const ProjectDetailPage = () => {
             fontWeight: 800,
             marginBottom: '30px',
             lineHeight: 1.1,
-            background: `linear-gradient(135deg, white, ${project.color || 'var(--accent-primary)'})`,
+            background: `linear-gradient(135deg, var(--text-primary), ${project.color || 'var(--accent-primary)'})`,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             fontFamily: "'Inter', sans-serif"
@@ -206,12 +206,12 @@ const ProjectDetailPage = () => {
                 alignItems: 'center',
                 gap: '10px',
                 padding: '12px 20px',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'var(--border-color)',
                 borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                border: '1px solid var(--border-color)'
               }}>
                 <Calendar size={18} color={project.color || 'var(--accent-primary)'} />
-                <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>{project.year}</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 500, color: 'var(--text-primary)' }}>{project.year}</span>
               </div>
             )}
 
@@ -221,12 +221,12 @@ const ProjectDetailPage = () => {
                 alignItems: 'center',
                 gap: '10px',
                 padding: '12px 20px',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'var(--border-color)',
                 borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                border: '1px solid var(--border-color)'
               }}>
                 <Tag size={18} color={project.color || 'var(--accent-primary)'} />
-                <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>{tag}</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 500, color: 'var(--text-primary)' }}>{tag}</span>
               </div>
             ))}
 
@@ -243,7 +243,7 @@ const ProjectDetailPage = () => {
                   gap: '10px',
                   padding: '12px 24px',
                   background: project.color || 'var(--accent-primary)',
-                  color: 'white',
+                  color: 'var(--bg-color)',
                   borderRadius: '12px',
                   textDecoration: 'none',
                   fontWeight: 600,
@@ -266,9 +266,9 @@ const ProjectDetailPage = () => {
             style={{
               marginBottom: '80px',
               padding: '50px',
-              background: 'rgba(255, 255, 255, 0.03)',
+              background: 'var(--card-bg)',
               borderRadius: '24px',
-              border: '1px solid rgba(255, 255, 255, 0.1)'
+              border: '1px solid var(--border-color)'
             }}
           >
             <h2 style={{
@@ -319,7 +319,7 @@ const ProjectDetailPage = () => {
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: 700,
               fontStyle: 'italic',
-              color: 'white',
+              color: 'var(--text-primary)',
               lineHeight: 1.4,
               fontFamily: "'Inter', sans-serif",
               position: 'relative',
@@ -340,7 +340,7 @@ const ProjectDetailPage = () => {
               fontWeight: 800, 
               marginBottom: '60px', 
               textAlign: 'center',
-              color: 'white',
+              color: 'var(--text-primary)',
               fontFamily: "'Inter', sans-serif" 
             }}>
               PHASES OF THE JOURNEY
@@ -358,10 +358,10 @@ const ProjectDetailPage = () => {
                   transition={{ duration: 0.6, delay: idx * 0.2 }}
                   viewport={{ once: true }}
                   style={{
-                    background: 'rgba(255,255,255,0.02)',
+                    background: 'var(--card-bg)',
                     padding: '50px',
                     borderRadius: '30px',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    border: '1px solid var(--border-color)',
                     position: 'relative',
                     overflow: 'hidden'
                   }}
@@ -373,7 +373,7 @@ const ProjectDetailPage = () => {
                      letterSpacing: '3px',
                      marginBottom: '20px'
                    }}>PHASE 0{idx + 1}</div>
-                   <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '20px', color: 'white' }}>{phase.title}</h3>
+                   <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '20px', color: 'var(--text-primary)' }}>{phase.title}</h3>
                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7 }}>{phase.content}</p>
                 </motion.div>
               ))}
@@ -391,7 +391,7 @@ const ProjectDetailPage = () => {
             fontSize: '2.5rem', 
             fontWeight: 800, 
             marginBottom: '40px', 
-            color: 'white',
+            color: 'var(--text-primary)',
             fontFamily: "'Inter', sans-serif" 
           }}>
             VISUAL GLIMPSES
@@ -404,7 +404,7 @@ const ProjectDetailPage = () => {
             borderRadius: '24px',
             overflow: 'hidden',
             marginBottom: '30px',
-            border: `1px solid rgba(255,255,255,0.1)`,
+            border: `1px solid var(--border-color)`,
             boxShadow: `0 40px 80px rgba(0,0,0,0.5)`
           }}>
             <motion.img
@@ -438,8 +438,8 @@ const ProjectDetailPage = () => {
                     borderRadius: '50%',
                     background: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: 'white',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--text-primary)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -463,8 +463,8 @@ const ProjectDetailPage = () => {
                     borderRadius: '50%',
                     background: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: 'white',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--text-primary)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -485,7 +485,7 @@ const ProjectDetailPage = () => {
                   background: 'rgba(0, 0, 0, 0.6)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: '100px',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  border: '1px solid var(--border-color)',
                   color: 'white',
                   fontSize: '0.9rem',
                   fontWeight: 600
@@ -519,7 +519,7 @@ const ProjectDetailPage = () => {
                     cursor: 'pointer',
                     border: idx === currentImageIndex
                       ? `2px solid ${project.color || 'var(--accent-primary)'}`
-                      : '2px solid rgba(255,255,255,0.05)',
+                      : '2px solid var(--border-color)',
                     opacity: idx === currentImageIndex ? 1 : 0.5,
                     transition: 'all 0.3s ease'
                   }}
@@ -551,7 +551,7 @@ const ProjectDetailPage = () => {
             textAlign: 'center',
             background: `linear-gradient(to bottom, transparent, ${project.color || 'var(--accent-primary)'}10, transparent)`,
             borderRadius: '40px',
-            border: '1px solid rgba(255,255,255,0.05)',
+            border: '1px solid var(--border-color)',
             position: 'relative',
             overflow: 'hidden'
           }}
@@ -575,7 +575,7 @@ const ProjectDetailPage = () => {
               width: '80px',
               height: '80px',
               margin: '0 auto 40px',
-              background: 'rgba(255,255,255,0.05)',
+              background: 'var(--border-color)',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -590,7 +590,7 @@ const ProjectDetailPage = () => {
             fontSize: '3rem',
             fontWeight: 800,
             marginBottom: '30px',
-            color: 'white',
+            color: 'var(--text-primary)',
             fontFamily: "'Inter', sans-serif"
           }}>
             Reflection & Legacy
@@ -611,14 +611,14 @@ const ProjectDetailPage = () => {
             justifyContent: 'center',
             alignItems: 'center',
             gap: '15px',
-            color: 'white',
+            color: 'var(--text-primary)',
             fontSize: '1.1rem',
             fontWeight: 600,
             letterSpacing: '2px',
             textTransform: 'uppercase'
           }}>
             <span>Livable</span>
-            <div style={{ width: '30px', height: '1px', background: 'rgba(255,255,255,0.3)' }} />
+            <div style={{ width: '30px', height: '1px', background: 'var(--border-color)' }} />
             <span>Not Workable</span>
           </div>
         </motion.div>
@@ -673,9 +673,9 @@ const ProjectDetailPage = () => {
                   width: '50px',
                   height: '50px',
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: 'white',
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--text-primary)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',

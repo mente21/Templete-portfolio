@@ -31,7 +31,7 @@ const AboutSection = () => {
   const dynamicAbout = (!loading && aboutData?.[0]) ? aboutData[0] : {
     title: "Livable, Not Just Workable",
     desc: "My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.",
-    imageUrl: "/dominique/abstract_art.png",
+    imageUrl: "/dominique/eye_closeup_final.jpg",
     gallery: ["/dominique/coffee_1.png", "/dominique/food_cut.png", "/dominique/tibs.png"],
     stats: "1M+ REACH, 100+ POSTS, INFINITE COURAGE"
   };
@@ -232,7 +232,7 @@ const AboutSection = () => {
                 <div style={{ 
                   fontSize: '1.4rem', 
                   fontWeight: 700, 
-                  color: 'white', 
+                  color: 'var(--text-primary)', 
                   fontFamily: "'Inter', sans-serif, sans-serif",
                   lineHeight: 1,
                   letterSpacing: '1px',
@@ -259,7 +259,7 @@ const AboutSection = () => {
             border: '1px solid var(--accent-primary)',
             padding: '16px 32px',
             borderRadius: '100px',
-            color: 'white',
+            color: 'var(--text-primary)',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
