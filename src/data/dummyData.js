@@ -30,7 +30,7 @@ export const dummyData = {
         }
       ],
       gallery: [
-        "/dominique/eye_closeup_final.jpg",
+        "/dominique/abstract_art.png",
         "/dominique/coffee_1.png",
         "/dominique/food_cut.png",
         "/dominique/tibs.png"

@@ -32,7 +32,7 @@ const AboutSection = () => {
     title: "Livable, Not Just Workable",
     desc: "My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.",
     imageUrl: "/dominique/eye_closeup_final.jpg",
-    gallery: ["/dominique/coffee_1.png", "/dominique/food_cut.png", "/dominique/tibs.png"],
+    gallery: ["/dominique/abstract_art.png", "/dominique/coffee_1.png", "/dominique/food_cut.png", "/dominique/tibs.png"],
     stats: "1M+ REACH, 100+ POSTS, INFINITE COURAGE"
   };
 
