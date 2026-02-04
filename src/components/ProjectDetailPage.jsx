@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, ArrowLeft, ExternalLink, Calendar, Tag, Layers, Eye } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ArrowLeft, ExternalLink, Calendar, Tag, Layers, Eye, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 const ProjectDetailPage = () => {
@@ -290,12 +290,112 @@ const ProjectDetailPage = () => {
           </motion.div>
         )}
 
+        {/* Quote Section */}
+        {project.quote && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            style={{
+              padding: '100px 10%',
+              textAlign: 'center',
+              position: 'relative',
+              marginBottom: '100px'
+            }}
+          >
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              fontSize: '20rem',
+              fontWeight: 900,
+              color: 'rgba(255,255,255,0.03)',
+              zIndex: 0,
+              pointerEvents: 'none'
+            }}>"</div>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              fontWeight: 700,
+              fontStyle: 'italic',
+              color: 'white',
+              lineHeight: 1.4,
+              fontFamily: "'Inter', sans-serif",
+              position: 'relative',
+              zIndex: 1,
+              maxWidth: '1000px',
+              margin: '0 auto'
+            }}>
+              {project.quote}
+            </h2>
+          </motion.div>
+        )}
+
+        {/* Story Phases */}
+        {project.phases && (
+          <div style={{ marginBottom: '120px' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              fontWeight: 800, 
+              marginBottom: '60px', 
+              textAlign: 'center',
+              color: 'white',
+              fontFamily: "'Inter', sans-serif" 
+            }}>
+              PHASES OF THE JOURNEY
+            </h2>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+              gap: '40px' 
+            }}>
+              {project.phases.map((phase, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    padding: '50px',
+                    borderRadius: '30px',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                   <div style={{
+                     fontSize: '0.8rem',
+                     fontWeight: 800,
+                     color: project.color || 'var(--accent-primary)',
+                     letterSpacing: '3px',
+                     marginBottom: '20px'
+                   }}>PHASE 0{idx + 1}</div>
+                   <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '20px', color: 'white' }}>{phase.title}</h3>
+                   <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7 }}>{phase.content}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Image Gallery */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
+          <h2 style={{ 
+            fontSize: '2.5rem', 
+            fontWeight: 800, 
+            marginBottom: '40px', 
+            color: 'white',
+            fontFamily: "'Inter', sans-serif" 
+          }}>
+            VISUAL GLIMPSES
+          </h2>
           {/* Main Image */}
           <div style={{
             position: 'relative',
@@ -304,14 +404,14 @@ const ProjectDetailPage = () => {
             borderRadius: '24px',
             overflow: 'hidden',
             marginBottom: '30px',
-            border: `2px solid ${project.color || 'var(--accent-primary)'}`,
-            boxShadow: `0 20px 60px ${project.color || 'var(--accent-primary)'}40`
+            border: `1px solid rgba(255,255,255,0.1)`,
+            boxShadow: `0 40px 80px rgba(0,0,0,0.5)`
           }}>
             <motion.img
               key={currentImageIndex}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7 }}
               src={allImages[currentImageIndex]}
               alt={`${project.title} - Image ${currentImageIndex + 1}`}
               onClick={() => setIsFullscreen(true)}
@@ -330,65 +430,65 @@ const ProjectDetailPage = () => {
                   onClick={prevImage}
                   style={{
                     position: 'absolute',
-                    left: '20px',
+                    left: '30px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    width: '50px',
-                    height: '50px',
+                    width: '60px',
+                    height: '60px',
                     borderRadius: '50%',
-                    background: 'rgba(0, 0, 0, 0.7)',
+                    background: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     color: 'white',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    zIndex: 10
                   }}
                 >
-                  <ChevronLeft size={24} />
+                  <ChevronLeft size={28} />
                 </button>
 
                 <button
                   onClick={nextImage}
                   style={{
                     position: 'absolute',
-                    right: '20px',
+                    right: '30px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    width: '50px',
-                    height: '50px',
+                    width: '60px',
+                    height: '60px',
                     borderRadius: '50%',
-                    background: 'rgba(0, 0, 0, 0.7)',
+                    background: 'rgba(0, 0, 0, 0.5)',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     color: 'white',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    zIndex: 10
                   }}
                 >
-                  <ChevronRight size={24} />
+                  <ChevronRight size={28} />
                 </button>
 
                 {/* Image Counter */}
                 <div style={{
                   position: 'absolute',
-                  bottom: '20px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  padding: '10px 20px',
-                  background: 'rgba(0, 0, 0, 0.7)',
+                  bottom: '30px',
+                  right: '30px',
+                  padding: '12px 24px',
+                  background: 'rgba(0, 0, 0, 0.6)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: '100px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
                   color: 'white',
                   fontSize: '0.9rem',
-                  fontWeight: 600,
-                  fontFamily: "'JetBrains Mono', monospace"
+                  fontWeight: 600
                 }}>
                   {currentImageIndex + 1} / {allImages.length}
                 </div>
@@ -399,25 +499,28 @@ const ProjectDetailPage = () => {
           {/* Thumbnail Gallery */}
           {allImages.length > 1 && (
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-              gap: '15px'
+              display: 'flex',
+              gap: '20px',
+              overflowX: 'auto',
+              paddingBottom: '20px',
+              scrollbarWidth: 'none'
             }}>
               {allImages.map((img, idx) => (
                 <motion.div
                   key={idx}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setCurrentImageIndex(idx)}
                   style={{
-                    height: '120px',
-                    borderRadius: '12px',
+                    minWidth: '200px',
+                    height: '130px',
+                    borderRadius: '20px',
                     overflow: 'hidden',
                     cursor: 'pointer',
                     border: idx === currentImageIndex
-                      ? `3px solid ${project.color || 'var(--accent-primary)'}`
-                      : '3px solid transparent',
-                    opacity: idx === currentImageIndex ? 1 : 0.6,
+                      ? `2px solid ${project.color || 'var(--accent-primary)'}`
+                      : '2px solid rgba(255,255,255,0.05)',
+                    opacity: idx === currentImageIndex ? 1 : 0.5,
                     transition: 'all 0.3s ease'
                   }}
                 >
@@ -434,6 +537,90 @@ const ProjectDetailPage = () => {
               ))}
             </div>
           )}
+        </motion.div>
+
+        {/* Legacy & Reflection Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          style={{
+            marginTop: '150px',
+            padding: '80px 40px',
+            textAlign: 'center',
+            background: `linear-gradient(to bottom, transparent, ${project.color || 'var(--accent-primary)'}10, transparent)`,
+            borderRadius: '40px',
+            border: '1px solid rgba(255,255,255,0.05)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div style={{
+            position: 'absolute',
+            top: '-50px',
+            right: '-50px',
+            width: '200px',
+            height: '200px',
+            background: project.color || 'var(--accent-primary)',
+            filter: 'blur(100px)',
+            opacity: 0.2,
+            zIndex: 0
+          }} />
+
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              width: '80px',
+              height: '80px',
+              margin: '0 auto 40px',
+              background: 'rgba(255,255,255,0.05)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: `1px solid ${project.color || 'var(--accent-primary)'}40`
+            }}
+          >
+            <Sparkles size={32} color={project.color || 'var(--accent-primary)'} />
+          </motion.div>
+
+          <h2 style={{
+            fontSize: '3rem',
+            fontWeight: 800,
+            marginBottom: '30px',
+            color: 'white',
+            fontFamily: "'Inter', sans-serif"
+          }}>
+            Reflection & Legacy
+          </h2>
+          <p style={{
+            fontSize: '1.25rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.8,
+            maxWidth: '800px',
+            margin: '0 auto 40px',
+            fontFamily: "'Inter', sans-serif"
+          }}>
+            This story is more than a memory—it is a testament to the life Dominique builds every day. It is a reminder that beauty isn't found in the absence of struggle, but in the courage to live fully alongside it. Her legacy is one of joy, raw honesty, and a spirit that refuses to be dimmed.
+          </p>
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '15px',
+            color: 'white',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            letterSpacing: '2px',
+            textTransform: 'uppercase'
+          }}>
+            <span>Livable</span>
+            <div style={{ width: '30px', height: '1px', background: 'rgba(255,255,255,0.3)' }} />
+            <span>Not Workable</span>
+          </div>
         </motion.div>
       </div>
 

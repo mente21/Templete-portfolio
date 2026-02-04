@@ -70,13 +70,14 @@ const HeroSection = () => {
 
   // Dynamic Data Extraction
   const dynamicHome = (!loading && homeData?.[0]) ? homeData[0] : {
-    title: "DIGITAL ARTISAN",
-    roles: "USER EXPERIENCE & INTERFACE DESIGNER, CREATIVE DIRECTOR, BRAND STRATEGIST",
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+    title: "ADVOCATE & STORYTELLER",
+    roles: "COFFEE LOVER, PSYCHOLOGY STUDENT, SURVIVOR, LEGACY BUILDER",
+    imageUrl: "/dominique/traditional_coffee_cup.png",
+    desc: "An Ethiopian-born advocate sharing a story that is not just about 'knowing ourselves'—it's about living fully through food, peace, and love."
   };
 
-  // Ensure we display the long form even if DB has short form
-  const rawRoles = dynamicHome.roles.replace(/UI\/UX DESIGNER/gi, "VISUAL INTERFACE\nARTIST");
+  // Process roles safely
+  const rawRoles = dynamicHome.roles || "";
   const roles = rawRoles.split(',').map(r => r.trim());
 
   useEffect(() => {

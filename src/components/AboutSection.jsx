@@ -29,10 +29,11 @@ const AboutSection = () => {
 
   // Dynamic Data Extraction
   const dynamicAbout = (!loading && aboutData?.[0]) ? aboutData[0] : {
-    desc: "I am a creative visionary dedicated to crafting impactful experiences and strategic solutions. My approach blends artistic intuition with structured thinking to create results that don't just work—they inspire.",
-    imageUrl: DEFAULT_PLACEHOLDER,
-    gallery: [],
-    stats: "10+ YEARS, 150+ PROJECTS, 20+ AWARDS"
+    title: "Livable, Not Just Workable",
+    desc: "My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.",
+    imageUrl: "/dominique/abstract_art.png",
+    gallery: ["/dominique/coffee_1.png", "/dominique/food_cut.png", "/dominique/tibs.png"],
+    stats: "1M+ REACH, 100+ POSTS, INFINITE COURAGE"
   };
 
   const images = [dynamicAbout.imageUrl, ...(dynamicAbout.gallery || [])].filter(Boolean);

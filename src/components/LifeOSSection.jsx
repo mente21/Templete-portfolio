@@ -12,7 +12,7 @@ const LifeOSSection = () => {
       title: 'Digital Journal',
       subtitle: 'REFLECTIVE THINKING',
       desc: 'A private space to capture your thoughts, reflections, and daily progress. Document your journey with elegance.',
-      image: '/life-os/diary.png',
+      image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=2000',
       path: '/diary',
       icon: Book,
       color: '#fbbf24'
@@ -22,7 +22,7 @@ const LifeOSSection = () => {
       title: 'Strategic Planner',
       subtitle: 'ORGANIZED EXECUTION',
       desc: 'Plan your routines, track your goals, and master your time. Experience a new level of personal organization.',
-      image: '/life-os/planner.png',
+      image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=2000',
       path: '/plan',
       icon: Calendar,
       color: '#d946ef'

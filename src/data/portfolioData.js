@@ -1,98 +1,93 @@
 export const portfolioData = [
   {
     id: "1",
-    title: "Neon Horizons",
-    category: "My Art Collection",
-    imageUrl: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000",
-    description: "A series of digital artworks exploring the intersection of light, color, and futuristic landscapes.",
-    detailedDescription: "Neon Horizons is an experimental journey into the aesthetics of synthwave and futurism. Each piece in this collection was meticulously crafted using a combination of generative algorithms and digital hand-painting. The goal was to capture the feeling of a digital sunset in a world that never sleeps.",
-    year: "2024",
-    technologies: ["Digital Art", "Synthwave", "3D Rendering"],
-    tags: ["Digital Art", "Synthwave", "3D Rendering"],
-    color: "#FF3366",
-    details: "Neon Horizons is an experimental journey into the aesthetics of synthwave and futurism. Each piece in this collection was meticulously crafted using a combination of generative algorithms and digital hand-painting. The goal was to capture the feeling of a digital sunset in a world that never sleeps.",
-    gallery: [
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000",
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1000"
+    title: "The Voice of Advocacy",
+    category: "My Mission",
+    imageUrl: "/dominique/desk_office.png",
+    description: "Using TikTok to share the reality of Stage 4 cancer and raise awareness for early detection.",
+    detailedDescription: "My journey into advocacy was born from a need to make a difference. After my diagnosis, I realized how little awareness there was about colorectal cancer in young adults. This 'project' is my legacy: millions of views, thousands of conversations, and a community built on vulnerability and strength.",
+    quote: "Advocacy isn't just about sharing a diagnosis; it's about making sure the next person doesn't have to fight as hard as I did.",
+    phases: [
+      {
+        title: "The Awakening",
+        content: "Realizing the gap in representation for young adults with colorectal cancer."
+      },
+      {
+        title: "Vulnerability as Strength",
+        content: "Sharing the raw reality of stage 4 cancer on TikTok."
+      },
+      {
+        title: "Building Community",
+        content: "Connecting with millions who felt seen through my story."
+      }
     ],
-    link: "#"
+    year: "2024",
+    technologies: ["TikTok", "Advocacy", "Public Awareness"],
+    tags: ["Advocacy", "Awareness", "Storytelling"],
+    color: "#557C7C",
+    details: "My journey into advocacy was born from a need to make a difference. After my diagnosis, I realized how little awareness there was about colorectal cancer in young adults. This 'project' is my legacy: millions of views, thousands of conversations, and a community built on vulnerability and strength.",
+    gallery: ["/dominique/phone_hand.png", "/dominique/purple_flowers.png"],
+    link: "https://www.tiktok.com/@dominique_35890"
   },
   {
     id: "2",
-    title: "Zenith Identity",
-    category: "My Designs",
-    imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000",
-    description: "Complete brand system and visual language designed for a high-end architectural firm.",
-    detailedDescription: "Zenith Identity was a full-scale rebranding project for a leading architectural firm. The project included a new logo design, typography system, color palette, and a comprehensive set of brand guidelines inspired by architectural blueprints.",
-    year: "2023",
-    technologies: ["Branding", "UI/UX", "Identity"],
-    tags: ["Branding", "UI/UX", "Identity"],
-    color: "#00C9A7",
-    details: "Zenith Identity was a full-scale rebranding project for a leading architectural firm. The project included a new logo design, typography system, color palette, and a comprehensive set of brand guidelines inspired by architectural blueprints.",
-    gallery: ["https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000"],
+    title: "A Life of Love",
+    category: "Milestones",
+    imageUrl: "/dominique/tree.png",
+    description: "Marrying Sean Suson—a celebration of love that transcends any diagnosis.",
+    detailedDescription: "Our wedding was a day of absolute magic. It proved that light can exist even in the darkest times. Sean has been my rock, and this milestone wasn't just about a ceremony; it was about the power of human connection and choosing joy every single day.",
+    quote: "Love doesn't wait for things to be 'workable'. It's about finding the beauty in the 'livable' every single day.",
+    phases: [
+      {
+        title: "The Foundation",
+        content: "Through every appointment and every scan, Sean remained my unwavering rock."
+      },
+      {
+        title: "The Celebration",
+        content: "A day filled with flowers, family, and the promise of forever."
+      },
+      {
+        title: "Living Joy",
+        content: "Proving that a diagnosis is just a chapter, not the whole book."
+      }
+    ],
+    year: "2024",
+    technologies: ["Marriage", "Strength", "Connection"],
+    tags: ["Love", "Resilience", "Marriage"],
+    color: "#E9967A",
+    details: "Our wedding was a day of absolute magic. It proved that light can exist even in the darkest times. Sean has been my rock, and this milestone wasn't just about a ceremony; it was about the power of human connection and choosing joy every single day.",
+    gallery: ["/dominique/fashion.png", "/dominique/interior_flowers.png"],
     link: "#"
   },
   {
     id: "3",
-    title: "Tokyo Nights",
-    category: "My Memories",
-    imageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000",
-    description: "A photographic journey through the vibrant streets and quiet corners of Tokyo after dark.",
-    detailedDescription: "This series of photographs captures the unique energy of Tokyo during the late hours. From the neon-drenched streets of Shinjuku to the quiet, lantern-lit alleys of Yanaka, Tokyo Nights explores the contrast between urban chaos and serene moments.",
-    year: "2022",
-    technologies: ["Photography", "Travel", "Visual Story"],
-    tags: ["Photography", "Travel", "Visual Story"],
-    color: "#845EC2",
-    details: "This series of photographs captures the unique energy of Tokyo during the late hours. From the neon-drenched streets of Shinjuku to the quiet, lantern-lit alleys of Yanaka, Tokyo Nights explores the contrast between urban chaos and serene moments.",
-    gallery: ["https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=1000"],
-    link: "#"
-  },
-  {
-    id: "4",
-    title: "Abstract Echoes",
-    category: "My Art Collection",
-    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000",
-    description: "An exploration of fluid motion and color theory through abstract digital composition.",
-    detailedDescription: "Abstract Echoes focuses on the visceral reaction to color and form. The series uses simulated fluid dynamics to create intricate patterns that resemble both microscopic organisms and vast nebulae.",
-    year: "2024",
-    technologies: ["Digital Painting", "Color Theory"],
-    tags: ["Digital Painting", "Color Theory"],
-    color: "#FF9671",
-    details: "Abstract Echoes focuses on the visceral reaction to color and form. The series uses simulated fluid dynamics to create intricate patterns that resemble both microscopic organisms and vast nebulae.",
-    gallery: [
-      "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000",
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000"
+    title: "The Thailand Shores",
+    category: "Travel & Healing",
+    imageUrl: "/dominique/garden.png",
+    description: "Finding peace and tranquility during our honeymoon in Thailand.",
+    detailedDescription: "Thailand offered a sense of peace that I will never forget. Between the turquoise waters and the warm breeze, it was a time for us to disconnect from treatments and reconnect with the beauty of the world. These memories are my sanctuary.",
+    quote: "The ocean has a way of washing away the weight of worry, if only for a moment.",
+    phases: [
+      {
+        title: "The Escape",
+        content: "Leaving behind the medical world for a world of turquoise and gold."
+      },
+      {
+        title: "Presence",
+        content: "Learning to exist in the moment, away from the constant noise of treatment."
+      },
+      {
+        title: "Sanctuary",
+        content: "Carrying the peace of the shores back home with me."
+      }
     ],
-    link: "#"
-  },
-  {
-    id: "5",
-    title: "Celestial Tapestry",
-    category: "My Art Collection",
-    imageUrl: "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1000",
-    description: "An intricate digital weaving of cosmic fractals and shifting light particles.",
-    detailedDescription: "Celestial Tapestry is a high-fidelity digital exploration into the visualization of dark matter and cosmic strings. Using custom-built generative shaders, this project weaves together millions of individual light points to create a fabric-like representation of the universe's unseen forces.",
-    year: "2023",
-    technologies: ["Generative Art", "WebGL", "Shaders"],
-    tags: ["Art", "Generative", "Fractals"],
-    color: "#6A0572",
-    details: "Celestial Tapestry is a high-fidelity digital exploration into the visualization of dark matter and cosmic strings. Using custom-built generative shaders, this project weaves together millions of individual light points to create a fabric-like representation of the universe's unseen forces.",
-    gallery: ["https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000"],
-    link: "#"
-  },
-  {
-    id: "6",
-    title: "Alpine Escape",
-    category: "My Memories",
-    imageUrl: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000",
-    description: "Documenting a solo hiking expedition through the French Alps during late autumn.",
-    detailedDescription: "Alpine Escape is a visual diary of a two-week trek. The collection focuses on the changing scales of the landscape, from the intimate texture of lichen on rocks to the overwhelming majesty of snow-capped peaks.",
-    year: "2021",
-    technologies: ["Photography", "Hiking", "Cinematography"],
-    tags: ["Photography", "Hiking", "Cinematography"],
-    color: "#2C73D2",
-    details: "Alpine Escape is a visual diary of a two-week trek. The collection focuses on the changing scales of the landscape, from the intimate texture of lichen on rocks to the overwhelming majesty of snow-capped peaks.",
-    gallery: ["https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1000"],
+    year: "2024",
+    technologies: ["Travel", "Mindfulness", "Nature"],
+    tags: ["Thailand", "Nature", "Healing"],
+    color: "#D4A373",
+    details: "Thailand offered a sense of peace that I will never forget. Between the turquoise waters and the warm breeze, it was a time for us to disconnect from treatments and reconnect with the beauty of the world. These memories are my sanctuary.",
+    gallery: ["/dominique/interior_flowers.png", "/dominique/coffee_1.png"],
     link: "#"
   }
 ];
+

@@ -68,16 +68,16 @@ const LifeOSDetailPage = () => {
                         textTransform: 'uppercase',
                         letterSpacing: '2px'
                     }}>
-                        Life OS
+                        Livable Life
                     </h1>
                     <p style={{
-                        color: '#3b82f6',
+                        color: 'var(--accent-primary)',
                         textTransform: 'uppercase',
                         letterSpacing: '3px',
                         marginTop: '20px',
                         fontWeight: 600
                     }}>
-                        Operating System for High Performance
+                        Philosophy for Meaningful Living
                     </p>
                 </div>
 
@@ -98,36 +98,25 @@ const LifeOSDetailPage = () => {
                             overflow: 'hidden'
                         }}>
                             <img
-                                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000"
-                                alt="Digital System"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(20%)' }}
+                                src="/dominique/breakfast_flowers_1.png"
+                                alt="Dominique's Morning"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
-                        </div>
-                        <div className="thumbnails-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
                         </div>
                     </div>
 
                     {/* RIGHT: Content */}
                     <div style={{ paddingTop: '20px' }}>
                         <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', marginBottom: '20px' }}>
-                            Digital Brain
+                            The Heart of Routine
                         </h2>
                         <div style={{
                             fontSize: '1.5rem',
-                            color: '#3b82f6',
+                            color: 'var(--accent-primary)',
                             marginBottom: '40px',
                             fontFamily: "'JetBrains Mono', monospace"
                         }}>
-                            v2.4.0 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>current build</span>
+                            Livable, Not Workable <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>— her mantra</span>
                         </div>
 
                         <p style={{
@@ -136,11 +125,11 @@ const LifeOSDetailPage = () => {
                             color: 'rgba(255,255,255,0.8)',
                             marginBottom: '40px'
                         }}>
-                            Chaos is the default state of the universe. Order is something we must manufacture. My "Life OS" is a comprehensive system of digital tools, workflows, and mental models designed to maximize output while minimizing cognitive load. It is the architecture upon which I build everything else.
+                            Chaos is part of the journey, but meaning is something we manufacture. Dominique's "Livable Life" is a comprehensive system of rituals, peace, and reflection designed to maximize joy while minimizing fear. It is the architecture upon which she builds her legacy.
                         </p>
 
                         <div style={{ display: 'flex', gap: '20px', marginBottom: '60px' }}>
-                            <button style={{
+                            <button onClick={() => navigate('/')} style={{
                                 flex: 1,
                                 padding: '18px',
                                 background: 'white',
@@ -152,34 +141,22 @@ const LifeOSDetailPage = () => {
                                 letterSpacing: '1px',
                                 cursor: 'pointer'
                             }}>
-                                View Template
-                            </button>
-                             <button style={{
-                                padding: '18px 40px',
-                                background: 'transparent',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                color: 'white',
-                                fontSize: '1rem',
-                                fontWeight: 600,
-                                textTransform: 'uppercase',
-                                cursor: 'pointer'
-                            }}>
-                                Stack Info
+                                Explore the Plan
                             </button>
                         </div>
 
                         <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px' }}>
                              <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Core</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Notion, Obsidian, Raycast</span>
+                                <span style={{ fontWeight: 600 }}>Mind</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Psychology, Reflection, Peace</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Development</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>VS Code, Docker, Warp</span>
+                                <span style={{ fontWeight: 600 }}>Soul</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Coffee Rituals, Music, Fashion</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Design</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Figma, Blender, Rive</span>
+                                <span style={{ fontWeight: 600 }}>Body</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Movement, Rest, Nourishment</span>
                             </div>
                         </div>
                     </div>
@@ -194,29 +171,29 @@ const LifeOSDetailPage = () => {
                         marginBottom: '60px',
                         fontSize: '1.5rem'
                     }}>
-                        SYSTEM MODULES
+                        LIFE MODULES
                     </h3>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '40px' }}>
                         <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Database size={64} color="#3b82f6" />
+                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                                <img src="/dominique/traditional_coffee_cup.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
-                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Knowledge Base</div>
-                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>Second Brain for capturing and linking ideas.</div>
+                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Coffee & Connection</div>
+                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>The traditional ceremony as a foundation for friendship.</div>
                         </div>
                          <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Layout size={64} color="#a855f7" />
+                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                                <img src="/dominique/desk_office.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
-                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Project Management</div>
-                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>Agile workflows adapted for personal scale.</div>
+                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Education & Growth</div>
+                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>Psychology as a tool for understanding our own spirit.</div>
                         </div>
                          <div>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Terminal size={64} color="#10b981" />
+                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                                <img src="/dominique/pancakes.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
-                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Automation</div>
-                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>Scripting away repetitive tasks.</div>
+                            <div style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>Nourishment & Joy</div>
+                            <div style={{ opacity: 0.7, marginBottom: '20px' }}>Finding peace in the simple ritual of food.</div>
                         </div>
                     </div>
                 </div>
@@ -231,19 +208,19 @@ const LifeOSDetailPage = () => {
                 }}>
                     <div>
                         <h3 style={{ fontSize: '2rem', marginBottom: '30px', fontFamily: "'Abril Fatface', serif" }}>
-                            The Philosophy of Org
+                            The Spirit of Living
                         </h3>
                         <div style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                              <p>
-                                Organization is not about being neat; it's about being ready. Ready to execute, ready to pivot, ready to create.
+                                Order is not about being neat; it's about being ready — ready to experience every drop of life that we are given.
                             </p>
                             <p>
-                                I subscribe to the methodology of "Just Enough Process." Too much structure stifles creativity; too little leads to entropy. My system is fluid, designed to bend but not break under pressure.
+                                Dominique believes in "Just Enough Process." Too much structure stifles the heart; too little leads to lost moments. Her system is fluid, designed to bend and hold the weight of both the hard days and the good days.
                             </p>
                         </div>
                     </div>
                     <div style={{ aspectRatio: '4/5', background: '#1a1a1a', overflow: 'hidden' }}>
-                         <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                         <img src="/dominique/interior_flowers.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                 </div>
 

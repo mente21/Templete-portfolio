@@ -2,63 +2,69 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
-  Lightbulb, PenTool, Zap, RefreshCw, Heart, Layers, ArrowUpRight, Scale, Anchor, Target, Palette, Feather
+  Lightbulb, PenTool, Zap, RefreshCw, Heart, Layers, ArrowUpRight, Scale, Anchor, Target, Palette, Feather, Coffee, Sparkles, Utensils
 } from 'lucide-react';
 
 const philosophies = [
   {
     id: "ph1",
-    title: "VISION",
-    subtitle: "The North Star",
-    icon: Lightbulb,
-    color: "#facc15", // Yellow
-    description: "Seeing beyond the immediate horizon. It's not just about what we build today, but how it shapes the future.",
-    tags: ["Foresight", "Innovation", "Clarity"]
+    title: "LIVABLE",
+    subtitle: "Simplicity in Ritual",
+    icon: Coffee,
+    color: "#D4A373",
+    description: "Life isn't meant to be 'worked' through; it's meant to be lived. Finding peace in the daily ritual of coffee.",
+    tags: ["Peace", "Simplicity", "Ritual"],
+    imageUrl: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000"
   },
   {
     id: "ph2",
-    title: "CRAFT",
-    subtitle: "The Foundation",
-    icon: PenTool,
-    color: "#a855f7", // Purple
-    description: "Merging logic with aesthetics. Every line of code and every pixel is placed with intentionality and precision.",
-    tags: ["Precision", "Artistry", "Quality"]
+    title: "ROOTS",
+    subtitle: "The Ethiopian Soul",
+    icon: Heart,
+    color: "#E9967A",
+    description: "Honoring my heritage across borders. Bringing the warmth of my roots to everything I share.",
+    tags: ["Heritage", "Identity", "Connection"],
+    imageUrl: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=2000"
   },
   {
     id: "ph3",
-    title: "VELOCITY",
-    subtitle: "The Momentum",
-    icon: Zap,
-    color: "#ef4444", // Red
-    description: "Speed matters, but direction matters more. moving fast without breaking things by building on solid architecture.",
-    tags: ["Speed", "Efficiency", "Agility"]
+    title: "JOY",
+    subtitle: "Strength in Beauty",
+    icon: Sparkles,
+    color: "#a855f7",
+    description: "Choosing joy isn't a denial of struggle; it's the ultimate act of defiance against a diagnosis.",
+    tags: ["Resilience", "Hope", "Beauty"],
+    imageUrl: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2000"
   },
   {
     id: "ph4",
-    title: "ADAPTABILITY",
-    subtitle: "The Flow",
-    icon: RefreshCw,
-    color: "#3b82f6", // Blue
-    description: "The only constant is change. Thriving in ambiguity and pivoting strategies as technology evolves.",
-    tags: ["Flexibility", "Growth", "Evolution"]
+    title: "STILLNESS",
+    subtitle: "Movement & Rest",
+    icon: Feather,
+    color: "#10b981",
+    description: "Listening to the body's rhythm. Balancing the rush of the world with the quiet of the inner self.",
+    tags: ["Mindfulness", "Rest", "Psychology"],
+    imageUrl: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000"
   },
   {
     id: "ph5",
-    title: "IMPACT",
-    subtitle: "The Purpose",
-    icon: Heart,
-    color: "#ec4899", // Pink
-    description: "Building for people, not just screens. Creating solutions that solve real problems and elevate the human experience.",
-    tags: ["Empathy", "User-Centric", "Value"]
+    title: "FEAST",
+    subtitle: "Food for the Spirit",
+    icon: Utensils,
+    color: "#ef4444",
+    description: "Food is more than fuel; it's a celebration of life, family, and the abundance of the Earth.",
+    tags: ["Food", "Nourishment", "Celebration"],
+    imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2000"
   },
   {
     id: "ph6",
-    title: "STRUCTURE",
-    subtitle: "The Framework",
-    icon: Layers,
-    color: "#10b981", // Emerald
-    description: "Scalable systems are beautiful systems. Writing clean, maintainable code that stands the test of time.",
-    tags: ["Scalability", "Order", "Logic"]
+    title: "LEGACY",
+    subtitle: "The Advocate's Heart",
+    icon: PenTool,
+    color: "#3b82f6",
+    description: "Turning a personal journey into public awareness. Building a seat at the table for survivors.",
+    tags: ["Advocacy", "Storytelling", "Legacy"],
+    imageUrl: "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=2000"
   }
 ];
 
@@ -163,30 +169,41 @@ const SkillsInterests = () => {
               }}
               style={{
                 position: 'relative',
-                background: 'var(--card-bg)',
-                border: `1px solid ${isHovered ? item.color : 'var(--border-color)'}`,
+                background: '#0a0a0a',
+                border: `1px solid ${isHovered ? item.color : 'rgba(255,255,255,0.05)'}`,
                 borderRadius: '24px',
                 padding: '40px',
-                height: '320px',
+                height: '380px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
                 overflow: 'hidden',
                 transition: 'all 0.4s ease',
-                boxShadow: isHovered ? `0 20px 40px -10px ${item.color}22` : 'none'
+                boxShadow: isHovered ? `0 30px 60px -15px ${item.color}33` : 'none'
               }}
             >
-              {/* Background Gradient Hover */}
+              {/* Card Image Background */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: `radial-gradient(circle at top right, ${item.color}15 0%, transparent 60%)`,
-                opacity: isHovered ? 1 : 0,
+                zIndex: 0,
+                opacity: isHovered ? 0.4 : 0.2,
                 transition: 'opacity 0.4s ease'
-              }} />
+              }}>
+                <img 
+                  src={philosophies[idx].imageUrl || "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000"} 
+                  alt={item.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(50%)' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: `linear-gradient(to top, #0a0a0a 20%, transparent 100%)`
+                }} />
+              </div>
 
-              <div>
+              <div style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -219,7 +236,7 @@ const SkillsInterests = () => {
                 <h3 style={{
                   fontSize: '2rem',
                   fontFamily: "'Cinzel', serif",
-                  color: 'var(--text-primary)',
+                  color: 'white',
                   marginBottom: '10px'
                 }}>
                   {item.title}
@@ -238,10 +255,10 @@ const SkillsInterests = () => {
                 </div>
               </div>
 
-              <div>
+              <div style={{ position: 'relative', zIndex: 1 }}>
                 <p style={{
                   fontSize: '0.95rem',
-                  color: 'var(--text-secondary)',
+                  color: 'rgba(255,255,255,0.8)',
                   lineHeight: 1.6,
                   fontFamily: "'Inter', sans-serif",
                   marginBottom: '20px',

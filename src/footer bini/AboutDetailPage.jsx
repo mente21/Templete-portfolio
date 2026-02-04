@@ -77,13 +77,13 @@ const AboutDetailPage = () => {
                         Dominique
                     </h1>
                     <p style={{
-                        color: '#ef4444',
+                        color: 'var(--accent-primary)',
                         textTransform: 'uppercase',
                         letterSpacing: '3px',
                         marginTop: '20px',
                         fontWeight: 600
                     }}>
-                        The Artist & Visionary
+                        Livable, Not Just Workable
                     </p>
                 </div>
 
@@ -105,46 +105,26 @@ const AboutDetailPage = () => {
                             overflow: 'hidden'
                         }}>
                             <img
-                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000"
+                                src="/dominique/coffee_2.png"
                                 alt="Dominique Portrait"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(20%)' }}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
-                        </div>
-                        {/* Thumbnails */}
-                        <div className="thumbnails-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src={thumb1} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src={thumb2} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src={thumb3} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-                            </div>
                         </div>
                     </div>
 
                     {/* RIGHT: Detailed Info */}
                     <div style={{ paddingTop: '20px' }}>
                         <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '20px' }}>
-                            Creative Director
+                            Advocate & Student
                         </h2>
-                        <div style={{
-                            fontSize: '1.5rem',
-                            color: '#ef4444',
-                            marginBottom: '40px',
-                            fontFamily: "'JetBrains Mono', monospace"
-                        }}>
-                            $ 150/hr <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>consulting rate</span>
-                        </div>
-
+                        
                         <p style={{
                             fontSize: '1.1rem',
                             lineHeight: 1.8,
                             color: 'rgba(255,255,255,0.8)',
                             marginBottom: '40px'
                         }}>
-                            Dominique is more than just a designer; she is a curator of digital experiences. With over a decade of experience in the intersection of art and technology, she brings a unique painterly approach to pixel perfection. Her work is characterized by bold typography, emotive imagery, and a relentless pursuit of the "sublime" in user interface design. She believes that every digital product should contain a piece of the creator's soul.
+                            Dominique is an Ethiopian-born advocate and psychology student dedicated to a "Livable" life. Rather than focusing on professional 'workability', she centers her existence on the beauty of the everyday—from the aroma of coffee to the depth of human connection. Her journey is defined by raw honesty and a mission to turn a personal health battle into a source of public hope.
                         </p>
 
                         <p style={{
@@ -153,12 +133,12 @@ const AboutDetailPage = () => {
                             color: 'rgba(255,255,255,0.8)',
                             marginBottom: '40px'
                         }}>
-                            "I see code as my canvas and the browser as my gallery. My mission is to dismantle the barrier between functional utility and artistic expression, creating software that feels like magic."
+                            "My content isn't a project; it's a life. It's about knowing ourselves, food, movement, rest, and peace. It's the music we hear, the fashion we wear, and the coffee we drink together."
                         </p>
 
                         {/* Actions */}
                         <div style={{ display: 'flex', gap: '20px', marginBottom: '60px' }}>
-                            <button style={{
+                            <button onClick={() => navigate('/')} style={{
                                 flex: 1,
                                 padding: '18px',
                                 background: 'white',
@@ -170,27 +150,27 @@ const AboutDetailPage = () => {
                                 letterSpacing: '1px',
                                 cursor: 'pointer'
                             }}>
-                                Book Consultation
+                                Join the Story
                             </button>
                             <div style={{ display: 'flex', gap: '10px' }}>
                                 <div style={{ width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><Mail size={20} /></div>
-                                <div style={{ width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><Download size={20} /></div>
+                                <div style={{ width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><Heart size={20} /></div>
                             </div>
                         </div>
 
                         {/* Specs */}
                         <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px' }}>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Location</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>London, United Kingdom (Remote)</span>
+                                <span style={{ fontWeight: 600 }}>Roots</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Ethiopian-born</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Experience</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>12 Years (Senior Lead)</span>
+                                <span style={{ fontWeight: 600 }}>Education</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Psychology (New Zealand)</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Availability</span>
-                                <span style={{ color: '#4ade80' }}>Open for Q3 2026</span>
+                                <span style={{ fontWeight: 600 }}>Focus</span>
+                                <span style={{ color: 'var(--accent-primary)' }}>Advocacy & Living Fully</span>
                             </div>
                         </div>
                     </div>
@@ -206,33 +186,24 @@ const AboutDetailPage = () => {
                 }}>
                     <div>
                         <h3 style={{ fontSize: '2rem', marginBottom: '30px', fontFamily: "'Abril Fatface', serif" }}>
-                            The Genesis
+                            The Livable Philosophy
                         </h3>
 
                         <div style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <p>
-                                Born into a family of architects and musicians, Dominique found her rhythm in the silence of code. She started programming at age 12, treating the command line as a sheet of music where every function call was a note in a larger symphony.
+                                Life isn't about finding a "workable" balance; it's about making every element "livable." For Dominique, this means integrating the small joys into the big battles. It's the ritual of coffee, the expression through fashion, and the pursuit of knowledge in psychology.
                             </p>
                             <p>
-                                This duality of structure and fluidity defines her career. She has led design teams at Fortune 500 companies and bootstrapped indie startups, always bringing the same level of intensity and care. She obsesses over the "feel" of a scroll, the "weight" of a click, and the emotional resonance of a color palette.
+                                Born in Ethiopia, her culture taught her that community and heritage are the foundation of resilience. This duality — of traditional roots and modern advocacy — defines her voice on TikTok and beyond.
                             </p>
                             <p>
-                                <strong>Average output:</strong> 3-4 major projects per year, ensuring focused, deep work rather than factory-line production. She believes in "slow design" — the idea that things built with patience last longer.
-                            </p>
-                        </div>
-
-                        <div style={{ marginTop: '40px' }}>
-                            <div style={{ fontSize: '0.9rem', color: '#ef4444', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>
-                                Favorite Tools
-                            </div>
-                            <p style={{ color: 'white', fontFamily: "'JetBrains Mono', monospace" }}>
-                                Figma, React, WebGL, Blender, Oil Paint, Film Camera
+                                <strong>Everyday Pillars:</strong> Food, movement, rest, peace, music, fashion, coffee, and friendship. These are not distractions; they are the heart of her story.
                             </p>
                         </div>
                     </div>
 
                     <div style={{ aspectRatio: '4/5', background: '#1a1a1a', overflow: 'hidden' }}>
-                        <img src={detailImg} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src="/dominique/abstract_art.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                 </div>
 

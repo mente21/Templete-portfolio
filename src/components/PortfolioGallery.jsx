@@ -153,7 +153,7 @@ const PortfolioGallery = ({ items = [], onItemClick }) => {
       <style>{`
         @media (max-width: 768px) {
           #portfolio {
-            display: none !important;
+            padding: 80px 5% !important;
           }
         }
 
@@ -199,6 +199,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
     <motion.div
       whileHover="hover"
       initial={{ opacity: 1 }} // Explicitly visible by default
+      onClick={handleClick}
       className="premium-card portfolio-card-container fade-in-up"
       style={{
         position: 'relative',
@@ -325,6 +326,7 @@ const PortfolioCard = ({ item, index, onClick }) => {
           }}
         >
           <motion.div
+            onClick={handleClick}
             variants={{
               hover: {
                 scale: 1.05,
@@ -351,16 +353,18 @@ const PortfolioCard = ({ item, index, onClick }) => {
             <ArrowRight size={18} />
           </motion.div>
 
-          <div style={{
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(255,255,255,0.05)'
-          }}>
+          <div 
+            onClick={handleClick}
+            style={{
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              border: '1px solid rgba(255,255,255,0.2)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(255,255,255,0.05)'
+            }}>
             <Eye size={18} color="rgba(255,255,255,0.7)" />
           </div>
         </div>

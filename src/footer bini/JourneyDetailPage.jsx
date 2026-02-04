@@ -95,49 +95,50 @@ const JourneyDetailPage = () => {
                             aspectRatio: '1/1',
                             backgroundColor: '#1a1a1a',
                             marginBottom: '20px',
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            borderRadius: '24px'
                         }}>
                              <img
-                                src="https://images.unsplash.com/photo-1502014822147-1aed80613797?q=80&w=1000"
-                                alt="Journey Map"
+                                src="https://images.unsplash.com/photo-1547149666-453e344b005e?q=80&w=2000"
+                                alt="Ethiopian Highlands"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                         </div>
                          <div className="thumbnails-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
-                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                             </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                             <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                             </div>
-                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                            <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                             </div>
                         </div>
                     </div>
 
                     {/* RIGHT: Content */}
                     <div style={{ paddingTop: '20px' }}>
-                        <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', marginBottom: '20px' }}>
-                            Milestones & Memory
-                        </h2>
-                        <div style={{
-                            fontSize: '1.5rem',
-                            color: '#f59e0b',
-                            marginBottom: '40px',
-                            fontFamily: "'JetBrains Mono', monospace"
-                        }}>
-                            Since 2014 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>continuous deployment</span>
-                        </div>
+                                <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', marginBottom: '20px' }}>
+                                    A Journey of Resilience
+                                </h2>
+                                <div style={{
+                                    fontSize: '1.5rem',
+                                    color: '#E9967A',
+                                    marginBottom: '40px',
+                                    fontFamily: "'JetBrains Mono', monospace"
+                                }}>
+                                    From Addis to Advocacy <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>livable not workable</span>
+                                </div>
 
-                        <p style={{
-                            fontSize: '1.1rem',
-                            lineHeight: 1.8,
-                            color: 'rgba(255,255,255,0.8)',
-                            marginBottom: '40px'
-                        }}>
-                            Every career is a story written in code and commits. My journey hasn't been a straight line; it's been a series of pivots, leaps, and recursive loops. From my first "Hello World" to architecting distributed systems, every step has taught me something new about the nature of problem-solving.
-                        </p>
+                                <p style={{
+                                    fontSize: '1.1rem',
+                                    lineHeight: 1.8,
+                                    color: 'rgba(255,255,255,0.8)',
+                                    marginBottom: '40px'
+                                }}>
+                                    Every life is a series of milestones that shape the soul. My journey began in Ethiopia, moved across the world to New Zealand, and took a profound turn with a terminal diagnosis at 20. But instead of an end, it became a beginning—a mission to share, to educate, and to live fully.
+                                </p>
 
                         <div style={{ display: 'flex', gap: '20px', marginBottom: '60px' }}>
                             <button style={{
@@ -158,12 +159,16 @@ const JourneyDetailPage = () => {
 
                         <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px' }}>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Current</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Senior Product Engineer</span>
+                                <span style={{ fontWeight: 600 }}>Roots</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Ethiopian-born Advocate</span>
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                <span style={{ fontWeight: 600 }}>Origins</span>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Self-Taught / Open Source</span>
+                                <span style={{ fontWeight: 600 }}>Education</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Psychology & Social Impact</span>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
+                                <span style={{ fontWeight: 600 }}>Current</span>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Health Storyteller & Marriage</span>
                             </div>
                         </div>
                     </div>
@@ -172,24 +177,24 @@ const JourneyDetailPage = () => {
                 {/* SECTION 2: Timeline items */}
                 <div style={{ marginBottom: '150px', position: 'relative', borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '40px', marginLeft: '20px' }}>
                      <div style={{ marginBottom: '60px' }}>
-                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#f59e0b', borderRadius: '50%' }}></div>
-                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>2025 - The Present</h3>
+                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#E9967A', borderRadius: '50%' }}></div>
+                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>The Core - Ethiopian Beginnings</h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '600px', lineHeight: 1.7 }}>
-                            Leading design systems and focusing on AI integration. Exploring the frontier of generative interfaces.
+                            Learning the depth of community and the warmth of a culture that celebrates life through simple rituals.
                         </p>
                      </div>
                      <div style={{ marginBottom: '60px' }}>
-                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#3b82f6', borderRadius: '50%' }}></div>
-                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>2022 - Senior Pivot</h3>
+                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#557C7C', borderRadius: '50%' }}></div>
+                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>The Pursuit - Psychology & Mind</h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '600px', lineHeight: 1.7 }}>
-                            Transitioned to full-stack architecture. Scaled applications to millions of users. Learned the hard lessons of distributed state.
+                            Studying the human spirit to understand resilience—a journey that became deeply personal in April 2024.
                         </p>
                      </div>
                      <div style={{ marginBottom: '60px' }}>
-                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#10b981', borderRadius: '50%' }}></div>
-                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>2018 - The Agency Years</h3>
+                        <div style={{ position: 'absolute', left: '-6px', width: '11px', height: '11px', background: '#ef4444', borderRadius: '50%' }}></div>
+                         <h3 style={{ fontSize: '1.8rem', fontFamily: "'Abril Fatface', serif", marginBottom: '10px' }}>The Mission - Advocacy & Love</h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '600px', lineHeight: 1.7 }}>
-                            High-velocity output. Worked with 20+ clients across fintech, health, and e-commerce. Mastered the art of deadlines.
+                            Turning a personal battle into a public voice for millions, while building a life of joy with Sean.
                         </p>
                      </div>
                 </div>

@@ -1,130 +1,149 @@
-
 export const dummyData = {
   home: [
     {
-      title: "DIGITAL ARTISAN",
-      roles: "UI/UX DESIGNER, CREATIVE DIRECTOR, BRAND STRATEGIST, VISUAL STORYTELLER",
-      imageUrl: "/dominique-hero.png",
-      desc: "Crafting immersive digital experiences that blend aesthetic elegance with intuitive functionality. Specializing in user-centric design and brand identity evolution."
+      title: "ADVOCATE & STORYTELLER",
+      roles: "COFFEE LOVER, PSYCHOLOGY STUDENT, SURVIVOR, LEGACY BUILDER",
+      imageUrl: "/dominique/traditional_coffee_cup.png",
+      desc: "An Ethiopian-born advocate sharing a story that is not just about 'knowing ourselves'—it's about living fully through food, peace, and love."
     }
   ],
   about: [
     {
-      title: "About Me",
-      desc: "I am Dominique, a multi-disciplinary designer with a passion for human-centered digital products. With over 8 years of experience in the creative industry, I have helped startups and Fortune 500 companies alike to find their unique visual voice. My work is driven by curiosity and the belief that good design makes life easier and more beautiful.",
-      imageUrl: "/dominique-1.png",
-      stats: "8+ YEARS, 120+ PROJECTS, 15+ AWARDS",
-      detailedBio: "My journey in design began with a simple curiosity about how digital interfaces could shape human behavior. Over nearly a decade, that curiosity has evolved into a disciplined practice focused on pixel-perfection and meaningful user experiences. I believe that every design should tell a story and every interaction should feel like a natural conversation.\n\nI've spent my career working at the intersection of psychology, technology, and aesthetic beauty. Whether I'm building a robust design system for a fintech giant or crafting a playful mobile app for a startup, my goal remains the same: to create products that people actually love to use. I am constantly exploring new tools and methodologies, from generative design to motion-driven storytelling, ensuring that my work stays at the cutting edge of digital innovation.",
-      mission: "To bridge the gap between complex technological capabilities and intuitive human experiences through elegant, purposeful design.",
+      title: "Livable, Not Just Workable",
+      desc: "My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.",
+      imageUrl: "/dominique/abstract_art.png",
+      stats: "1M+ REACH, 100+ ADVOCACY POSTS, INFINITE COURAGE",
+      detailedBio: "As an Ethiopian-born student of psychology, I've learned that life isn't about finding a 'workable' path—it's about building a 'livable' one. My story is a collection of moments: the aroma of traditional coffee, the stroke of an abstract painting, and the deep connections formed with those I love. \n\nSince my Stage 4 diagnosis in April 2024, my mission has expanded. It's no longer just about awareness; it's about documenting the beauty in everything from fashion to friendship. This site is a record of that spirit—a place where the daily rhythm of life meets a purpose that transcends the diagnosis.",
+      mission: "To show that a life of meaning is built through food, peace, ideas, and the simple joy of a morning cup of coffee.",
       philosophy: [
         {
-          title: "User-First Mentality",
-          description: "Good design is invisible—it simply works. I prioritize the human on the other side of the screen above all else."
+          title: "The Livable Life",
+          description: "My content is not 'workable', it is 'livable'. It's about movement, rest, and finding peace in the everyday."
         },
         {
-          title: "Aesthetic Precision",
-          description: "Details aren't just details; they make the product. I obsess over the small things that elevate a project from good to exceptional."
+          title: "Culture & Connection",
+          description: "From the traditional coffee ceremony to modern psychology, life is a tapestry of friendship, knowledge, and beauty."
         },
         {
-          title: "Continuous Evolution",
-          description: "Innovation happens when we step outside our comfort zones. I am a lifelong student of design and technology."
+          title: "Legacy of Joy",
+          description: "Whether it's through fashion, music, or goals, every moment is an opportunity to leave a legacy of hope."
         }
       ],
       gallery: [
-        "/dominique-2.png",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000"
+        "/dominique/traditional_coffee_cup.png",
+        "/dominique/abstract_art.png",
+        "/dominique/interior_flowers.png"
       ]
     }
   ],
   portfolio: [
     {
       id: "1",
-      title: "Neon Horizons",
-      category: "My Art Collection",
-      imageUrl: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000&auto=format&fit=crop",
-      description: "A series of digital artworks exploring the intersection of light, color, and futuristic landscapes.",
-      details: "Neon Horizons is an experimental journey into the aesthetics of synthwave and futurism. Each piece in this collection was meticulously crafted using a combination of generative algorithms and digital hand-painting. The goal was to capture the feeling of a digital sunset in a world that never sleeps. This collection has been featured in several digital art galleries across the metaverse.",
+      title: "Advocacy & Awareness",
+      category: "My Mission",
+      imageUrl: "/dominique/desk_office.png",
+      description: "My primary work: raising a voice for early colorectal cancer detection through honest digital storytelling.",
+      details: "Through TikTok and social media, I've shared the specific symptoms I experienced at 20—fatigue, weight loss, and changes in health—to help others catch the disease early. This mission has reached millions, starting vital conversations about young adult health and self-advocacy in medical settings.",
       year: "2024",
-      tags: ["Digital Art", "Synthwave", "3D Rendering"],
-      gallery: [
-        "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000",
-        "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1000"
-      ],
-      link: "https://example.com/neon-horizons",
-      color: "#FF3366"
+      tags: ["Advocacy", "Health Awareness", "Digital Outreach"],
+      gallery: [],
+      link: "https://www.tiktok.com/@dominique_35890",
+      color: "#557C7C"
     },
     {
       id: "2",
-      title: "Zenith Identity",
-      category: "My Designs",
-      imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop",
-      description: "Complete brand system and visual language designed for a high-end architectural firm.",
-      details: "Zenith Identity was a full-scale rebranding project for a leading architectural firm. The project included a new logo design, typography system, color palette, and a comprehensive set of brand guidelines. The visual language was inspired by architectural blueprints and modern minimalism, aiming to convey strength, precision, and innovation. The final deliverables included digital assets, stationary, and physical signage designs.",
-      year: "2023",
-      tags: ["Branding", "UI/UX", "Identity"],
-      gallery: ["https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000"],
-      link: "https://example.com/zenith",
-      color: "#00C9A7"
+      title: "A Celebration of Love",
+      category: "Personal Milestone",
+      imageUrl: "/dominique/tree.png",
+      description: "My marriage to Sean Suson—a day defined by love, joy, and the strength of our bond.",
+      details: "In the midst of my journey, I celebrated one of the most beautiful days of my life: marrying Sean. Surrounded by family and friends, it was a testament to the fact that cancer can affect the body, but it cannot touch the heart. This day remains a source of light and a core part of our story.",
+      year: "2024",
+      tags: ["Love", "Resilience", "Family"],
+      gallery: [],
+      link: "#",
+      color: "#E9967A"
     },
     {
       id: "3",
-      title: "Tokyo Nights",
-      category: "My Memories",
-      imageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000&auto=format&fit=crop",
-      description: "A photographic journey through the vibrant streets and quiet corners of Tokyo after dark.",
-      details: "This series of photographs captures the unique energy of Tokyo during the late hours. From the neon-drenched streets of Shinjuku to the quiet, lantern-lit alleys of Yanaka, Tokyo Nights explores the contrast between the city's chaotic public spaces and its serene private moments. The collection was shot using a high-ISO film technique to preserve the natural grain and atmosphere of the urban nightscape.",
-      year: "2022",
-      tags: ["Photography", "Travel", "Visual Story"],
-      gallery: ["https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=1000"],
-      link: "https://example.com/tokyo-nights",
-      color: "#845EC2"
+      title: "Thailand Journey",
+      category: "Our Adventures",
+      imageUrl: "/dominique/garden.png",
+      description: "A cherished honeymoon in Thailand, finding peace and beauty in nature.",
+      details: "Our trip to Thailand was about more than just a honeymoon; it was about reclaiming life. From the quiet shores to the vibrant culture, those moments were about finding peace and making memories that transcend the hospital walls. It was a journey of the soul.",
+      year: "2024",
+      tags: ["Travel", "Healing", "Nature"],
+      gallery: [],
+      link: "#",
+      color: "#D4A373"
     }
   ],
   skills: [
-    { title: "UI/UX Design", level: 95, icon: "Figma" },
-    { title: "Key Visuals", level: 90, icon: "Ps" },
-    { title: "Prototyping", level: 85, icon: "Proto" },
-    { title: "Frontend Dev", level: 75, icon: "Code" },
-    { title: "Brand Strategy", level: 88, icon: "Pen" }
+    { title: "Psychology & Empathy", level: 95, icon: "Heart" },
+    { title: "Public Speaking", level: 90, icon: "Mic" },
+    { title: "Advocacy Outreach", level: 92, icon: "Users" },
+    { title: "Digital Communication", level: 88, icon: "Video" },
+    { title: "Community Building", level: 94, icon: "Globe" }
   ],
   journey: [
     {
-      year: "2023",
-      title: "Senior Product Designer",
-      company: "TechFlow Inc.",
-      description: "Leading the design system team and overseeing the UX for the flagship mobile application.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000"
+      id: "j1",
+      date: "The Beginning",
+      title: "Ethiopian Coffee",
+      company: "Addis Ababa",
+      category: "Heritage",
+      description: "Born in the highlands of Ethiopia, where I first learned the value of community, hospitality, and the sacred ritual of the coffee ceremony. A tradition that transcends time and builds connections.",
+      image: "/dominique/ethiopian_coffee_custom.png",
+      color: "#E9967A",
+      icon: "heart"
     },
     {
-      year: "2020",
-      title: "UI Designer",
-      company: "Creative Studio X",
-      description: "Collaborated with international clients to deliver award-winning web interfaces and brand identities.",
-      image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000"
+      id: "j2",
+      date: "2023 - Present",
+      title: "Psychology Pursuit",
+      company: "Academic Journey",
+      description: "Immersing myself in the study of psychology, seeking to understand the resilience of the human mind—a tool that would later become my greatest strength.",
+      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2000",
+      color: "#557C7C",
+      icon: "zap"
     },
     {
-      year: "2018",
-      title: "Junior Designer",
-      company: "StartUp Hub",
-      description: "Designed marketing assets and landing pages for early-stage startups.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000"
+      id: "j3",
+      date: "April 2024",
+      title: "The Turning Point",
+      company: "The Diagnosis",
+      description: "Diagnosed with Stage 4 colorectal cancer at age 20. A moment of profound stillness that gave birth to a mission of honesty and public advocacy.",
+      image: "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=2000",
+      color: "#ef4444",
+      icon: "star"
+    },
+    {
+      id: "j4",
+      date: "2024",
+      title: "The Voice of Advocacy",
+      company: "TikTok Community",
+      description: "Building a platform of over a million followers to share the raw reality of survivorship and fight for early detection.",
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2000",
+      color: "#3b82f6",
+      icon: "award"
+    },
+    {
+      id: "j5",
+      date: "2024",
+      title: "Love Wins",
+      company: "Marriage to Sean",
+      description: "Marrying Sean Suson—a celebration of hope, a testament to love, and the foundation of my livable life.",
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000",
+      color: "#a855f7",
+      icon: "heart"
     }
   ],
   achievements: [
     {
-      title: "Best UI Design 2023",
-      issuer: "Awwwards",
-      date: "Nov 2023",
-      description: "Recognized for the innovative navigation patterns in the Lumina Bank App.",
-      imageUrl: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1000"
-    },
-    {
-      title: "Google UX Cert",
-      issuer: "Coursera / Google",
-      date: "Feb 2022",
-      description: "Professional Certificate in UX Design.",
-      imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000"
+      title: "Awareness Champion",
+      issuer: "Cancer Community",
+      date: "2024",
+      description: "Recognized for tireless efforts in breaking the stigma around young adult cancer.",
+      imageUrl: "/dominique/purple_flowers.png"
     }
   ]
 };

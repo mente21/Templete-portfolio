@@ -1,98 +1,104 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Lightbulb, PenTool, Zap, RefreshCw, Heart, Layers, Sparkles, ChevronRight, Target } from 'lucide-react';
+import { ArrowLeft, Coffee, PenTool, Sparkles, Heart, Feather, ChevronRight, Target } from 'lucide-react';
 
 const philosophies = [
   {
     id: "ph1",
-    title: "VISION",
-    subtitle: "The North Star",
-    icon: Lightbulb,
-    color: "#facc15",
-    description: "Seeing beyond the immediate horizon. It's not just about what we build today, but how it shapes the future.",
-    details: "Vision is about foresight—the ability to anticipate trends and needs before they manifest. It's about seeing the 'big picture' while others are focused on the immediate tasks. In my work, this means building scalable solutions that don't just solve today's problems but are resilient enough to adapt to tomorrow's challenges. It's the clarity of purpose that guides every creative decision.",
+    title: "LIVABLE",
+    subtitle: "Simplicity in Ritual",
+    icon: Coffee,
+    color: "#D4A373",
+    description: "Life isn't meant to be 'worked' through; it's meant to be lived. Finding peace in the daily ritual of coffee and the quiet of the morning.",
+    details: "The core of my philosophy is the transition from 'workable' to 'livable'. We often trap ourselves in productivity loops, forgetting that the most profound moments happen in the spaces between tasks. For me, the traditional Ethiopian coffee ceremony is a grounding ritual—a reminder that time is a gift to be enjoyed, not just spent. It's about movement, rest, and finding peace in the everyday.",
     principles: [
-      "Anticipate future technological shifts",
-      "Focus on long-term sustainability over quick fixes",
-      "Maintain a clear sense of purpose throughout the project lifecycle"
+      "Prioritize rest over optimization",
+      "Find grounding in small rituals",
+      "Celebrate the art of slow living"
     ],
-    tags: ["Foresight", "Innovation", "Clarity"]
+    tags: ["Peace", "Simplicity", "Ritual"],
+    imageUrl: "/dominique/coffee_1.png"
   },
   {
     id: "ph2",
-    title: "CRAFT",
-    subtitle: "The Foundation",
-    icon: PenTool,
-    color: "#a855f7",
-    description: "Merging logic with aesthetics. Every line of code and every pixel is placed with intentionality and precision.",
-    details: "Craft is the intersection of engineering and art. It's the obsessive attention to detail that separates a good product from a great one. Whether it's the rhythm of a layout, the micro-interactions of a button, or the cleanliness of the underlying codebase, every element is an opportunity for excellence. I treat every project as a piece of digital craftsmanship.",
+    title: "ROOTS",
+    subtitle: "The Ethiopian Soul",
+    icon: Heart,
+    color: "#E9967A",
+    description: "Honoring my heritage across borders. Bringing the warmth of my roots to everything I share.",
+    details: "Heritage is the thread that connects who we were with who we are becoming. Being Ethiopian-born has shaped my perspective on hospitality, friendship, and resilience. Whether I'm sharing traditional food or reflecting on my journey in New Zealand, my culture is the heartbeat of my content. It's about bridging worlds through storytelling and authentic connection.",
     principles: [
-      "Attention to micro-details and pixel-perfection",
-      "Writing clean, self-documenting code",
-      "Balancing aesthetic elegance with technical robustness"
+      "Honor history and heritage",
+      "Build bridges through culture",
+      "Lead with hospitality and warmth"
     ],
-    tags: ["Precision", "Artistry", "Quality"]
+    tags: ["Heritage", "Identity", "Connection"],
+    imageUrl: "/dominique/traditional_coffee_cup.png"
   },
   {
     id: "ph3",
-    title: "VELOCITY",
-    subtitle: "The Momentum",
-    icon: Zap,
-    color: "#ef4444",
-    description: "Speed matters, but direction matters more. moving fast without breaking things by building on solid architecture.",
-    details: "Velocity isn't just about moving fast; it's about efficient progress toward a goal. It involves rapid prototyping, iterative development, and a bias toward action. However, true velocity is only possible when built on a solid foundation. You can't run fast if you're constantly tripping over technical debt. My approach balances development speed with structural integrity.",
+    title: "JOY",
+    subtitle: "Strength in Beauty",
+    icon: Sparkles,
+    color: "#a855f7",
+    description: "Choosing joy isn't a denial of struggle; it's the ultimate act of defiance against a diagnosis.",
+    details: "In the face of Stage 4 cancer, joy becomes my most powerful tool. It's not about being 'happy' all the time, but about recognizing beauty even in the hardest seasons. From the flowers in my room to the music that moves me, I choose to focus on what is good. This resilience turns a battle into a legacy of hope.",
     principles: [
-      "Rapid iteration and feedback loops",
-      "Efficient workflows and automation",
-      "Prioritizing the most impactful features first"
+      "Search for beauty in the dark",
+      "Choose hope as a daily practice",
+      "Redefine strength through vulnerability"
     ],
-    tags: ["Speed", "Efficiency", "Agility"]
+    tags: ["Resilience", "Hope", "Beauty"],
+    imageUrl: "/dominique/abstract_art.png"
   },
   {
     id: "ph4",
-    title: "ADAPTABILITY",
-    subtitle: "The Flow",
-    icon: RefreshCw,
-    color: "#3b82f6",
-    description: "The only constant is change. Thriving in ambiguity and pivoting strategies as technology evolves.",
-    details: "In the rapidly evolving digital landscape, the ability to pivot is essential. Adaptability means being comfortable with ambiguity and having the flexibility to change course when new information arise. It's about 'learning how to learn' and staying ahead of the curve. I build systems—and mindsets—that are designed to evolve.",
+    title: "STILLNESS",
+    subtitle: "Movement & Rest",
+    icon: Feather,
+    color: "#10b981",
+    description: "Listening to the body's rhythm. Balancing the rush of the world with the quiet of the inner self.",
+    details: "My studies in psychology have taught me the deep importance of the mind-body connection. Stillness isn't just about 'not moving'; it's about active rest and mental clarity. It's knowing when to pick and when to pause. In my life, this means mindful movement, deep rest, and the silence required to truly 'know ourselves'.",
     principles: [
-      "Embracing new tools and methodologies",
-      "Thriving in ambiguous or changing environments",
-      "Designing flexible and modular systems"
+      "Honor the body's need for rest",
+      "Cultivate mental stillness",
+      "Balance movement with reflection"
     ],
-    tags: ["Flexibility", "Growth", "Evolution"]
+    tags: ["Mindfulness", "Rest", "Psychology"],
+    imageUrl: "/dominique/interior_flowers.png"
   },
   {
     id: "ph5",
-    title: "IMPACT",
-    subtitle: "The Purpose",
-    icon: Heart,
-    color: "#ec4899",
-    description: "Building for people, not just screens. Creating solutions that solve real problems and elevate the human experience.",
-    details: "Design and code are just tools—Impact is the result. Every digital experience should serve a purpose and provide value to the user. I believe in empathetic design that understands user needs and emotional journeys. My goal is to create products that don't just look pretty but meaningfully improve the lives of those who use them.",
+    title: "FEAST",
+    subtitle: "Food for the Spirit",
+    icon: Heart, // Placeholder
+    color: "#ef4444",
+    description: "Food is more than fuel; it's a celebration of life, family, and the abundance of the Earth.",
+    details: "I believe that how we nourish ourselves reflects how we value our lives. From a simple breakfast to a shared feast of Tibs, food is a language of love. It brings people together, heals the spirit, and anchors us in the present moment. Cooking and eating are sacred acts of celebration.",
     principles: [
-      "Empathetic, user-centered design processes",
-      "Solving real-world problems through technology",
-      "Measuring success by the value delivered to humans"
+      "Celebrate life through food",
+      "Nourish the body with intention",
+      "Create space for shared meals"
     ],
-    tags: ["Empathy", "User-Centric", "Value"]
+    tags: ["Food", "Nourishment", "Celebration"],
+    imageUrl: "/dominique/pancakes.png"
   },
   {
     id: "ph6",
-    title: "STRUCTURE",
-    subtitle: "The Framework",
-    icon: Layers,
-    color: "#10b981",
-    description: "Scalable systems are beautiful systems. Writing clean, maintainable code that stands the test of time.",
-    details: "Structure provides the foundation for growth. It's about creating logical frameworks, clear hierarchies, and maintainable architectures. A well-structured project is easy to understand, simple to extend, and resilient to bugs. I advocate for organized thinking and systematic approaches to complex problems, ensuring that beauty goes bone-deep.",
+    title: "LEGACY",
+    subtitle: "The Advocate's Heart",
+    icon: PenTool,
+    color: "#3b82f6",
+    description: "Turning a personal journey into public awareness. Building a seat at the table for survivors.",
+    details: "Advocacy is about turning pain into purpose. Through my TikTok community and my public sharing, I aim to reach those who feel alone in their medical battles. My story isn't just mine—it's a tool for education, a voice for the unheard, and a testament to the power of shared human experience.",
     principles: [
-      "Designing for scalability and future growth",
-      "Clear information architecture and hierarchy",
-      "Implementing consistent design systems and patterns"
+      "Share the raw, honest truth",
+      "Advocate for self-awareness",
+      "Build a community of support"
     ],
-    tags: ["Scalability", "Order", "Logic"]
+    tags: ["Advocacy", "Storytelling", "Legacy"],
+    imageUrl: "/dominique/desk_office.png"
   }
 ];
 
@@ -191,61 +197,94 @@ const PhilosophyDetailPage = () => {
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 5%', position: 'relative', zIndex: 1 }}>
         
         {/* Hero Section */}
-        <div style={{ marginBottom: '100px' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: window.innerWidth > 768 ? '1.2fr 1fr' : '1fr', 
+          gap: '60px', 
+          alignItems: 'center',
+          marginBottom: '100px' 
+        }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              style={{
+                width: '100px',
+                height: '100px',
+                borderRadius: '24px',
+                background: `${philosophy.color}15`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '40px',
+                border: `1px solid ${philosophy.color}33`,
+                boxShadow: `0 20px 40px ${philosophy.color}11`
+              }}
+            >
+              <Icon size={48} color={philosophy.color} />
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{
+                fontSize: 'clamp(3rem, 8vw, 6rem)',
+                fontWeight: 900,
+                lineHeight: 0.9,
+                fontFamily: "'Cinzel', serif",
+                marginBottom: '20px',
+                color: 'white'
+              }}
+            >
+              {philosophy.title}
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{
+                fontSize: '1.2rem',
+                textTransform: 'uppercase',
+                letterSpacing: '8px',
+                color: philosophy.color,
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px'
+              }}
+            >
+              <div style={{ width: '40px', height: '1.5px', background: philosophy.color }}></div>
+              {philosophy.subtitle}
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
             style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '24px',
-              background: `${philosophy.color}15`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '40px',
-              border: `1px solid ${philosophy.color}33`,
-              boxShadow: `0 20px 40px ${philosophy.color}11`
+              width: '100%',
+              height: '500px',
+              borderRadius: '40px',
+              overflow: 'hidden',
+              position: 'relative',
+              boxShadow: `0 40px 80px -20px rgba(0,0,0,0.6)`,
+              border: '1px solid rgba(255,255,255,0.05)'
             }}
           >
-            <Icon size={48} color={philosophy.color} />
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              fontSize: 'clamp(4rem, 10vw, 8rem)',
-              fontWeight: 900,
-              lineHeight: 0.9,
-              fontFamily: "'Cinzel', serif",
-              marginBottom: '20px',
-              color: 'white',
-              position: 'relative'
-            }}
-          >
-            {philosophy.title}
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{
-              fontSize: '1.2rem',
-              textTransform: 'uppercase',
-              letterSpacing: '8px',
-              color: philosophy.color,
-              fontWeight: 800,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '20px'
-            }}
-          >
-            <div style={{ width: '40px', height: '1.5px', background: philosophy.color }}></div>
-            {philosophy.subtitle}
+            <img 
+              src={philosophy.imageUrl} 
+              alt={philosophy.title} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: `linear-gradient(to top, rgba(0,0,0,0.6), transparent)`
+            }} />
           </motion.div>
         </div>
 

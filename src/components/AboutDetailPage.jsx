@@ -73,10 +73,10 @@ const AboutDetailPage = () => {
                         <span style={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '4px', color: 'var(--accent-primary)', textTransform: 'uppercase', marginBottom: '20px', display: 'block' }}>The Full Story</span>
                         <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 800, marginBottom: '30px', color: 'white', lineHeight: 1.1, fontFamily: "'Inter', sans-serif" }}>
                             BEYOND THE <br />
-                            <span style={{ color: 'var(--accent-primary)' }}>INTERFACE</span>
+                            <span style={{ color: 'var(--accent-primary)' }}>DIAGNOSIS</span>
                         </h1>
                         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '40px', maxWidth: '500px' }}>
-                            A deep dive into the methodology, mission, and mind behind the craft. 
+                            A deep dive into the philosophy, heritage, and heart behind her journey. 
                         </p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
@@ -98,7 +98,7 @@ const AboutDetailPage = () => {
                         transition={{ duration: 1 }}
                         viewport={{ once: true }}
                     >
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '40px', color: 'white' }}>MY MISSION</h2>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '40px', color: 'white' }}>HER MISSION</h2>
                         <div style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
                             <p style={{ marginBottom: '30px', color: 'white', fontWeight: 500, borderLeft: '4px solid var(--accent-primary)', paddingLeft: '25px', fontSize: '1.4rem' }}>
                                 "{about.mission}"
@@ -118,9 +118,9 @@ const AboutDetailPage = () => {
                     >
                         <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '40px', padding: '50px', boxShadow: '0 30px 60px rgba(0,0,0,0.3)' }}>
                             <Sparkles size={40} color="var(--accent-primary)" style={{ marginBottom: '30px' }} />
-                            <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '25px', color: 'white' }}>CORE VALUES</h3>
+                            <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '25px', color: 'white' }}>LIFE PILLARS</h3>
                             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                {['Innovation', 'User Centricity', 'Precision', 'Storytelling'].map((item, idx) => (
+                                {['Heritage', 'Livable Philosophy', 'Resilience', 'Advocacy'].map((item, idx) => (
                                     <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
                                         <div style={{ width: '6px', height: '6px', background: 'var(--accent-primary)', borderRadius: '50%' }} />
                                         {item}

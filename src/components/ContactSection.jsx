@@ -12,18 +12,18 @@ const ContactSection = () => {
 
     const dynamicContact = contactData?.[0] || {
         email: "hello@dominique.design",
-        phone: "+1 234 567 890",
-        location: "London, United Kingdom",
+        phone: "+251 911 000 000",
+        location: "Addis Ababa, Ethiopia",
         github: "#",
         linkedin: "#",
         youtube: "#",
         facebook: "#",
         fiverr: "#",
-        tiktok: "#",
+        tiktok: "https://www.tiktok.com/@dominique_35890",
         telegram: "#",
         instagram: "#",
         twitter: "#",
-        desc: "I'm always open to discussing high-performance architectures, complex backend logic, or premium digital designs."
+        desc: "An Ethiopian-born advocate sharing a story of resilience. Whether you're looking for support or helping spread awareness—I would love to hear from you."
     };
 
     const TikTokIcon = () => (

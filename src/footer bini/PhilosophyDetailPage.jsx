@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Scale, Moon, Sun, Wind, Circle, Lightbulb, PenTool, Zap, RefreshCw, Heart, Layers } from 'lucide-react';
+import { ArrowLeft, Coffee, Heart, Sparkles, Feather, Utensils, PenTool, BookOpen, Scale, Moon, Sun, Wind, Circle } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import mainImg from './assets/footer assets/philosophy_images/main.jpg';
 import thumb1 from './assets/footer assets/philosophy_images/thumb1.jpg';
@@ -11,63 +11,69 @@ import footerImg from './assets/footer assets/philosophy_images/footer_new.jpg';
 const philosophies = [
   {
     id: "ph1",
-    title: "VISION",
-    subtitle: "The North Star",
-    icon: Lightbulb,
-    color: "#facc15", // Yellow
-    description: "Seeing beyond the immediate horizon. It's not just about what we build today, but how it shapes the future. Vision is the art of seeing the invisible.",
-    tags: ["Foresight", "Innovation", "Clarity"],
-    longDesc: "Vision is not just about having an idea; it's about having a clear mental picture of the destination before the journey begins. In product design, this means anticipating user needs before they are articulated and understanding the ripple effects of every design decision. true vision requires the courage to pursue paths that others might not yet see."
+    title: "LIVABLE",
+    subtitle: "Simplicity in Ritual",
+    icon: Coffee,
+    color: "#D4A373",
+    description: "Life isn't meant to be 'worked' through; it's meant to be lived. Finding peace in the daily ritual of coffee and the quiet of the morning.",
+    tags: ["Peace", "Simplicity", "Ritual"],
+    imageUrl: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000",
+    longDesc: "The core of my philosophy is the transition from 'workable' to 'livable'. We often trap ourselves in productivity loops, forgetting that the most profound moments happen in the spaces between tasks. For me, the traditional Ethiopian coffee ceremony is a grounding ritual—a reminder that time is a gift to be enjoyed, not just spent. It's about movement, rest, and finding peace in the everyday."
   },
   {
     id: "ph2",
-    title: "CRAFT",
-    subtitle: "The Foundation",
-    icon: PenTool,
-    color: "#a855f7", // Purple
-    description: "Merging logic with aesthetics. Every line of code and every pixel is placed with intentionality and precision. Craft is the visible manifestation of care.",
-    tags: ["Precision", "Artistry", "Quality"],
-    longDesc: "Craftsmanship is the bridge between the utility of engineering and the beauty of art. It's about refusing to compromise on the details that 'no one will notice' because you know that collectively, those details create the soul of the product. It is the relentless pursuit of excellence in both the visible UI and the invisible code structure."
+    title: "ROOTS",
+    subtitle: "The Ethiopian Soul",
+    icon: Heart,
+    color: "#E9967A",
+    description: "Honoring my heritage across borders. Bringing the warmth of my roots to everything I share.",
+    tags: ["Heritage", "Identity", "Connection"],
+    imageUrl: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=2000",
+    longDesc: "Heritage is the thread that connects who we were with who we are becoming. Being Ethiopian-born has shaped my perspective on hospitality, friendship, and resilience. Whether I'm sharing traditional food or reflecting on my journey in New Zealand, my culture is the heartbeat of my content. It's about bridging worlds through storytelling and authentic connection."
   },
   {
     id: "ph3",
-    title: "VELOCITY",
-    subtitle: "The Momentum",
-    icon: Zap,
-    color: "#ef4444", // Red
-    description: "Speed matters, but direction matters more. Moving fast without breaking things by building on solid architecture.",
-    tags: ["Speed", "Efficiency", "Agility"],
-    longDesc: "Velocity is often mistaken for speed, but velocity is a vector: it has both speed and direction. In startup culture, 'move fast and break things' has become a cliché. My philosophy is 'move fast and build things that last.' This requires a robust architectural foundation that allows for rapid iteration without the accumulation of crushing technical debt."
+    title: "JOY",
+    subtitle: "Strength in Beauty",
+    icon: Sparkles,
+    color: "#a855f7",
+    description: "Choosing joy isn't a denial of struggle; it's the ultimate act of defiance against a diagnosis.",
+    tags: ["Resilience", "Hope", "Beauty"],
+    imageUrl: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2000",
+    longDesc: "In the face of Stage 4 cancer, joy becomes my most powerful tool. It's not about being 'happy' all the time, but about recognizing beauty even in the hardest seasons. From the flowers in my room to the music that moves me, I choose to focus on what is good. This resilience turns a battle into a legacy of hope."
   },
   {
     id: "ph4",
-    title: "ADAPTABILITY",
-    subtitle: "The Flow",
-    icon: RefreshCw,
-    color: "#3b82f6", // Blue
-    description: "The only constant is change. Thriving in ambiguity and pivoting strategies as technology evolves.",
-    tags: ["Flexibility", "Growth", "Evolution"],
-    longDesc: "Darwin said it's not the strongest who survive, but the most adaptable. In the digital landscape, tools, frameworks, and user behaviors change overnight. Adaptability is about building systems—both mental and digital—that are loosely coupled and highly cohesive, ready to reconfigure themselves when the environment shifts."
+    title: "STILLNESS",
+    subtitle: "Movement & Rest",
+    icon: Feather,
+    color: "#10b981",
+    description: "Listening to the body's rhythm. Balancing the rush of the world with the quiet of the inner self.",
+    tags: ["Mindfulness", "Rest", "Psychology"],
+    imageUrl: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000",
+    longDesc: "My studies in psychology have taught me the deep importance of the mind-body connection. Stillness isn't just about 'not moving'; it's about active rest and mental clarity. It's knowing when to pick and when to pause. In my life, this means mindful movement, deep rest, and the silence required to truly 'know ourselves'."
   },
   {
     id: "ph5",
-    title: "IMPACT",
-    subtitle: "The Purpose",
-    icon: Heart,
-    color: "#ec4899", // Pink
-    description: "Building for people, not just screens. Creating solutions that solve real problems and elevate the human experience.",
-    tags: ["Empathy", "User-Centric", "Value"],
-    longDesc: "Technology is a tool, not a master. The ultimate measure of any digital product is the impact it has on the human on the other side of the screen. Does it save them time? Does it bring them joy? Does it solve a painful problem? Impact-driven design starts with empathy and ends with measurable value."
+    title: "FEAST",
+    subtitle: "Food for the Spirit",
+    icon: Utensils,
+    color: "#ef4444",
+    description: "Food is more than fuel; it's a celebration of life, family, and the abundance of the Earth.",
+    tags: ["Food", "Nourishment", "Celebration"],
+    imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2000",
+    longDesc: "I believe that how we nourish ourselves reflects how we value our lives. From a simple breakfast to a shared feast of Tibs, food is a language of love. It brings people together, heals the spirit, and anchors us in the present moment. Cooking and eating are sacred acts of celebration."
   },
   {
     id: "ph6",
-    title: "STRUCTURE",
-    subtitle: "The Framework",
-    icon: Layers,
-    color: "#10b981", // Emerald
-    description: "Scalable systems are beautiful systems. Writing clean, maintainable code that stands the test of time.",
-    tags: ["Scalability", "Order", "Logic"],
-    longDesc: "Entropy is the natural state of the universe; structure is our defiance of it. Good code structure is not just for computers; it's for the humans who will read, maintain, and extend it in the future. A well-structured codebase is like a well-organized library—everything has a place, and finding what you need feels intuitive."
+    title: "LEGACY",
+    subtitle: "The Advocate's Heart",
+    icon: PenTool,
+    color: "#3b82f6",
+    description: "Turning a personal journey into public awareness. Building a seat at the table for survivors.",
+    tags: ["Advocacy", "Storytelling", "Legacy"],
+    imageUrl: "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=2000",
+    longDesc: "Advocacy is about turning pain into purpose. Through my TikTok community and my public sharing, I aim to reach those who feel alone in their medical battles. My story isn't just mine—it's a tool for education, a voice for the unheard, and a testament to the power of shared human experience."
   }
 ];
 
@@ -176,24 +182,25 @@ const PhilosophyDetailPage = () => {
                                     aspectRatio: '1/1',
                                     backgroundColor: '#1a1a1a',
                                     marginBottom: '20px',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    borderRadius: '24px'
                                 }}>
                                     <img
-                                        src={mainImg}
-                                        alt="Zen Stone"
+                                        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000"
+                                        alt="Traditional Coffee"
                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                     />
                                 </div>
                                 {/* Thumbnails */}
                                 <div className="thumbnails-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
-                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                        <img src={thumb1} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=2000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                                     </div>
-                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                        <img src={thumb2} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                                     </div>
-                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden' }}>
-                                        <img src={thumb1} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                                    <div style={{ aspectRatio: '1/1', background: '#1a1a1a', overflow: 'hidden', borderRadius: '12px' }}>
+                                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                                     </div>
                                 </div>
                             </div>
@@ -201,15 +208,15 @@ const PhilosophyDetailPage = () => {
                             {/* RIGHT: Detailed Info */}
                             <div style={{ paddingTop: '20px' }}>
                                 <h2 style={{ fontFamily: "'Abril Fatface', serif", fontSize: '2.5rem', marginBottom: '20px' }}>
-                                    Digital Stoicism
+                                    The Livable Life
                                 </h2>
                                 <div style={{
                                     fontSize: '1.5rem',
-                                    color: '#10b981',
+                                    color: '#D4A373',
                                     marginBottom: '40px',
                                     fontFamily: "'JetBrains Mono', monospace"
                                 }}>
-                                    Less, But Better <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>dieter rams</span>
+                                    Livable, Not Workable <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>dominique mcshain</span>
                                 </div>
 
                                 <p style={{
@@ -218,22 +225,22 @@ const PhilosophyDetailPage = () => {
                                     color: 'rgba(255,255,255,0.8)',
                                     marginBottom: '40px'
                                 }}>
-                                    In an age of infinite noise, clarity is an act of rebellion. My philosophy is rooted in subtraction. I believe that good design is not about what you add, but what you take away. Every pixel, every line of code, and every interaction must fight for its right to exist. If it doesn't serve a purpose, it is clutter.
+                                    My content isn't a project; it's a life. It's about 'knowing ourselves', food, movement, rest, and peace. It's the music we hear, the fashion we wear, the coffee we drink, and the goals we chase. It's knowledge, beauty, and friendship—woven into a story that is raw and real.
                                 </p>
 
                                 {/* Specs */}
                                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px' }}>
                                     <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                        <span style={{ fontWeight: 600 }}>Influences</span>
-                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Bauhaus, Wabi-Sabi, Minimalism</span>
+                                        <span style={{ fontWeight: 600 }}>Roots</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Ethiopian-born, Psychology Student</span>
                                     </div>
                                     <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                        <span style={{ fontWeight: 600 }}>Core Value</span>
-                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Sustainability & Timelessness</span>
+                                        <span style={{ fontWeight: 600 }}>Philosophy</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Livable Life, Resilience, Joy</span>
                                     </div>
                                     <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '20px', marginBottom: '15px' }}>
-                                        <span style={{ fontWeight: 600 }}>Practices</span>
-                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Meditation, Deep Work, Journaling</span>
+                                        <span style={{ fontWeight: 600 }}>Advocacy</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>Colorectal Cancer Patient & Storyteller</span>
                                     </div>
                                 </div>
                             </div>
@@ -290,17 +297,25 @@ const PhilosophyDetailPage = () => {
                                 borderRadius: '24px',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                border: `2px solid ${activePhilosophy.color}`
+                                border: `1px solid rgba(255,255,255,0.1)`
                             }}>
+                                <img 
+                                    src={activePhilosophy.imageUrl} 
+                                    alt={activePhilosophy.title} 
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                                />
                                 <div style={{
                                     position: 'absolute', inset: 0,
-                                    background: `radial-gradient(circle at center, ${activePhilosophy.color}20 0%, transparent 70%)`
+                                    background: `linear-gradient(to top, rgba(0,0,0,0.6), transparent)`
                                 }}></div>
                                 <div style={{
-                                    height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    position: 'absolute', top: '30px', right: '30px',
+                                    width: '60px', height: '60px', borderRadius: '50%',
+                                    background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    border: `1px solid ${activePhilosophy.color}40`
                                 }}>
-                                    {/* Using the Icon as a major visual element since we might not have specific images for each yet */}
-                                    <activePhilosophy.icon size={200} color={activePhilosophy.color} strokeWidth={1} />
+                                    <activePhilosophy.icon size={30} color={activePhilosophy.color} />
                                 </div>
                             </div>
                             
